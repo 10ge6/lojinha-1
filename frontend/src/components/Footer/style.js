@@ -1,3 +1,7 @@
 import styled from "styled-components";
 
-const Footer = styled.footer``;
+const Style = styled.footer`
+  background-color: #f5f5dc;
+`;
+
+export default Style;
