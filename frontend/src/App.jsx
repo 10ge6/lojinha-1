@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Footer from "./components/Footer/Footer";
+import {useState} from "react";
+import Footer from "./components/Footer";
 
 function App() {
   return (
