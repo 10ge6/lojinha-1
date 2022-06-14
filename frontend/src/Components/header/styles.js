@@ -1,12 +1,7 @@
 import styled from 'styled-components'
 
 export const Principal = styled.header `
-    *{
-        margin: 0;
-        padding: 0;
-        border: none;
-        
-    }
+
     header {
         display: flex;
         justify-content: space-between;
