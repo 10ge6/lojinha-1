@@ -29,15 +29,15 @@ function Footer() {
           </ul>
         </nav>
         <nav className="link-buttons">
-          <button>
+          <a href="">
             <img className="media-img" src={facebook} alt="Logo do facebook" />
-          </button>
-          <button>
+          </a>
+          <a href="">
             <img className="media-img" src={twitter} alt="Logo do twitter" />
-          </button>
-          <button>
+          </a>
+          <a href="">
             <img className="media-img" src={instagram} alt="Logo do instagram" />
-          </button>
+          </a>
         </nav>
       </div>
       <p className="footer-message">
