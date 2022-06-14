@@ -9,10 +9,10 @@ function Footer() {
   return (
     <Style>
       <div className="top-level-footer">
-        <button>
-          <img src={logo} alt="Logo da lojinha" />
+        <button className="logo-btn">
+          <img className="logo" src={logo} alt="Logo da lojinha" />
         </button>
-        <nav>
+        <nav className="navigation">
           <ul className="nav-links">
             <li className="nav-link">
               <a href="">Início</a>
