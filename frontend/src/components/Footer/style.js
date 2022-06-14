@@ -79,6 +79,38 @@ const Style = styled.footer`
       order: 2;
     }
   }
+  @media (max-width: 480px) {
+    padding: 30px 0;
+    gap: 30px;
+
+    .top-level-footer {
+      gap: 30px;
+    }
+
+    .logo {
+      width: 100px;
+    }
+    .nav-link {
+      font-size: 12px;
+    }
+
+    .nav-links {
+      gap: 20px;
+    }
+
+    .link-buttons {
+      gap: 35px;
+      height: 28px;
+    }
+
+    .media-img {
+      height: 28px;
+    }
+
+    .footer-message {
+      font-size: 12px;
+    }
+  }
 `;
 
 export default Style;

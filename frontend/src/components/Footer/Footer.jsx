@@ -30,13 +30,13 @@ function Footer() {
         </nav>
         <nav className="link-buttons">
           <button>
-            <img src={facebook} alt="Logo do facebook" />
+            <img className="media-img" src={facebook} alt="Logo do facebook" />
           </button>
           <button>
-            <img src={twitter} alt="Logo do twitter" />
+            <img className="media-img" src={twitter} alt="Logo do twitter" />
           </button>
           <button>
-            <img src={instagram} alt="Logo do instagram" />
+            <img className="media-img" src={instagram} alt="Logo do instagram" />
           </button>
         </nav>
       </div>
