@@ -8,30 +8,30 @@ import * as S from "./styles";
 function ProductFilter() {
   return (
     <S.Section>
-      <div>
+      <S.Card>
         <img src={camisa} alt="Imagem de uma camisa" />
-        <h2>Camisas</h2>
-        <button>
-          <p>Ver mais</p>
+        <S.Text>Camisas</S.Text>
+        <S.Button>
+          <S.TextBtn>Ver mais</S.TextBtn>
           <img src={vector} alt="Botão de Ver mais" />
-        </button>
-      </div>
-      <div>
-        <img src={tenis} alt="Imagem de uma camisa" />
-        <h2>Tênis</h2>
-        <button>
-          <p>Ver mais</p>
+        </S.Button>
+      </S.Card>
+      <S.Card>
+        <img src={tenis} alt="Imagem de um tênis" />
+        <S.Text>Tênis</S.Text>
+        <S.Button>
+          <S.TextBtn>Ver mais</S.TextBtn>
           <img src={vector} alt="Botão de Ver mais" />
-        </button>
-      </div>
-      <div>
-        <img src={bolsa} alt="Imagem de uma camisa" />
-        <h2>Bolsas</h2>
-        <button>
-          <p>Ver mais</p>
+        </S.Button>
+      </S.Card>
+      <S.Card>
+        <img src={bolsa} alt="Imagem de uma bolsa" />
+        <S.Text>Bolsas</S.Text>
+        <S.Button>
+          <S.TextBtn>Ver mais</S.TextBtn>
           <img src={vector} alt="Botão de Ver mais" />
-        </button>
-      </div>
+        </S.Button>
+      </S.Card>
     </S.Section>
   );
 }
