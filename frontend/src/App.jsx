@@ -1,9 +1,13 @@
-import {useState} from "react";
-import Footer from "./components/Footer";
+import Header from './components/Header'
+import Footer from './components/Footer'
+import GlobalStyle from './globalStyles'
 
 function App() {
+  
   return (
     <div>
+      <GlobalStyle/>
+      <Header/>
       <Footer />
     </div>
   );
