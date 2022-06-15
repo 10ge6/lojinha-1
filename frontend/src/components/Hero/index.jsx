@@ -7,7 +7,7 @@ function Hero() {
         <S.Hero>
             <S.Text>
                 <h1>Explore nossa nova coleção</h1>
-                <p align='justify'>Aproveite as ofertas e encontre o look ideal para aproveitar o seu São João na Lojinha.</p>
+                <p>Aproveite as ofertas e encontre o look ideal para aproveitar o seu São João na Lojinha.</p>
                 <S.Discount>
                     <p>Ver descontos</p>
                     <button><img src={seta} alt="seta pra baixo para redirecionamento"/></button>

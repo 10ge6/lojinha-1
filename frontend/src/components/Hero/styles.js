@@ -23,7 +23,11 @@ export const Hero = styled.div `
     }
     @media (max-width: 730px) {
         flex-direction: column-reverse;
-        
+        padding: 50px 30px;
+
+        img {
+            width: 100%;
+        }
     }
 `;
 
@@ -40,6 +44,7 @@ export const Text = styled.div `
     }
 
     p {
+        text-align: justify;
         color: #252822;
         font-weight: 400;
         font-size: 1.2rem;
@@ -73,10 +78,21 @@ export const Text = styled.div `
         }
     }
 
+    @media (max-width: 730px) {
+        width: 100%;
+        text-align: center;
+
+        p {
+            text-align: center;
+        }
+    }
+
 `;
 
 export const Discount = styled.div `
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     background-color: #275845;
     border-radius: 5px;
@@ -91,6 +107,7 @@ export const Discount = styled.div `
     }
     button {
         background: transparent;
+        cursor: pointer;
     }
     
     button img {
@@ -121,5 +138,7 @@ export const Discount = styled.div `
         }
     }
     
-    
+    @media (max-width: 730px) {
+        width: 70%; 
+    }
 `;
