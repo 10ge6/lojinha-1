@@ -101,14 +101,3 @@ export const Menu = styled.div `
         }
     }
 `;
-
-export const Section = styled.div `
-    width: 100vw;
-    height: 100vh; 
-    
-    button {
-        position: absolute;
-        top: 1.5rem;
-        right: 2rem;
-    }
-`;

@@ -8,7 +8,7 @@ import Funcional from '../Funcional'
 
 function Header() {
 
-    const [MenuOpen, setMenuOpen] = useState(true);
+    const [MenuOpen, setMenuOpen] = useState(false);
 
     return (
         <S.Header>
@@ -29,15 +29,12 @@ function Header() {
                 </ul>
             </S.Nav>
             <S.Menu>
-                <button><img src={menu} alt="menu hamburguer"/></button>
+                <button onClick={() => setMenuOpen(true)}><img src={menu} alt="menu hamburguer"/></button>
             </S.Menu>
-            <S.Section>
-                <button><img src={X} alt="imagem de X para fechar menu"/></button>
-                <Funcional>
-                    MenuOpen={MenuOpen}
-                    setMenuOpen={setMenuOpen}
+            <Funcional>
+                MenuOpen={MenuOpen}
+                setMenuOpen={setMenuOpen}
             </Funcional> 
-            </S.Section> 
         </S.Header> 
     )
 
