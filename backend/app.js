@@ -37,10 +37,11 @@ app.use('/storefront', storefrontController);
 // app.use('/cart', cartController);
 
 // fallback
-app.use((req, res, next) => {
-    const error = new Error('Nao encontrado')
-    error.status = 404;
-    next(error);
+app.use((req, res) => {
+    res.status(404);
+    return res.send({
+        error: "Endpoint nao encontrado"
+    });
 })
 
 app.use((error, res) => {
