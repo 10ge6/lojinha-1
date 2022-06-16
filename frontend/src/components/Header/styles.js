@@ -85,6 +85,7 @@ export const Nav = styled.div `
     @media(max-width: 680px) {
         display: none;
     }
+
 `;
 
 export const Menu = styled.div `
@@ -98,5 +99,16 @@ export const Menu = styled.div `
             border: none;
             background-color: transparent;
         }
+    }
+`;
+
+export const Section = styled.div `
+    width: 100vw;
+    height: 100vh; 
+    
+    button {
+        position: absolute;
+        top: 1.5rem;
+        right: 2rem;
     }
 `;

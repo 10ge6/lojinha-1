@@ -1,11 +1,17 @@
 import logoLojinha from '../../assets/Vector.svg'
 import lupaPesquisa from '../../assets/lupa.svg'
 import menu from '../../assets/hamburguer.svg'
+import X from '../../assets/X.svg'
 import * as S from './styles'
+import { useState } from 'react'
+import Funcional from '../Funcional'
 
 function Header() {
+
+    const [MenuOpen, setMenuOpen] = useState(true);
+
     return (
-        <S.Header> 
+        <S.Header>
             <S.Logo>
                 <img src={logoLojinha} alt="logo da lojinha"/>
                 <h1>Lojinha</h1>
@@ -25,6 +31,13 @@ function Header() {
             <S.Menu>
                 <button><img src={menu} alt="menu hamburguer"/></button>
             </S.Menu>
+            <S.Section>
+                <button><img src={X} alt="imagem de X para fechar menu"/></button>
+                <Funcional>
+                    MenuOpen={MenuOpen}
+                    setMenuOpen={setMenuOpen}
+            </Funcional> 
+            </S.Section> 
         </S.Header> 
     )
 
