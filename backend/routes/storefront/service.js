@@ -35,9 +35,9 @@ exports.readStorefront = (req, res) => {
         conn.query(
             'SELECT * FROM storefront',
             (error, response) => {
-                if(error) {
-                    conn.release();
+                conn.release();
 
+                if(error) {
                     return res.status(500).send({
                         error: error
                     });
@@ -60,9 +60,9 @@ exports.readItem = (req, res) => {
             'SELECT * FROM storefront WHERE product_id = ?',
             [req.params.product_id],
             (error, response) => {
-                if(error) {
-                    conn.release();
+                conn.release();
 
+                if(error) {
                     return res.status(500).send({
                         error: error
                     });
@@ -111,9 +111,9 @@ exports.deleteItem = (req, res) => {
             'DELETE FROM storefront WHERE product_id = ?',
             [req.params.product_id],
             (error, response) => {
+                conn.release();
+                
                 if(error) {
-                    conn.release();
-
                     return res.status(500).send({
                         error: error
                     });
