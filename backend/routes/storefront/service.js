@@ -67,9 +67,15 @@ exports.readItem = (req, res) => {
                         error: error
                     });
                 }
+
+                if(response.length == 0){
+                    return res.status(404).send({
+                        error: "ID nao encontrado"
+                    });
+                }
                 
                 res.status(200).send({
-                    message: 'Exibindo infos do user',
+                    message: 'Exibindo infos do item',
                     response: response
                 });
             }
@@ -112,7 +118,7 @@ exports.deleteItem = (req, res) => {
             [req.params.product_id],
             (error, response) => {
                 conn.release();
-                
+
                 if(error) {
                     return res.status(500).send({
                         error: error
