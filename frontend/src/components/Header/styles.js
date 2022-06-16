@@ -94,6 +94,7 @@ export const Nav = styled.div `
                 align-items: center;
                 position: absolute;
                 background-color: #FAFAFA;
+                
             }
             
         }
