@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div `
-  position: relative;
+  &.open {
+    position: sticky;
+    background: white;
+    top: 0;
+  }
 `;
 
 export const Header = styled.div `
@@ -101,11 +105,11 @@ export const Nav = styled.div `
         position: absolute;
         background-color: white;
         top: 100%;
-        left: 0%;
+        left: 0;
         width: 100%;
-        height: calc(100vh - 100%);
+        height: 100vh;
         font-size: 1.5rem;
-      }     
+      } 
     }
   }
 

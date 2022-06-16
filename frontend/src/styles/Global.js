@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle `
-    * {
+  * {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle `
     background: none;
     font-family: 'Poppins';
     box-sizing: border-box;
-    }
+  }
 `;
 
 export const Section = styled.section `

@@ -11,7 +11,7 @@ function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <S.Wrapper>
+        <S.Wrapper className={menuOpen ? 'open' : 'closed'}>
             <Section>
                 <S.Header>
                     <S.Logo>
