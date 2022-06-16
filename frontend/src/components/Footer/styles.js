@@ -93,9 +93,12 @@ export const InfoLink = styled.a`
   text-decoration: underline;
 `;
 
-export const Style = styled.footer`
+export const Bg = styled.div`
   background-color: #f5f5dc;
-  padding: 56px 120px 24px 120px;
+`;
+
+export const Style = styled.footer`
+  padding: 56px 0 24px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
