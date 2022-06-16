@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const Bg = styled.div`
+export const Bg = styled.div `
   background-color: #2ae89c;
 `;
 
-export const Hero = styled.div`
+export const Hero = styled.div `
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +34,7 @@ export const Hero = styled.div`
   }
 `;
 
-export const Text = styled.div`
+export const Text = styled.div `
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -91,7 +91,7 @@ export const Text = styled.div`
   }
 `;
 
-export const Discount = styled.div`
+export const Discount = styled.div `
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,7 +99,7 @@ export const Discount = styled.div`
   background-color: #275845;
   border-radius: 5px;
   padding: 10px 50px;
-  width: 39%;
+  width: 55%;
 
   p {
     font-weight: 400;
@@ -140,6 +140,6 @@ export const Discount = styled.div`
   }
 
   @media (max-width: 730px) {
-    width: 70%;
+    width: 100%;
   }
 `;
