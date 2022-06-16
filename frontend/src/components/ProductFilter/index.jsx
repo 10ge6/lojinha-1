@@ -8,8 +8,8 @@ import * as S from "./styles";
 
 function ProductFilter() {
   return (
-    <S.Section>
-      <Section>
+    <Section>
+      <S.Section>
         <S.Card>
           <S.Img src={camisa} alt="Imagem de uma camisa" />
           <S.Text>Camisas</S.Text>
@@ -34,8 +34,8 @@ function ProductFilter() {
             <S.VectorImg src={vector} alt="Botão de Ver mais" />
           </S.Button>
         </S.Card>
-      </Section>
-    </S.Section>
+      </S.Section>
+    </Section>
   );
 }
 

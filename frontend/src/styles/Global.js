@@ -1,4 +1,5 @@
 import {createGlobalStyle} from "styled-components";
+import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -14,10 +15,10 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export const Section = createGlobalStyle`
-    width: 90%;
-    max-width: 1680px;
-    margin: 0 auto;
+export const Section = styled.section`
+  width: 90%;
+  max-width: 1680px;
+  margin: 0 auto;
 `;
 
 export default GlobalStyle;
