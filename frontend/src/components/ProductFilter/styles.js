@@ -6,6 +6,10 @@ export const Section = styled.section`
   width: 90%;
   max-width: 1680px;
   margin: 0 auto;
+  @media (max-width: 730px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Card = styled.div`
@@ -22,6 +26,11 @@ export const Card = styled.div`
   @media (max-width: 1024px) {
     gap: 10px;
     background: linear-gradient(0deg, #2ae89c 60%, #ffffff 40%);
+  }
+  @media (max-width: 730px) {
+    width: 100%;
+    gap: 16px;
+    background: linear-gradient(0deg, #2ae89c 50%, #ffffff 50%);
   }
 `;
 
