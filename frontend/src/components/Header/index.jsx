@@ -4,11 +4,11 @@ import menu from '../../assets/hamburguer.svg'
 import X from '../../assets/X.svg'
 import * as S from './styles'
 import { useState } from 'react'
-import Funcional from '../Funcional'
+import MenuMobile from '../MenuMobile'
 
 function Header() {
 
-    const [MenuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <S.Header>
@@ -20,7 +20,7 @@ function Header() {
                 <input type="text" placeholder='Pesquisar por um produto'/>
                 <button><img src={lupaPesquisa} alt="lupa para pesquisa"/></button>
             </S.Search> 
-            <S.Nav>
+            <S.Nav className={menuOpen ? 'open' : 'closed'}>
                 <ul>
                     <li><a href=''>Início</a></li>
                     <li><a href=''>Produtos</a></li>
@@ -29,15 +29,14 @@ function Header() {
                 </ul>
             </S.Nav>
             <S.Menu>
-                <button onClick={() => setMenuOpen(true)}><img src={menu} alt="menu hamburguer"/></button>
-            </S.Menu>
-            <Funcional>
-                MenuOpen={MenuOpen}
-                setMenuOpen={setMenuOpen}
-            </Funcional> 
+                <button onClick={() => setMenuOpen(state => !state)}>{menuOpen ? <img src={X}/> : <img src={menu}/>}</button>
+                {menuOpen ? <MenuMobile/> : null}
+            </S.Menu> 
         </S.Header> 
     )
 
 }
 
 export default Header
+
+/*<Functional open={setMenuOpen}/> <img src={menu} alt="menu hamburguer"/>*/

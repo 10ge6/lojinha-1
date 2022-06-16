@@ -1,8 +1,19 @@
 import * as S from './styles'
 import X from '../../assets/X.svg'
 
-function Funcional({MenuOpen, setMenuOpen}) {
+function MenuMobile() {
     return (
+        <div></div>
+
+    )
+}
+
+export default MenuMobile
+
+/*
+<S.></S.>
+        <button onClick={props.open}><img src={X}/></button>
+return (
         <S.Section MenuVisible={MenuOpen}>
             <button onClick={() => setMenuOpen(false)}><img src={X} alt="imagem de X para fechar menu"/></button>
             <nav>
@@ -14,7 +25,4 @@ function Funcional({MenuOpen, setMenuOpen}) {
                 </ul>
             </nav>
         </S.Section>
-    ) 
-}
-
-export default Funcional
+    )  */

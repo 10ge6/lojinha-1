@@ -83,7 +83,20 @@ export const Nav = styled.div `
     }
 
     @media(max-width: 680px) {
-        display: none;
+        &.closed {
+            display: none;
+        }
+        &.open {
+            ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                background-color: #FAFAFA;
+            }
+            
+        }
     }
 
 `;

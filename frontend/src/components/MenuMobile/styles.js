@@ -8,9 +8,9 @@ export const Section = styled.div `
     nav {
         display: none;
     }
+`;
 
-    pointer-events: none;
-    ${({MenuVisible}) => MenuVisible && css `
+/*
 pointer - events: auto;
 width: 100 vw;
 height: 100 vh;
@@ -28,10 +28,6 @@ nav {
     ul {
 
     }
-    `;}
-`;
-
-    /*
     export const Section = styled.div `
         display: flex;
         justify-content: center;
@@ -53,4 +49,5 @@ nav {
         display: flex;
         flex-direction: column;
         align-items: center;
-    `; */
+    `; 
+*/
