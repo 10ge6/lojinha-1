@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div `
+  position: relative;
+`;
+
 export const Header = styled.div `
   display: flex;
   justify-content: space-between;
@@ -7,7 +11,6 @@ export const Header = styled.div `
   padding: 24px 0;
   gap: 20px;
   font-family: "Poppins", sans-serif;
-  position: relative;
 
   @media (max-width: 960px) {
     display: flex;
@@ -101,8 +104,8 @@ export const Nav = styled.div `
         left: 0%;
         width: 100%;
         height: calc(100vh - 100%);
-      }
-            
+        font-size: 1.5rem;
+      }     
     }
   }
 
