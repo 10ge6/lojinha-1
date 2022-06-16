@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div `
-  &.open {
+  
+  @media (max-width: 680px) {
+    &.open {
     position: sticky;
     background: white;
     top: 0;
+  }
   }
 `;
 
