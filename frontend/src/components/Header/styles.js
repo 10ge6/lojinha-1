@@ -90,11 +90,10 @@ export const Nav = styled.div `
             ul {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
                 position: absolute;
                 background-color: #FAFAFA;
-                
+                top: 0;
+                right: 0;
             }
             
         }

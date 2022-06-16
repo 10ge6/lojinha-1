@@ -4,7 +4,6 @@ import menu from '../../assets/hamburguer.svg'
 import X from '../../assets/X.svg'
 import * as S from './styles'
 import { useState } from 'react'
-import MenuMobile from '../MenuMobile'
 
 function Header() {
 
@@ -30,7 +29,6 @@ function Header() {
             </S.Nav>
             <S.Menu>
                 <button onClick={() => setMenuOpen(state => !state)}>{menuOpen ? <img src={X}/> : <img src={menu}/>}</button>
-                {menuOpen ? <MenuMobile/> : null}
             </S.Menu> 
         </S.Header> 
     )
@@ -38,5 +36,3 @@ function Header() {
 }
 
 export default Header
-
-/*<Functional open={setMenuOpen}/> <img src={menu} alt="menu hamburguer"/>*/
