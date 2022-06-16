@@ -15,7 +15,7 @@ function Header() {
                 <img src={logoLojinha} alt="logo da lojinha"/>
                 <h1>Lojinha</h1>
             </S.Logo>
-            <S.Search>
+            <S.Search className={menuOpen ? 'open' : 'closed'}>
                 <input type="text" placeholder='Pesquisar por um produto'/>
                 <button><img src={lupaPesquisa} alt="lupa para pesquisa"/></button>
             </S.Search> 

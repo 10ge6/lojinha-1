@@ -7,6 +7,7 @@ export const Header = styled.div `
   padding: 24px 0;
   gap: 20px;
   font-family: "Poppins", sans-serif;
+  position: relative;
 
   @media (max-width: 960px) {
     display: flex;
@@ -52,62 +53,71 @@ export const Search = styled.div `
     order: 1;
     width: 100%;
   }
+
+  @media (max-width: 680px) {
+    &.open {
+      display: none;
+    }
+  }
 `;
 
 export const Nav = styled.div `
+  display: flex;
+    
+  ul {
     display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  a {
+    color: #252822;
+    text-decoration: none;
+  }
     
-    ul {
+  .carrinho {
+    background-color: #53B38D;
+    border-radius: 5px;
+    padding: 5px 15px;
+  }
+
+  .carrinho a {
+    color: #FAFAFA;
+  }
+
+  @media(max-width: 680px) {
+    &.closed {
+      display: none;
+    }
+    &.open {
+      ul {
         display: flex;
-        align-items: center;
-        gap: 40px;
-        list-style: none;
-    }
-
-    a{
-        color: #252822;
-        text-decoration: none;
-    }
-    
-    .carrinho {
-        background-color: #53B38D;
-        border-radius: 5px;
-        padding: 5px 15px;
-    }
-
-    .carrinho a {
-        color: #FAFAFA;
-    }
-
-    @media(max-width: 680px) {
-        &.closed {
-            display: none;
-        }
-        &.open {
-            ul {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                background-color: #FAFAFA;
-                top: 0;
-                right: 0;
-            }
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        background-color: white;
+        top: 100%;
+        left: 0%;
+        width: 100%;
+        height: calc(100vh - 100%);
+      }
             
-        }
     }
+  }
 
 `;
 
 export const Menu = styled.div `
-    display: none;
+  display: none;
 
-    @media(max-width: 680px){
-        display: flex;
+  @media(max-width: 680px){
+    display: flex;
     
-        button {
-            cursor: pointer;
-            border: none;
-            background-color: transparent;
-        }
+    button {
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
     }
+  }
 `;
