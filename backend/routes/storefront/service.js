@@ -125,6 +125,12 @@ exports.deleteItem = (req, res) => {
                     });
                 }
 
+                if(response.affectedRows == 0){
+                    return res.status(404).send({
+                        error: "ID nao encontrado"
+                    });
+                }
+
                 res.status(200).send({
                     message: 'Item deletado',
                     response: response
