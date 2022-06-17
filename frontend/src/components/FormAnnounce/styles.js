@@ -41,11 +41,18 @@ export const Flex = styled.div `
     .preview {
         font-size: 1.25rem;
     }
+
+    @media (max-width: 680px) {
+        .limit {
+            order: 5;
+        }
+    }
 `;
 
 export const Title = styled.div `
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 30px;
 
@@ -125,6 +132,7 @@ export const Text = styled.div `
     flex-direction: column;
     gap: 50px;
 
+    
 `;
 
 export const Textarea = styled.div `
@@ -136,25 +144,53 @@ export const Textarea = styled.div `
         font-weight: 400;
         font-size: 1rem;
     }
+
+    @media (max-width: 680px) {
+       display: flex;
+       flex-wrap: wrap;
+    }
+`;
+
+export const Limit = styled.div `
+    
 `;
 
 export const BrandAndColor = styled.div `
     display: flex;
     gap: 30px;
+
+    @media (max-width: 680px){
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 export const Brand = styled.div `
     width: 66%;
+
+    @media (max-width: 680px){
+        width: 100%;
+    }
 `;
 
 export const Color = styled.div `
     width: 34%;
+
+    @media (max-width: 680px){
+        width: 100%;
+    }
 `;
 
 
 export const InfAndSize = styled.div `
     display: flex;
     gap: 30px;
+
+    @media (max-width: 680px){
+        display: flex;
+        flex-direction: column;
+    }
+
 `;
 
 export const CategoryAndPrice = styled.div `
@@ -162,6 +198,10 @@ export const CategoryAndPrice = styled.div `
     flex-direction: column;
     width: 60.5%;
     gap: 50px;
+
+    @media (max-width: 680px){
+        width: 100%;
+    }
 `;
 
 export const Category = styled.div `
@@ -186,17 +226,33 @@ export const Size = styled.div `
 export const CheckboxCont = styled.div `
     display: flex;
     gap: 20px;
+
+    @media (max-width: 680px){
+        gap: 6px;
+    }
+
 `;
 
 export const Size1 = styled.div `
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 680px){
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+    }
 `;
 
 export const Size2 = styled.div `
     display: flex;
     flex-direction: column;
 
+    @media (max-width: 680px){
+        display: flex;
+        flex-direction: row;
+        gap:6px;
+    }
 `;
 
 export const Button = styled.div `
@@ -210,5 +266,13 @@ export const Button = styled.div `
         padding: 10px 30px;
         font-weight: 500;
         font-size: 1.375rem;
+    }
+
+    @media (max-width: 680px){
+        width: 100%;
+
+        button {
+            width: 100%;
+        }
     }
 `;
