@@ -13,10 +13,13 @@ function ProductSection() {
 
   function textPrice(price) {
     let text = price.toString();
-    if (Number.isInteger(price / 100)) {
-      return <S.ProductPrice>{"R$ " + text.slice(0, text.length - 2)}</S.ProductPrice>;
+    if (price / 100 < 1) {
+      text = (price / 100).toString();
+      return <S.ProductPrice>{`R$ 0,${text.slice(text.length - 2, text.length)}`}</S.ProductPrice>;
+    } else if (Number.isInteger(price / 100)) {
+      return <S.ProductPrice>{`R$ ${text.slice(0, text.length - 2)}`}</S.ProductPrice>;
     }
-    return <S.ProductPrice>{"R$ " + text.slice(0, text.length - 2) + "," + text.slice(text.length - 2, text.length)}</S.ProductPrice>;
+    return <S.ProductPrice>{`R$ ${text.slice(0, text.length - 2)},${text.slice(text.length - 2, text.length)}`}</S.ProductPrice>;
   }
 
   function getSize(num) {
