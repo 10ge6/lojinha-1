@@ -5,6 +5,7 @@ import facebook from "../../assets/facebook.svg";
 import twitter from "../../assets/twitter.svg";
 import instagram from "../../assets/instagram.svg";
 import {Section} from "../../styles/Global";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -18,16 +19,16 @@ function Footer() {
             <nav>
               <S.NavLinks>
                 <S.NavLink>
-                  <a href="">Início</a>
+                  <Link to="/">Início</Link>
                 </S.NavLink>
                 <S.NavLink>
-                  <a href="">Produtos</a>
+                  <Link to="/products">Produtos</Link>
                 </S.NavLink>
                 <S.NavLink>
-                  <a href="">Anunciar</a>
+                  <Link to="/announce">Anunciar</Link>
                 </S.NavLink>
                 <S.NavLink>
-                  <a href="">Carrinho</a>
+                  <Link to="/shopping">Carrinho</Link>
                 </S.NavLink>
               </S.NavLinks>
             </nav>
