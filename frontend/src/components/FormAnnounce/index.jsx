@@ -28,7 +28,9 @@ function FormAnnounce() {
                             <textarea></textarea></S.Flex>
                     </S.Text>
                     <S.BrandAndColor>
-                        <S.Flex><label>Marca</label><input type="text"/></S.Flex>
+                        <S.Brand>
+                            <S.Flex><label>Marca</label><input className="brand" type="text"/></S.Flex>
+                        </S.Brand>
                         <S.Flex><label>Cor</label><input type="text" /></S.Flex>                        
                     </S.BrandAndColor>
                     <S.InfAndSize>
@@ -57,14 +59,16 @@ function FormAnnounce() {
                             <S.Flex><label>Preço</label><input type="text" /></S.Flex>
                         </S.CategoryAndPrice>
                         <S.Size>
-                            <h4>Tamanho</h4>
-                            <label><input type="checkbox" />Único</label>
-                            <label><input type="checkbox" />PP</label>
-                            <label><input type="checkbox" />P</label> 
-                            <label><input type="checkbox" />M</label>
-                            <label><input type="checkbox" />v</label>
-                            <label><input type="checkbox" />GG</label>
-                            <label><input type="checkbox" />XG</label>                
+                            <S.Flex>
+                                <label>Tamanho</label>
+                                <label><input type="checkbox" />Único</label>
+                                <label><input type="checkbox" />PP</label>
+                                <label><input type="checkbox" />P</label> 
+                                <label><input type="checkbox" />M</label>
+                                <label><input type="checkbox" />v</label>
+                                <label><input type="checkbox" />GG</label>
+                                <label><input type="checkbox" />XG</label>
+                            </S.Flex>
                         </S.Size>
                     </S.InfAndSize>
                     <S.Button>

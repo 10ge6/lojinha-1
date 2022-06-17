@@ -23,6 +23,14 @@ export const Section = styled.div `
         font-size: 1.125rem;
         font-weight: 500;
     }
+    select {
+        border: 1px solid #9D9A95;
+        border-radius: 4px;
+        height: 42px;
+    }
+    option {
+        color: #275845;
+    }
 `;
 
 export const Flex = styled.div `
@@ -50,8 +58,6 @@ export const Title = styled.div `
         font-family: 'Montserrat', sans-serif;
         font-weight: 300;
         font-size: 2.5rem;
-
-
     }
 `;
 
@@ -96,19 +102,31 @@ export const Textarea = styled.div `
 export const BrandAndColor = styled.div `
     display: flex;
     gap: 20px;
+
+`;
+
+export const Brand = styled.div `
+    
 `;
 
 export const InfAndSize = styled.div `
     display: flex;
+    gap: 50px;
 `;
 
 export const CategoryAndPrice = styled.div `
     display: flex;
     flex-direction: column;
+    width: 60%;
 `;
 
 export const Category = styled.div `
     display: flex;
+    justify-content: space-between;
+    
+    select {
+        width: 144px
+    }
 `;
 
 export const Size = styled.div `
