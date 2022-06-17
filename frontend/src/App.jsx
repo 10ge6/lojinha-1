@@ -1,5 +1,3 @@
-import Hero from "./components/Hero";
-import ProductFilter from "./components/ProductFilter";
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from "./pages/Home";
 import Products from "./pages/Products";
