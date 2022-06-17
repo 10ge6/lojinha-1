@@ -1,8 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import preview from "../../assets/preview.svg"
 import * as S from './styles'
 
 function FormAnnounce() {
+    const [checkboxOn, setCheckboxOn] = useState(false);
+
     return (
         <S.Section>
             <S.Title>
@@ -60,15 +63,15 @@ function FormAnnounce() {
                             <label>Tamanho</label>
                             <S.CheckboxCont>
                                 <S.Size1>
-                                    <label><input type="checkbox"/> Único</label>
-                                    <label><input type="checkbox"/> PP</label>
-                                    <label><input type="checkbox"/> P</label> 
-                                    <label><input type="checkbox"/> M</label>
+                                    <label><input type="checkbox" onClick={() => setCheckboxOn(state => !state)}/> Único</label>
+                                    <label><input type="checkbox" disabled={checkboxOn}/> PP</label>
+                                    <label><input type="checkbox" disabled={checkboxOn}/> P</label> 
+                                    <label><input type="checkbox" disabled={checkboxOn}/> M</label>
                                 </S.Size1>
                                 <S.Size2>
-                                    <label><input type="checkbox"/> G</label>
-                                    <label><input type="checkbox"/> GG</label>
-                                    <label><input type="checkbox"/> XG</label>
+                                    <label><input type="checkbox" disabled={checkboxOn}/> G</label>
+                                    <label><input type="checkbox" disabled={checkboxOn}/> GG</label>
+                                    <label><input type="checkbox" disabled={checkboxOn}/> XG</label>
                                 </S.Size2>
                             </S.CheckboxCont> 
                         </S.Size>
