@@ -14,9 +14,9 @@ function ProductSection() {
   function textPrice(price) {
     let text = price.toString();
     if (Number.isInteger(price / 100)) {
-      return <p>{"R$ " + text.slice(0, text.length - 2)}</p>;
+      return <S.ProductPrice>{"R$ " + text.slice(0, text.length - 2)}</S.ProductPrice>;
     }
-    return <p>{"R$ " + text.slice(0, text.length - 2) + "," + text.slice(text.length - 2, text.length)}</p>;
+    return <S.ProductPrice>{"R$ " + text.slice(0, text.length - 2) + "," + text.slice(text.length - 2, text.length)}</S.ProductPrice>;
   }
 
   useEffect(() => {
@@ -27,22 +27,25 @@ function ProductSection() {
 
   return (
     <Section>
-      <div>
-        {users.map((user) => (
-          <div key={user.product_id}>
-            <img
-              src={user.product_pic}
-              onError={({currentTarget}) => {
-                currentTarget.src = "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
-              }}
-              alt="Imagem do produto"
-            />
-            {textPrice(user.product_price)}
-            <p>{user.product_title}</p>
-            <p>{user.product_brand}</p>
-          </div>
-        ))}
-      </div>
+      <S.AllProducts>
+        <S.Products>Produtos</S.Products>
+        <S.ProductList>
+          {users.map((user) => (
+            <S.ProductCard key={user.product_id}>
+              <S.ProductImg
+                src={user.product_pic}
+                onError={({currentTarget}) => {
+                  currentTarget.src = "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
+                }}
+                alt="Imagem do produto"
+              />
+              {textPrice(user.product_price)}
+              <S.ProductTitle>{user.product_title}</S.ProductTitle>
+              <S.ProductBrand>{user.product_brand}</S.ProductBrand>
+            </S.ProductCard>
+          ))}
+        </S.ProductList>
+      </S.AllProducts>
     </Section>
   );
 }
