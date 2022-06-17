@@ -19,6 +19,22 @@ function ProductSection() {
     return <S.ProductPrice>{"R$ " + text.slice(0, text.length - 2) + "," + text.slice(text.length - 2, text.length)}</S.ProductPrice>;
   }
 
+  function getSize(num) {
+    let actualNum = num;
+    const arrExNum = [32, 16, 8, 4, 2, 1];
+    const arrExSize = ["XG", "GG", "G", "M", "P", "PP"];
+    let arrSizes = [];
+    for (let i = 0; i < 6; i++) {
+      if (num == 0) {
+        return ["ÚNICO"];
+      } else if (arrExNum[i] <= actualNum) {
+        arrSizes.push(arrExSize[i]);
+        actualNum -= arrExNum[i];
+      }
+    }
+    return arrSizes;
+  }
+
   useEffect(() => {
     getUsers().then((users) => {
       setUsers(users);
@@ -39,6 +55,12 @@ function ProductSection() {
                 }}
                 alt="Imagem do produto"
               />
+              <S.ProductSizeDiv>
+                {getSize(user.product_size).map((size, index) => {
+                  return <S.ProductSize key={index}>{size}</S.ProductSize>;
+                })}
+              </S.ProductSizeDiv>
+
               {textPrice(user.product_price)}
               <S.ProductTitle>{user.product_title}</S.ProductTitle>
               <S.ProductBrand>{user.product_brand}</S.ProductBrand>

@@ -9,11 +9,13 @@ export const ProductList = styled.div`
 export const ProductCard = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 9px;
 `;
 
 export const ProductImg = styled.img`
   height: 244px;
   width: 247px;
+  margin-bottom: -42px;
 `;
 
 export const ProductPrice = styled.p`
@@ -44,4 +46,19 @@ export const AllProducts = styled.div`
   display: flex;
   flex-direction: column;
   gap: 46px;
+`;
+
+export const ProductSizeDiv = styled.div`
+  display: flex;
+  gap: 2px;
+  margin-left: 2px;
+`;
+
+export const ProductSize = styled.p`
+  padding: 8px;
+  font-family: "Montserrat";
+  font-size: 12px;
+  color: #252822;
+  background-color: #fafafa;
+  border-radius: 2px;
 `;
