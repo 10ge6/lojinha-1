@@ -3,17 +3,31 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import ProductFilter from "./components/ProductFilter";
 import GlobalStyle from "./styles/Global";
+import {BrowserRouter, Outlet, Routes, Route} from 'react-router-dom'
+import Home from "./Pages/Home";
+import Products from "./Pages/Products";
+import Announce from "./Pages/Announce";
+import Shopping from "./Pages/Shopping";
+import Layout from "./components/Layout";
+
 
 function App() {
+  
   return (
-    <div>
-      <GlobalStyle />
-      <Header />
-      <Hero />
-      <ProductFilter />
-      <Footer />
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout/>}>
+            <Route index element={<Home/>}/>
+            <Route path="/Products" element={<Products/>}/>
+            <Route path="/Announce" element={<Announce/>}/>
+            <Route path="/Shopping" element={<Shopping/>}/>
+          </Route>
+        </Routes> 
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+/*<Hero />
+          <ProductFilter /> */
