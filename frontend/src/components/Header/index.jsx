@@ -5,6 +5,7 @@ import X from '../../assets/X.svg'
 import * as S from './styles'
 import { useState } from 'react'
 import {Section} from "../../styles/Global";
+import { Link } from 'react-router-dom'
 
 function Header() {
 
@@ -24,11 +25,11 @@ function Header() {
                     </S.Search> 
                     <S.Nav className={menuOpen ? 'open' : 'closed'}>
                         <ul>
-                            <li><a href=''>Início</a></li>
-                            <li><a href=''>Produtos</a></li>
-                            <li><a href=''>Anunciar</a></li>
-                            <li className='carrinho'><a href=''>Carrinho</a></li>
-                        </ul>
+                            <li><Link to="/">Início</Link></li>
+                            <li><Link to="/products">Produtos</Link></li>
+                            <li><Link to="/announce">Anunciar</Link></li>
+                            <li className='carrinho'><Link to="/shopping">Carrinho</Link></li>
+                        </ul>   
                     </S.Nav>
                     <S.Menu>
                         <button onClick={() => setMenuOpen(state => !state)}>{menuOpen ? <img src={X}/> : <img src={menu}/>}</button>
