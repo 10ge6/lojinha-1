@@ -26,11 +26,10 @@ function Header() {
                     <S.Nav className={menuOpen ? 'open' : 'closed'}>
                         <ul>
                             <li><Link to="/">Início</Link></li>
-                            <li><Link to="/Produtos">Produtos</Link></li>
-                            <li><Link to="/Anunciar">Anunciar</Link></li>
-                            <li className='carrinho'><Link Carrinho>Carrinho</Link></li>
+                            <li><Link to="/products">Produtos</Link></li>
+                            <li><Link to="/announce">Anunciar</Link></li>
+                            <li className='carrinho'><Link to="/shopping">Carrinho</Link></li>
                         </ul>   
-                        <Outlet/>
                     </S.Nav>
                     <S.Menu>
                         <button onClick={() => setMenuOpen(state => !state)}>{menuOpen ? <img src={X}/> : <img src={menu}/>}</button>

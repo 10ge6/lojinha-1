@@ -1,9 +1,6 @@
-import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Footer from "./components/Footer";
 import ProductFilter from "./components/ProductFilter";
-import GlobalStyle from "./styles/Global";
-import {BrowserRouter, Outlet, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from "./Pages/Home";
 import Products from "./Pages/Products";
 import Announce from "./Pages/Announce";
@@ -16,11 +13,12 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout/>}>
+          <Route path="/" exact element={<Layout/>}>
             <Route index element={<Home/>}/>
-            <Route path="/Products" element={<Products/>}/>
-            <Route path="/Announce" element={<Announce/>}/>
-            <Route path="/Shopping" element={<Shopping/>}/>
+            <Route path="/products" element={<Products/>}/>
+            <Route path="/announce" element={<Announce/>}/>
+            <Route path="/shopping" element={<Shopping/>}/>
+            <Route path="*" element={<Error/>}/>
           </Route>
         </Routes> 
     </BrowserRouter>

@@ -1,9 +1,12 @@
 import React from "react";
+import Hero from "../components/Hero";
+import ProductFilter from "../components/ProductFilter";
 
 function Home() {
     return ( 
         <div>
-        <p>home</p>
+        <Hero/>
+        <ProductFilter/>
         </div>
     );
 }
