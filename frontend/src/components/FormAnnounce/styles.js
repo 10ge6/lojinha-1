@@ -4,9 +4,8 @@ export const Section = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
     gap: 100px;
-
+    margin: 100px 0;
     input {
         border: 1px solid #9D9A95;
         border-radius: 4px;
@@ -101,23 +100,28 @@ export const Textarea = styled.div `
 
 export const BrandAndColor = styled.div `
     display: flex;
-    gap: 20px;
-
+    gap: 30px;
 `;
 
 export const Brand = styled.div `
-    
+    width: 66%;
 `;
+
+export const Color = styled.div `
+    width: 34%;
+`;
+
 
 export const InfAndSize = styled.div `
     display: flex;
-    gap: 50px;
+    gap: 30px;
 `;
 
 export const CategoryAndPrice = styled.div `
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 60.5%;
+    gap: 50px;
 `;
 
 export const Category = styled.div `
@@ -125,12 +129,46 @@ export const Category = styled.div `
     justify-content: space-between;
     
     select {
-        width: 144px
+        width: 144px;
+        color: #275845;
     }
 `;
 
 export const Size = styled.div `
+    display: flex;
+    flex-direction: column;
+
+    input {
+        vertical-align: middle;
+    }
+`;
+
+export const CheckboxCont = styled.div `
+    display: flex;
+    gap: 20px;
+`;
+
+export const Size1 = styled.div `
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Size2 = styled.div `
+    display: flex;
+    flex-direction: column;
+
 `;
 
 export const Button = styled.div `
+    display: flex;
+    justify-content: center;
+
+    button {
+        background-color: #53B38D;
+        color: #FAFAFA;
+        border-radius: 5px;
+        padding: 10px 30px;
+        font-weight: 500;
+        font-size: 1.375rem;
+    }
 `;

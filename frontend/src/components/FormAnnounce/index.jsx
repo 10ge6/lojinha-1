@@ -28,10 +28,8 @@ function FormAnnounce() {
                             <textarea></textarea></S.Flex>
                     </S.Text>
                     <S.BrandAndColor>
-                        <S.Brand>
-                            <S.Flex><label>Marca</label><input className="brand" type="text"/></S.Flex>
-                        </S.Brand>
-                        <S.Flex><label>Cor</label><input type="text" /></S.Flex>                        
+                        <S.Brand><S.Flex><label>Marca</label><input className="brand" type="text"/></S.Flex></S.Brand>
+                        <S.Color><S.Flex><label>Cor</label><input className="color" type="text" /></S.Flex></S.Color>                        
                     </S.BrandAndColor>
                     <S.InfAndSize>
                         <S.CategoryAndPrice>
@@ -59,16 +57,20 @@ function FormAnnounce() {
                             <S.Flex><label>Preço</label><input type="text" /></S.Flex>
                         </S.CategoryAndPrice>
                         <S.Size>
-                            <S.Flex>
-                                <label>Tamanho</label>
-                                <label><input type="checkbox" />Único</label>
-                                <label><input type="checkbox" />PP</label>
-                                <label><input type="checkbox" />P</label> 
-                                <label><input type="checkbox" />M</label>
-                                <label><input type="checkbox" />v</label>
-                                <label><input type="checkbox" />GG</label>
-                                <label><input type="checkbox" />XG</label>
-                            </S.Flex>
+                            <label>Tamanho</label>
+                            <S.CheckboxCont>
+                                <S.Size1>
+                                    <label><input type="checkbox"/> Único</label>
+                                    <label><input type="checkbox"/> PP</label>
+                                    <label><input type="checkbox"/> P</label> 
+                                    <label><input type="checkbox"/> M</label>
+                                </S.Size1>
+                                <S.Size2>
+                                    <label><input type="checkbox"/> G</label>
+                                    <label><input type="checkbox"/> GG</label>
+                                    <label><input type="checkbox"/> XG</label>
+                                </S.Size2>
+                            </S.CheckboxCont> 
                         </S.Size>
                     </S.InfAndSize>
                     <S.Button>
