@@ -13,9 +13,11 @@ function ProductSection() {
 
   function textPrice(price) {
     let text = price.toString();
-    if (price / 100 < 1) {
-      text = (price / 100).toString();
-      return <S.ProductPrice>{`R$ 0,${text.slice(text.length - 2, text.length)}`}</S.ProductPrice>;
+    if (text.length <= 2) {
+      if (text.length < 2) {
+        text = "0" + text;
+      }
+      return <S.ProductPrice>{`R$ 0,${text.slice(0, text.length)}`}</S.ProductPrice>;
     } else if (Number.isInteger(price / 100)) {
       return <S.ProductPrice>{`R$ ${text.slice(0, text.length - 2)}`}</S.ProductPrice>;
     }
@@ -51,18 +53,20 @@ function ProductSection() {
         <S.ProductList>
           {users.map((user) => (
             <S.ProductCard key={user.product_id}>
-              <S.ProductImg
-                src={user.product_pic}
-                onError={({currentTarget}) => {
-                  currentTarget.src = "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
-                }}
-                alt="Imagem do produto"
-              />
-              <S.ProductSizeDiv>
-                {getSize(user.product_size).map((size, index) => {
-                  return <S.ProductSize key={index}>{size}</S.ProductSize>;
-                })}
-              </S.ProductSizeDiv>
+              <div>
+                <S.ProductImg
+                  src={user.product_pic}
+                  onError={({currentTarget}) => {
+                    currentTarget.src = "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png";
+                  }}
+                  alt="Imagem do produto"
+                />
+                <S.ProductSizeDiv>
+                  {getSize(user.product_size).map((size, index) => {
+                    return <S.ProductSize key={index}>{size}</S.ProductSize>;
+                  })}
+                </S.ProductSizeDiv>
+              </div>
 
               {textPrice(user.product_price)}
               <S.ProductTitle>{user.product_title}</S.ProductTitle>

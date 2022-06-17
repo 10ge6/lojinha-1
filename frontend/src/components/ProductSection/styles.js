@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
 export const ProductList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 247px);
   gap: 40px;
+  @media (max-width: 1050px) {
+    justify-content: space-between;
+  }
+  @media (max-width: 912px) {
+    grid-template-columns: repeat(auto-fill, 315px);
+  }
 `;
 
 export const ProductCard = styled.div`
@@ -15,7 +21,11 @@ export const ProductCard = styled.div`
 export const ProductImg = styled.img`
   height: 244px;
   width: 247px;
-  margin-bottom: -42px;
+  margin-bottom: -40px;
+  @media (max-width: 912px) {
+    height: 312px;
+    width: 315px;
+  }
 `;
 
 export const ProductPrice = styled.p`
@@ -40,6 +50,7 @@ export const ProductBrand = styled.p`
 export const Products = styled.h2`
   font-weight: 600;
   font-size: 36px;
+  color: #252822;
 `;
 
 export const AllProducts = styled.div`
