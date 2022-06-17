@@ -10,6 +10,9 @@ export const ProductList = styled.div`
   @media (max-width: 912px) {
     grid-template-columns: repeat(auto-fill, 315px);
   }
+  @media (max-width: 744px) {
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
 `;
 
 export const ProductCard = styled.div`
@@ -25,6 +28,10 @@ export const ProductImg = styled.img`
   @media (max-width: 912px) {
     height: 312px;
     width: 315px;
+  }
+  @media (max-width: 744px) {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -51,12 +58,27 @@ export const Products = styled.h2`
   font-weight: 600;
   font-size: 36px;
   color: #252822;
+  @media (max-width: 1024px) {
+    font-size: 28px;
+  }
+  @media (max-width: 744px) {
+    font-size: 24px;
+  }
 `;
 
 export const AllProducts = styled.div`
   display: flex;
   flex-direction: column;
   gap: 46px;
+  margin-top: 120px;
+  margin-bottom: 60px;
+  @media (max-width: 912px) {
+    margin-top: 60px;
+  }
+  @media (max-width: 744px) {
+    align-items: center;
+    gap: 20px;
+  }
 `;
 
 export const ProductSizeDiv = styled.div`
