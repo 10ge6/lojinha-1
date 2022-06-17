@@ -4,7 +4,7 @@
   "description": "atv final",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
