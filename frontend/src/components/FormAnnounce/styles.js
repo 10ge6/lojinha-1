@@ -6,6 +6,8 @@ export const Section = styled.div `
     align-items: center;
     gap: 100px;
     margin: 100px 0;
+    width: 100vw;
+
     input {
         border: 1px solid #9D9A95;
         border-radius: 4px;
@@ -45,6 +47,7 @@ export const Title = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
 
     h1 {
         color: #275845;
@@ -58,11 +61,39 @@ export const Title = styled.div `
         font-weight: 300;
         font-size: 2.5rem;
     }
+
+    
+    @media (max-width: 1024px) {
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 960px) {
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.375rem;
+        }
+    }
+
 `;
 
 export const Container = styled.div `
     display: flex;
     gap: 80px;
+
+    @media (max-width: 960px) {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
 `;
 
 export const Image = styled.div `
@@ -75,6 +106,14 @@ export const Image = styled.div `
     
 `;
 
+export const Preview = styled.div `
+    @media (max-width: 960px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+`;
+
 export const Form = styled.div `
     display: flex;
     flex-direction: column;
@@ -85,6 +124,7 @@ export const Text = styled.div `
     display: flex;
     flex-direction: column;
     gap: 50px;
+
 `;
 
 export const Textarea = styled.div `

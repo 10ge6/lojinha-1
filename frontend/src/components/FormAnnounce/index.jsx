@@ -14,15 +14,17 @@ function FormAnnounce() {
             </S.Title>
             <S.Container>
                 <S.Flex>
-                    <label className="preview">Preview da imagem</label>
-                    <S.Image>
-                        <img src={preview} alt=""/>
-                    </S.Image>
+                    <S.Preview>
+                        <label className="preview">Preview da imagem</label>
+                        <S.Image>
+                            <img src={preview} alt=""/>
+                        </S.Image>
+                    </S.Preview> 
                 </S.Flex>
                 <S.Form>
                     <S.Text>
-                        <S.Flex><label>Url da imagem</label><input type="url" /></S.Flex>
-                        <S.Flex><label>Título</label><input type="text" /></S.Flex>
+                        <S.Flex><label>Url da imagem</label><input type="url"/></S.Flex>
+                        <S.Flex><label>Título</label><input type="text"/></S.Flex>
                         <S.Flex>
                             <S.Textarea>
                                 <label>Descrição do produto</label>
@@ -57,7 +59,7 @@ function FormAnnounce() {
                                     </select>
                                 </S.Flex>
                             </S.Category>
-                            <S.Flex><label>Preço</label><input type="text" /></S.Flex>
+                            <S.Flex><label>Preço</label><input type="number" /></S.Flex>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
