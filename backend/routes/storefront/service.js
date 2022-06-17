@@ -7,8 +7,8 @@ exports.createItem = (req, res) => {
     sql.getConnection((error, conn) => {
         if(error) {return res.status(500).send({error: error})}
         conn.query(
-            'INSERT INTO storefront (product_pic, product_title, product_brand, product_color, product_category, product_subcategory, product_price, product_size) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-            [req.body.product_pic, req.body.product_title,
+            'INSERT INTO storefront (product_pic, product_title, product_desc, product_brand, product_color, product_category, product_subcategory, product_price, product_size) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            [req.body.product_pic, req.body.product_title, req.body.product_desc,
             req.body.product_brand, req.body.product_color, req.body.product_category,
             req.body.product_subcategory, req.body.product_price, req.body.product_size],
             (error) => {
@@ -88,10 +88,11 @@ exports.updateItem = (req, res) => {
     sql.getConnection((error, conn) => {
         if(error) {return res.status(500).send({error: error})}
         conn.query(
-            'UPDATE storefront SET product_pic = ?, product_title = ?, product_brand = ?, product_color = ?, product_category = ?, product_subcategory = ?, product_price = ?, product_size = ? WHERE product_id = ?',
-            [req.body.product_pic, req.body.product_title, req.body.product_brand,
-            req.body.product_color, req.body.product_category, req.body.product_subcategory,
-            req.body.product_price, req.body.product_size, req.params.product_id],
+            'UPDATE storefront SET product_pic = ?, product_title = ?, product_desc = ?, product_brand = ?, product_color = ?, product_category = ?, product_subcategory = ?, product_price = ?, product_size = ? WHERE product_id = ?',
+            [req.body.product_pic, req.body.product_title, req.body.product_desc,
+            req.body.product_brand, req.body.product_color, req.body.product_category,
+            req.body.product_subcategory, req.body.product_price, req.body.product_size,
+            req.params.product_id],
             (error) => {
                 conn.release();
 
