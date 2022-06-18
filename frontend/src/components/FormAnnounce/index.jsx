@@ -6,9 +6,15 @@ import * as S from './styles'
 function FormAnnounce() {
     const [checkboxOn, setCheckboxOn] = useState(false);
     const [urlImage, setUrlImage] = useState(preview);
+    const [number, setNumber] = useState();
 
     function getUrl(e) {
         setUrlImage(e.target.value)
+    }
+
+    function checkNumber(e) {
+        setNumber(e.target.value)
+        number <= 0 ? alert("Por favor, digite um valor acima de R$ 0,00.") : null
     }
 
     return (
@@ -59,7 +65,7 @@ function FormAnnounce() {
                                         </select>
                                 </S.Flex>
                             </S.Category>
-                            <S.Flex><label>Preço</label><input type="number" min="0" /></S.Flex>
+                            <S.Flex><label>Preço</label><input type="number" min="0" onChange={(e) => checkNumber(e)}/></S.Flex>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
