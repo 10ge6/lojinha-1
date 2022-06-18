@@ -60,7 +60,6 @@ localhost:3000/storefront/*(id)*
 
 ```
 {
-	"product_id": ,
 	"product_pic": "",
 	"product_title": "",
 	"product_desc": "",
