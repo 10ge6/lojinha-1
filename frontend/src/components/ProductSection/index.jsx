@@ -12,16 +12,11 @@ function ProductSection() {
   }
 
   function textPrice(price) {
-    let text = price.toString();
-    if (text.length <= 2) {
-      if (text.length < 2) {
-        text = "0" + text;
-      }
-      return <S.ProductPrice>{`R$ 0,${text.slice(0, text.length)}`}</S.ProductPrice>;
-    } else if (Number.isInteger(price / 100)) {
-      return <S.ProductPrice>{`R$ ${text.slice(0, text.length - 2)}`}</S.ProductPrice>;
+    let text = (price / 100).toLocaleString("pt-br", {style: "currency", currency: "BRL"});
+    if (Number.isInteger(price / 100)) {
+      return <S.ProductPrice>{text.slice(0, text.length - 3)}</S.ProductPrice>;
     }
-    return <S.ProductPrice>{`R$ ${text.slice(0, text.length - 2)},${text.slice(text.length - 2, text.length)}`}</S.ProductPrice>;
+    return <S.ProductPrice>{text}</S.ProductPrice>;
   }
 
   function getSize(num) {
