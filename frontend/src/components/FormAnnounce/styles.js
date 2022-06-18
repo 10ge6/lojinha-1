@@ -87,11 +87,25 @@ export const Title = styled.div `
             font-size: 1.375rem;
         }
     }
+    
+    @media (max-width: 480px) {
+        width: 90%;
+        
+        h1 {
+            text-align: center;
+        }
+        
+        h2 {
+            text-align: center;
+        }
 
+    }
 `;
 
 export const Container = styled.div `
     display: flex;
+    justify-content: center;
+    width: 100%;
     gap: 80px;
 
     @media (max-width: 960px) {
@@ -122,7 +136,12 @@ export const Preview = styled.div `
 export const Form = styled.div `
     display: flex;
     flex-direction: column;
+    width: 50%;
     gap: 50px;
+
+    @media (max-width: 960px) {
+        width: 100%;
+    }
 `;
 
 export const Text = styled.div `

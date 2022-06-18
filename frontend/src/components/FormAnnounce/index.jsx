@@ -45,16 +45,16 @@ function FormAnnounce() {
                                     </select>
                                 </S.Flex>
                                 <S.Flex>
-                                <label>Subcategoria</label>
-                                    <select>
-                                        <option></option>
-                                        <option>Camisa</option>
-                                        <option>Tênis</option>
-                                        <option>Bolsas</option>
-                                    </select>
+                                    <label>Subcategoria</label>
+                                        <select>
+                                            <option></option>
+                                            <option>Camisa</option>
+                                            <option>Tênis</option>
+                                            <option>Bolsas</option>
+                                        </select>
                                 </S.Flex>
                             </S.Category>
-                            <S.Flex><label>Preço</label><input type="number" /></S.Flex>
+                            <S.Flex><label>Preço</label><input type="number" min="0" /></S.Flex>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
@@ -80,7 +80,7 @@ function FormAnnounce() {
             </S.Container>
         </S.Section>
     );
-    
+  
 }
 
 export default FormAnnounce
