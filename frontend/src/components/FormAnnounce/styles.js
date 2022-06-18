@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import setinha from "../../assets/setinha.svg"
 
 export const Section = styled.div `
     display: flex;
@@ -52,6 +53,13 @@ export const Flex = styled.div `
     .preview {
         font-size: 1.25rem;
     }
+    
+   /* select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: url({setinha}) no-repeat center right;
+    }*/
 `;
 
 export const Title = styled.div `
