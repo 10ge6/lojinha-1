@@ -5,6 +5,11 @@ import * as S from './styles'
 
 function FormAnnounce() {
     const [checkboxOn, setCheckboxOn] = useState(false);
+    const [urlImage, setUrlImage] = useState(preview);
+
+    function getUrl(e) {
+        setUrlImage(e.target.value)
+    }
 
     return (
         <S.Section>
@@ -17,13 +22,13 @@ function FormAnnounce() {
                     <S.Preview>
                         <label className="preview">Preview da imagem</label>
                         <S.Image>
-                            <img src={preview} alt=""/>
+                            <img className={urlImage != preview ? "previewImage" : null } src={urlImage} alt=""/>
                         </S.Image>
                     </S.Preview> 
                 </S.Flex>
                 <S.Form>
                     <S.Text>
-                        <S.Flex><label>Url da imagem</label><input type="url"/></S.Flex>
+                        <S.Flex><label>Url da imagem</label><input type="url" onChange={(e) => getUrl(e)}/></S.Flex>
                         <S.Flex><label>Título</label><input type="text"/></S.Flex>
                         <S.Flex> <label>Descrição do produto</label><textarea maxLength={300}></textarea></S.Flex>
                     </S.Text>

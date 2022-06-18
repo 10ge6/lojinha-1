@@ -15,6 +15,13 @@ export const Section = styled.div `
         padding: 13px 11px;
         font-family: 'Montserrat', sans-serif;
     }
+    input[type=number]::-webkit-inner-spin-button { 
+        -webkit-appearance: none;
+    }
+    input[type=number] { 
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
     textarea {
         border: 1px solid #9D9A95;
         border-radius: 4px;
@@ -90,7 +97,7 @@ export const Title = styled.div `
     
     @media (max-width: 480px) {
         width: 90%;
-        
+
         h1 {
             text-align: center;
         }
@@ -122,6 +129,12 @@ export const Image = styled.div `
     border: 2px dashed #9D9A95;
     width: 286px;
     height: 286px;
+
+    .previewImage {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
     
 `;
 
@@ -265,6 +278,7 @@ export const Button = styled.div `
         padding: 10px 30px;
         font-weight: 500;
         font-size: 1.375rem;
+        cursor: pointer;
     }
 
     @media (max-width: 680px){
