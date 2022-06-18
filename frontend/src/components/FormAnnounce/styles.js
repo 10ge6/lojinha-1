@@ -236,6 +236,12 @@ export const CheckboxCont = styled.div `
     display: flex;
     gap: 20px;
 
+    label {
+        &.on {
+            color: #9D9A95;
+        }
+    }
+
     @media (max-width: 680px){
         display: flex;
         flex-wrap: wrap;

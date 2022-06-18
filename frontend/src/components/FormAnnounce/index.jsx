@@ -34,13 +34,13 @@ function FormAnnounce() {
                 </S.Flex>
                 <S.Form>
                     <S.Text>
-                        <S.Flex><label>Url da imagem</label><input type="url" onChange={(e) => getUrl(e)}/></S.Flex>
-                        <S.Flex><label>Título</label><input type="text"/></S.Flex>
-                        <S.Flex> <label>Descrição do produto</label><textarea maxLength={300}></textarea></S.Flex>
+                        <S.Flex><label>Url da imagem</label><input type="url" placeholder="Digite a url da imagem do seu produto." onChange={(e) => getUrl(e)}/></S.Flex>
+                        <S.Flex><label>Título</label><input type="text" placeholder="Digite o título/nome do seu produto." /></S.Flex>
+                        <S.Flex> <label>Descrição do produto</label><textarea maxLength={300} placeholder="Chegou o momento de descrever o seu produto! Você tem o máximo de 300 caracteres."></textarea></S.Flex>
                     </S.Text>
                     <S.BrandAndColor>
-                        <S.Brand><S.Flex><label>Marca</label><input className="brand" type="text"/></S.Flex></S.Brand>
-                        <S.Color><S.Flex><label>Cor</label><input className="color" type="text" /></S.Flex></S.Color>                        
+                        <S.Brand><S.Flex><label>Marca</label><input className="brand" type="text" placeholder="Digite a marca do seu produto."/></S.Flex></S.Brand>
+                        <S.Color><S.Flex><label>Cor</label><input className="color" type="text" placeholder="Digite a cor do seu produto" /></S.Flex></S.Color>                        
                     </S.BrandAndColor>
                     <S.InfAndSize>
                         <S.CategoryAndPrice>
@@ -65,21 +65,21 @@ function FormAnnounce() {
                                         </select>
                                 </S.Flex>
                             </S.Category>
-                            <S.Flex><label>Preço</label><input type="number" min="0" onChange={(e) => checkNumber(e)}/></S.Flex>
+                            <S.Flex><label>Preço</label><input type="number" min="0" placeholder="Digite somente o valor do seu produto." onChange={(e) => checkNumber(e)}/></S.Flex>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
                             <S.CheckboxCont>
                                 <S.Size1>
                                     <label><input type="checkbox" onClick={() => setCheckboxOn(state => !state)}/> Único</label>
-                                    <label><input type="checkbox" disabled={checkboxOn}/> PP</label>
-                                    <label><input type="checkbox" disabled={checkboxOn}/> P</label> 
-                                    <label><input type="checkbox" disabled={checkboxOn}/> M</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" disabled={checkboxOn}/> PP</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" disabled={checkboxOn}/> P</label> 
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" disabled={checkboxOn}/> M</label>
                                 </S.Size1>
                                 <S.Size2>
-                                    <label><input type="checkbox" disabled={checkboxOn}/> G</label>
-                                    <label><input type="checkbox" disabled={checkboxOn}/> GG</label>
-                                    <label><input type="checkbox" disabled={checkboxOn}/> XG</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" disabled={checkboxOn}/> G</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" disabled={checkboxOn}/> GG</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" disabled={checkboxOn}/> XG</label>
                                 </S.Size2>
                             </S.CheckboxCont> 
                         </S.Size>
