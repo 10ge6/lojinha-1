@@ -7,14 +7,20 @@ exports.createCartItem = (req, res) => {
     sql.getConnection((error, conn) => {
         if(error) {return res.status(500).send({error: error})}
         conn.query(
-            'INSERT INTO cart (product_id, product_size, product_qty) VALUES (?, ?, ?)',
+            'CALL evalCount(?, ?, ?)',
             [req.body.product_id, req.body.product_size, req.body.product_qty],
-            (error) => {
+            (error, response) => {
                 conn.release();
 
                 if(error) {
                     return res.status(500).send({
                         error: error
+                    });
+                }
+
+                if(response.affectedRows == 0){
+                    return res.status(404).send({
+                        error: "Item nao encontrado"
                     });
                 }
 
