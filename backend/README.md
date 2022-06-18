@@ -40,6 +40,7 @@ localhost:3000/storefront/*(id)*
 
 localhost:3000
 
+```
 {
 	"product_pic": "",
  	"product_title": "",
@@ -51,6 +52,7 @@ localhost:3000
 	"product_price": ,
 	"product_size":
 }
+```
 
 ### PATCH
 
