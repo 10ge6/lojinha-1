@@ -1,21 +1,24 @@
 import React from "react";
 import {Section} from "../../styles/Global";
 import {Link} from "react-router-dom";
+import * as S from "./styles";
 
 function PageNotFound() {
   return (
     <Section>
-      <div>
-        <h1>404: Página Não Encontrada :(</h1>
-        <h2>Infelizmente, sua requisição não pode ser concluída</h2>
-        <p>
+      <S.Container>
+        <div>
+          <S.Title>404: Página Não Encontrada :(</S.Title>
+          <S.SubTitle>Infelizmente, sua requisição não pode ser concluída</S.SubTitle>
+        </div>
+        <S.Description>
           Para retornar à página principal{" "}
           <Link className="link-home" to="/">
             clique aqui
           </Link>{" "}
           ou utilize os links no topo ou fim dessa página
-        </p>
-      </div>
+        </S.Description>
+      </S.Container>
     </Section>
   );
 }
