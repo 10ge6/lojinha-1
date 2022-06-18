@@ -7,10 +7,10 @@ function PageNotFound() {
   return (
     <Section>
       <S.Container>
-        <div>
+        <S.TitleSub>
           <S.Title>404: Página Não Encontrada :(</S.Title>
-          <S.SubTitle>Infelizmente, sua requisição não pode ser concluída</S.SubTitle>
-        </div>
+          <S.SubTitle>Infelizmente, sua requisição não encontrou resultado</S.SubTitle>
+        </S.TitleSub>
         <S.Description>
           Para retornar à página principal{" "}
           <Link className="link-home" to="/">
