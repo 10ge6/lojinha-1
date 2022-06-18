@@ -2,16 +2,11 @@ import styled from "styled-components";
 
 export const ProductList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 247px);
+  grid-template-columns: repeat(auto-fill, minmax(247px, 1fr));
   gap: 40px;
-  @media (max-width: 1050px) {
-    justify-content: space-between;
-  }
-  @media (max-width: 912px) {
-    grid-template-columns: repeat(auto-fill, 315px);
-  }
+  width: 100%;
   @media (max-width: 744px) {
-    grid-template-columns: repeat(auto-fill, 100%);
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   }
 `;
 
@@ -19,19 +14,16 @@ export const ProductCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 9px;
+  background-color: aqua;
 `;
 
 export const ProductImg = styled.img`
-  height: 244px;
-  width: 247px;
+  height: 300px;
+  width: 100%;
   margin-bottom: -40px;
-  @media (max-width: 912px) {
-    height: 312px;
-    width: 315px;
-  }
+  object-fit: cover;
   @media (max-width: 744px) {
-    width: 100%;
-    height: 100%;
+    height: 80vw;
   }
 `;
 
