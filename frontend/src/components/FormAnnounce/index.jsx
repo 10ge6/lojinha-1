@@ -25,13 +25,7 @@ function FormAnnounce() {
                     <S.Text>
                         <S.Flex><label>Url da imagem</label><input type="url"/></S.Flex>
                         <S.Flex><label>Título</label><input type="text"/></S.Flex>
-                        <S.Flex> 
-                            <S.Textarea>
-                                <label>Descrição do produto</label>
-                                <label className="limit">(max. 300 caracteres)</label>
-                            </S.Textarea>
-                            <textarea></textarea>                           
-                        </S.Flex>
+                        <S.Flex> <label>Descrição do produto</label><textarea maxLength={300}></textarea></S.Flex>
                     </S.Text>
                     <S.BrandAndColor>
                         <S.Brand><S.Flex><label>Marca</label><input className="brand" type="text"/></S.Flex></S.Brand>

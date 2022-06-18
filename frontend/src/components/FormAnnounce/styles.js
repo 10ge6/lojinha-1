@@ -12,12 +12,16 @@ export const Section = styled.div `
         border: 1px solid #9D9A95;
         border-radius: 4px;
         height: 42px;
+        padding: 13px 11px;
+        font-family: 'Montserrat', sans-serif;
     }
     textarea {
         border: 1px solid #9D9A95;
         border-radius: 4px;
         height: 134px;
         resize: none;
+        padding: 13px 11px;
+        font-family: 'Montserrat', sans-serif;
     }
     label {
         color: #275845;
@@ -40,12 +44,6 @@ export const Flex = styled.div `
 
     .preview {
         font-size: 1.25rem;
-    }
-
-    @media (max-width: 680px) {
-        .limit {
-            order: 5;
-        }
     }
 `;
 
@@ -131,28 +129,7 @@ export const Text = styled.div `
     display: flex;
     flex-direction: column;
     gap: 50px;
-
-    
-`;
-
-export const Textarea = styled.div `
-    display: flex;
-    justify-content: space-between;
-
-    .limit {
-        color: #53B38D;
-        font-weight: 400;
-        font-size: 1rem;
-    }
-
-    @media (max-width: 680px) {
-       display: flex;
-       flex-wrap: wrap;
-    }
-`;
-
-export const Limit = styled.div `
-    
+   
 `;
 
 export const BrandAndColor = styled.div `
@@ -228,7 +205,9 @@ export const CheckboxCont = styled.div `
     gap: 20px;
 
     @media (max-width: 680px){
-        gap: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
     }
 
 `;
@@ -240,7 +219,7 @@ export const Size1 = styled.div `
     @media (max-width: 680px){
         display: flex;
         flex-direction: row;
-        gap: 6px;
+        gap: 50px;
     }
 `;
 
@@ -251,9 +230,10 @@ export const Size2 = styled.div `
     @media (max-width: 680px){
         display: flex;
         flex-direction: row;
-        gap:6px;
+        gap: 50px;
     }
 `;
+
 
 export const Button = styled.div `
     display: flex;
