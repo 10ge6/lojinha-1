@@ -116,7 +116,7 @@ function FormAnnounce() {
                             <label>Tamanho</label>
                             <S.CheckboxCont>
                                 <S.Size1>
-                                    <label><input type="checkbox" onClick={() => setCheckboxOn(state => !state)}/> Único</label>
+                                    <label><input type="checkbox" value="Único" onClick={() => setCheckboxOn(state => !state)}/> Único</label>
                                     <label className={checkboxOn ? "on" : null}><input type="checkbox" value="PP" disabled={checkboxOn}/> PP</label>
                                     <label className={checkboxOn ? "on" : null}><input type="checkbox" value="P" disabled={checkboxOn}/> P</label> 
                                     <label className={checkboxOn ? "on" : null}><input type="checkbox" value="M" disabled={checkboxOn}/> M</label>
