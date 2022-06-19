@@ -38,6 +38,8 @@ function FormAnnounce() {
     const [urlImage, setUrlImage] = useState(preview);
     const [number, setNumber] = useState();
     const [informations, setInformations] = useState({});
+    const subcategories = ["Camisa", "Tênis", "Bolsas"]
+    const categories = ["Feminimo", "Infantil", "Masculino", "Unissex"]
 
     function getUrl(e) {
         setUrlImage(e.target.value)
@@ -45,15 +47,10 @@ function FormAnnounce() {
 
     function checkNumber(e) {
         setNumber(e.target.value)
-        number <= 0 ? alert("Por favor, digite um valor acima de R$ 0,00.") : true
+        number <= 0 ? alert("Por favor, digite um valor acima de R$ 0,00.") : handleChange
     }
 
     function getDatas () {
-    }
-
-    function handleSelect(e) {
-        setInformations({...informations, [e.target.name]: e.target.value})
-        console.log(informations) 
     }
 
     function handleChange (e) {
@@ -96,25 +93,24 @@ function FormAnnounce() {
                             <S.Category>
                                 <S.Flex>
                                     <label>Categoria</label>
-                                    <select name="product_category" id="product_category" onChange={(e) => handleSelect(e)}>
+                                    <select name="product_category" id="product_category" onChange={(e) => handleChange(e)}>
                                         <option disabled selected>Categoria</option>
-                                        <option id="product_category" >Feminino</option>
-                                        <option id="product_category" >Infantil</option>
-                                        <option id="product_category" >Masculino</option>
-                                        <option id="product_category" >Unissex</option>
+                                        {categories.map(category => (
+                                            <option value={category}>{category}</option>
+                                            ))}
                                     </select>
                                 </S.Flex>
                                 <S.Flex>
                                     <label>Subcategoria</label>
-                                        <select name="product_subcategory" id="product_subcategory" onChange={(e) => handleSelect(e)}>
+                                        <select name="product_subcategory" id="product_subcategory" onChange={(e) => handleChange(e)}>
                                             <option disabled selected>Subcategoria</option>
-                                            <option id="product_subcategory">Camisa</option>
-                                            <option id="product_subcategory">Tênis</option>
-                                            <option id="product_subcategory">Bolsas</option>
+                                            {subcategories.map(subcategory => (
+                                            <option value={subcategory}>{subcategory}</option>
+                                            ))}
                                         </select>
                                 </S.Flex>
                             </S.Category>
-                            <S.Flex><label>Preço</label><input type="number" min="0" name="product_price" placeholder="Digite somente o valor do seu produto." onChange={(e) => checkNumber(e)}/></S.Flex>
+                            <S.Flex><label>Preço</label><input type="number" min="0" name="product_price" placeholder="Digite somente o valor do seu produto." onChange={(e) => [checkNumber(e), handleChange(e)]}/></S.Flex>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
