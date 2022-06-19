@@ -1,11 +1,8 @@
 import React from "react";
+import PageNotFound from "../components/PageNotFound";
 
 function Error() {
-    return ( 
-        <div>
-        <p>Error</p>
-        </div>
-    );
+  return <PageNotFound />;
 }
 
-export default Error
+export default Error;
