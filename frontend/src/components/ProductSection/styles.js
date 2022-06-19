@@ -6,6 +6,9 @@ export const ProductList = styled.div`
   gap: 40px;
   width: 100%;
   @media (max-width: 744px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  @media (max-width: 488px) {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   }
 `;
@@ -14,7 +17,6 @@ export const ProductCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 9px;
-  background-color: aqua;
 `;
 
 export const ProductImg = styled.img`
@@ -23,6 +25,9 @@ export const ProductImg = styled.img`
   margin-bottom: -40px;
   object-fit: cover;
   @media (max-width: 744px) {
+    height: 50vw;
+  }
+  @media (max-width: 488px) {
     height: 80vw;
   }
 `;
