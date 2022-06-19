@@ -38,8 +38,12 @@ function FormAnnounce() {
     const [urlImage, setUrlImage] = useState(preview);
     const [number, setNumber] = useState();
     const [informations, setInformations] = useState({});
+    const [size, setSize] = useState();
     const subcategories = ["Camisa", "Tênis", "Bolsas"]
     const categories = ["Feminimo", "Infantil", "Masculino", "Unissex"]
+    const numberSize = []
+    let soma = 0
+    let i=0;
 
     function getUrl(e) {
         setUrlImage(e.target.value)
@@ -56,6 +60,20 @@ function FormAnnounce() {
     function handleChange (e) {
         setInformations({...informations, [e.target.name]: e.target.value})
         console.log(informations)
+    }
+
+    function counter(){
+        let elements = document.getElementsByName("checkbox")
+        console.log(elements)
+        for (i=0; i<elements.length;i++) {
+            elements[i].checked ? numberSize.push(elements[i].value) : null
+            console.log(numberSize)
+        }
+        const intNumberSize = numberSize.map(Number)
+        for(i=0; i<intNumberSize.length;i++) {
+            soma += intNumberSize[i]
+        }
+        console.log(soma)
     }
 
     /*useEffect(() => {
@@ -94,7 +112,7 @@ function FormAnnounce() {
                                 <S.Flex>
                                     <label>Categoria</label>
                                     <select name="product_category" id="product_category" onChange={(e) => handleChange(e)}>
-                                        <option disabled selected>Categoria</option>
+                                        <option disabled>Categoria</option>
                                         {categories.map(category => (
                                             <option value={category}>{category}</option>
                                             ))}
@@ -103,7 +121,7 @@ function FormAnnounce() {
                                 <S.Flex>
                                     <label>Subcategoria</label>
                                         <select name="product_subcategory" id="product_subcategory" onChange={(e) => handleChange(e)}>
-                                            <option disabled selected>Subcategoria</option>
+                                            <option disabled>Subcategoria</option>
                                             {subcategories.map(subcategory => (
                                             <option value={subcategory}>{subcategory}</option>
                                             ))}
@@ -116,21 +134,21 @@ function FormAnnounce() {
                             <label>Tamanho</label>
                             <S.CheckboxCont>
                                 <S.Size1>
-                                    <label><input type="checkbox" value="Único" onClick={() => setCheckboxOn(state => !state)}/> Único</label>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" value="PP" disabled={checkboxOn}/> PP</label>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" value="P" disabled={checkboxOn}/> P</label> 
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" value="M" disabled={checkboxOn}/> M</label>
+                                    <label><input type="checkbox" name="checkbox" value="0" onClick={() => setCheckboxOn(state => !state)}/> Único</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="1" disabled={checkboxOn}/> PP</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="2" disabled={checkboxOn}/> P</label> 
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="4" disabled={checkboxOn}/> M</label>
                                 </S.Size1>
                                 <S.Size2>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" value="G" disabled={checkboxOn}/> G</label>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" value="GG" disabled={checkboxOn}/> GG</label>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" value="XG" disabled={checkboxOn}/> XG</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="8" disabled={checkboxOn}/> G</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="16" disabled={checkboxOn}/> GG</label>
+                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="32" disabled={checkboxOn}/> XG</label>
                                 </S.Size2>
                             </S.CheckboxCont> 
                         </S.Size>
                     </S.InfAndSize>
                     <S.Button>
-                        <button type="submit" onClick={checkNumber}>Cadastrar produto</button>
+                        <button type="submit" onClick={counter()}>Cadastrar produto</button>
                     </S.Button>  
                 </S.Form>
             </S.Container>
