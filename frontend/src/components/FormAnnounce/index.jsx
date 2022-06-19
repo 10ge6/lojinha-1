@@ -43,6 +43,7 @@ function FormAnnounce() {
     const categories = ["Feminimo", "Infantil", "Masculino", "Unissex"]
     const numberSize = []
     let soma = 0
+
     let i=0;
 
     function getUrl(e) {
@@ -63,10 +64,10 @@ function FormAnnounce() {
     }
 
     function counter(){
-        let elements = document.getElementsByName("checkbox")
-        console.log(elements)
-        for (i=0; i<elements.length;i++) {
-            elements[i].checked ? numberSize.push(elements[i].value) : null
+        let elements = []
+        for (i=0; i<7; i++) {
+            elements = document.getElementsByName("checkbox")[i];
+            elements.checked ? numberSize.push(elements.value) : null
             console.log(numberSize)
         }
         const intNumberSize = numberSize.map(Number)
