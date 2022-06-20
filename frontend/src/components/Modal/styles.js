@@ -22,6 +22,7 @@ export const ModalBg = styled.div`
 export const Modal = styled.div`
    display: flex;
    flex-direction: column;
+   justify-content: space-between;
    width: 60%;
    height: 90%;
    padding: 50px 66px;
@@ -88,4 +89,65 @@ export const Img = styled.img`
    width: 18vw;
    height: 18vw;
    object-fit: cover;
+`;
+
+export const QuantitiesBox = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+`;
+
+export const Quantities = styled.p`
+   font-size: 36px;
+   font-weight: 700;
+`;
+
+export const ImgAndQuantities = styled.div`
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+`;
+
+export const EditBtn = styled.button`
+   display: flex;
+   align-items: center;
+   color: #53b38d;
+   gap: 12px;
+   font-size: 20px;
+   cursor: pointer;
+`;
+
+export const DelBtn = styled.button`
+   display: flex;
+   align-items: center;
+   font-size: 20px;
+   color: #f24e1e;
+   cursor: pointer;
+`;
+
+export const CartAddBtn = styled.button`
+   padding: 12px 0;
+   border-radius: 5px;
+   background-color: #53b38d;
+   color: #f8f8f8;
+   font-size: 20px;
+   width: 18vw;
+   cursor: pointer;
+   border: solid 1px #53b38d;
+
+   :hover {
+      background-color: #f8f8f8;
+      color: #53b38d;
+      transition: 0.3s;
+   }
+`;
+
+export const EditDelBtns = styled.div`
+   display: flex;
+   gap: 32px;
+`;
+
+export const BottomBtns = styled.div`
+   display: flex;
+   justify-content: space-between;
 `;
