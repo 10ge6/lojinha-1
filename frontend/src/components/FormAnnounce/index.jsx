@@ -73,7 +73,7 @@ function FormAnnounce() {
     }
 
     function attDatas (soma) {
-        setInformations(informations.product_size = {soma})
+        setInformations(informations.product_size = soma)
         console.log(informations)      
         console.log(informations.product_brand)
         createProduct(informations)
