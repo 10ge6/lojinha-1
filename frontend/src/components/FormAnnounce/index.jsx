@@ -5,17 +5,18 @@ import * as S from './styles'
 import { useEffect } from "react";
 
 
-/*const createProduct = async () => {
+const createProduct = async (informations) => {
+
     const storyProduct = {
-        product_pic: '',
-        product_title: '',
-        product_desc: '',
-        product_brand: '', 
-        product_color: '', 
-        product_category: '', 
-        product_subcategory: '', 
-        product_price: '', 
-        product_size: ''
+        product_pic: informations.product_pic,
+        product_title: informations.product_title,
+        product_desc: informations.product_desc,
+        product_brand: informations.product_brand, 
+        product_color: informations.product_color, 
+        product_category: informations.product_category, 
+        product_subcategory: informations.product_subcategory, 
+        product_price: informations.product_price, 
+        product_size: informations.product_size
 
     }
 
@@ -30,7 +31,7 @@ import { useEffect } from "react";
     const response = await fetch('http://localhost:300/storefront/insert', init)
     const datas = response.status == 200 ?
         response.json() : [];
-}*/
+}
 
 function FormAnnounce() {
 
@@ -77,9 +78,9 @@ function FormAnnounce() {
         setInformations(informations.product_size = soma)      
     }
 
-    /*useEffect(() => {
-        createProduct()
-    }, [])*/
+    useEffect((informations) => {
+        createProduct(informations)
+    }, [])
 
 
     return (
