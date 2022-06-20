@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 
 const createProduct = async (informations) => {
+    console.log(informations)
 
     const storyProduct = {
         product_pic: informations.product_pic,
@@ -57,7 +58,6 @@ function FormAnnounce() {
 
     function handleChange (e) {
         setInformations({...informations, [e.target.name]: e.target.value})
-        console.log(informations)
     }
 
     function counter(){
@@ -65,7 +65,6 @@ function FormAnnounce() {
         for (i=0; i<7; i++) {
             elements = document.getElementsByName("checkbox")[i];
             elements.checked ? numberSize.push(elements.value) : null;
-            console.log(numberSize);
         }
         const intNumberSize = numberSize.map(Number)
         for(i=0; i<intNumberSize.length;i++) {
@@ -75,7 +74,8 @@ function FormAnnounce() {
     }
 
     function attDatas (soma) {
-        setInformations(informations.product_size = soma)      
+        setInformations(informations.product_size = soma)
+        console.log(informations)      
     }
 
     useEffect((informations) => {
