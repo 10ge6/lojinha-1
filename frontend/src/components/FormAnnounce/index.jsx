@@ -1,12 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import preview from "../../assets/preview.svg"
 import * as S from './styles'
 import { useEffect } from "react";
 
 
 const createProduct = async (informations) => {
-    console.log(informations)
 
     const storyProduct = {
         product_pic: informations.product_pic,
@@ -40,7 +39,6 @@ function FormAnnounce() {
     const [urlImage, setUrlImage] = useState(preview);
     const [number, setNumber] = useState();
     const [informations, setInformations] = useState({});
-    const [size, setSize] = useState();
     const subcategories = ["Camisa", "Tênis", "Bolsas"]
     const categories = ["Feminimo", "Infantil", "Masculino", "Unissex"]
     const numberSize = []
@@ -58,6 +56,7 @@ function FormAnnounce() {
 
     function handleChange (e) {
         setInformations({...informations, [e.target.name]: e.target.value})
+        console.log(informations)
     }
 
     function counter(){
@@ -74,8 +73,10 @@ function FormAnnounce() {
     }
 
     function attDatas (soma) {
-        setInformations(informations.product_size = soma)
+        setInformations(informations.product_size = {soma})
         console.log(informations)      
+        console.log(informations.product_brand)
+        createProduct(informations)
     }
 
     useEffect((informations) => {
