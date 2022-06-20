@@ -38,7 +38,7 @@ localhost:3000/storefront/*(id)*
 
 ### POST
 
-localhost:3000
+localhost:3000/storefront
 
 ```
 {
