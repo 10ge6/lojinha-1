@@ -43,7 +43,6 @@ function FormAnnounce() {
     const categories = ["Feminimo", "Infantil", "Masculino", "Unissex"]
     const numberSize = []
     let soma = 0
-
     let i=0;
 
     function getUrl(e) {
@@ -55,9 +54,6 @@ function FormAnnounce() {
         number <= 0 ? alert("Por favor, digite um valor acima de R$ 0,00.") : handleChange
     }
 
-    function getDatas () {
-    }
-
     function handleChange (e) {
         setInformations({...informations, [e.target.name]: e.target.value})
         console.log(informations)
@@ -67,14 +63,18 @@ function FormAnnounce() {
         let elements = []
         for (i=0; i<7; i++) {
             elements = document.getElementsByName("checkbox")[i];
-            elements.checked ? numberSize.push(elements.value) : null
-            console.log(numberSize)
+            elements.checked ? numberSize.push(elements.value) : null;
+            console.log(numberSize);
         }
         const intNumberSize = numberSize.map(Number)
         for(i=0; i<intNumberSize.length;i++) {
-            soma += intNumberSize[i]
+            soma += intNumberSize[i];
         }
-        console.log(soma)
+        attDatas(soma)
+    }
+
+    function attDatas (soma) {
+        setInformations(informations.product_size = soma)      
     }
 
     /*useEffect(() => {
@@ -113,7 +113,7 @@ function FormAnnounce() {
                                 <S.Flex>
                                     <label>Categoria</label>
                                     <select name="product_category" id="product_category" onChange={(e) => handleChange(e)}>
-                                        <option disabled>Categoria</option>
+                                        <option>Categoria</option>
                                         {categories.map(category => (
                                             <option value={category}>{category}</option>
                                             ))}
@@ -122,14 +122,14 @@ function FormAnnounce() {
                                 <S.Flex>
                                     <label>Subcategoria</label>
                                         <select name="product_subcategory" id="product_subcategory" onChange={(e) => handleChange(e)}>
-                                            <option disabled>Subcategoria</option>
+                                            <option>Subcategoria</option>
                                             {subcategories.map(subcategory => (
                                             <option value={subcategory}>{subcategory}</option>
                                             ))}
                                         </select>
                                 </S.Flex>
                             </S.Category>
-                            <S.Flex><label>Preço</label><input type="number" min="0" name="product_price" placeholder="Digite somente o valor do seu produto." onChange={(e) => [checkNumber(e), handleChange(e)]}/></S.Flex>
+                            <S.Flex><label>Preço</label><input type="number" min="0" name="product_price" step=".01"placeholder="Digite somente o valor do seu produto." onChange={(e) => [checkNumber(e), handleChange(e)]}/></S.Flex>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
@@ -149,7 +149,7 @@ function FormAnnounce() {
                         </S.Size>
                     </S.InfAndSize>
                     <S.Button>
-                        <button type="submit" onClick={counter()}>Cadastrar produto</button>
+                        <button type="submit" onClick={() => counter()}>Cadastrar produto</button>
                     </S.Button>  
                 </S.Form>
             </S.Container>
