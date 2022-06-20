@@ -8,7 +8,7 @@ function Home() {
       <div>
          <Hero />
          <ProductFilter />
-         <Modal />
+         <Modal url='http://localhost:4000/storefront/109' />
       </div>
    );
 }
