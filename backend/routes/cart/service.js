@@ -2,121 +2,13 @@ const sql = require('../../db').pool;
 
 // CRUD functions
 
-// criando item
-exports.createItem = (req, res) => {
+// adicionando item ao carrinho
+exports.createCartItem = (req, res) => {
     sql.getConnection((error, conn) => {
         if(error) {return res.status(500).send({error: error})}
         conn.query(
-            'INSERT INTO storefront (product_pic, product_title, product_desc, product_brand, product_color, product_category, product_subcategory, product_price, product_size) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [req.body.product_pic, req.body.product_title, req.body.product_desc,
-            req.body.product_brand, req.body.product_color, req.body.product_category,
-            req.body.product_subcategory, req.body.product_price, req.body.product_size],
-            (error) => {
-                conn.release();
-
-                if(error) {
-                    return res.status(500).send({
-                        error: error
-                    });
-                }
-
-                res.status(201).send({
-                    message: 'Item criado com sucesso'
-                });
-            }
-        );
-    });
-}
-
-// retornando todos os itens da loja
-exports.readStorefront = (req, res) => {
-    sql.getConnection((error, conn) => {
-        if(error) {return res.status(500).send({error: error})}
-        conn.query(
-            'SELECT * FROM storefront',
-            (error, response) => {
-                conn.release();
-
-                if(error) {
-                    return res.status(500).send({
-                        error: error
-                    });
-                }
-
-                res.status(200).send({
-                    message: 'Exibindo todos os itens',
-                    response: response
-                });
-            }
-        );
-    });
-}
-
-// retornando item especifico da loja
-exports.readItem = (req, res) => {
-    sql.getConnection((error, conn) => {
-        if(error) {return res.status(500).send({error: error})}
-        conn.query(
-            'SELECT * FROM storefront WHERE product_id = ?',
-            [req.params.product_id],
-            (error, response) => {
-                conn.release();
-
-                if(error) {
-                    return res.status(500).send({
-                        error: error
-                    });
-                }
-
-                if(response.length == 0){
-                    return res.status(404).send({
-                        error: "ID nao encontrado"
-                    });
-                }
-                
-                res.status(200).send({
-                    message: 'Exibindo infos do item',
-                    response: response
-                });
-            }
-        );
-    });
-}
-
-// atualizando item da loja
-exports.updateItem = (req, res) => {
-    sql.getConnection((error, conn) => {
-        if(error) {return res.status(500).send({error: error})}
-        conn.query(
-            'UPDATE storefront SET product_pic = ?, product_title = ?, product_desc = ?, product_brand = ?, product_color = ?, product_category = ?, product_subcategory = ?, product_price = ?, product_size = ? WHERE product_id = ?',
-            [req.body.product_pic, req.body.product_title, req.body.product_desc,
-            req.body.product_brand, req.body.product_color, req.body.product_category,
-            req.body.product_subcategory, req.body.product_price, req.body.product_size,
-            req.params.product_id],
-            (error) => {
-                conn.release();
-
-                if(error) {
-                    return res.status(500).send({
-                        error: error
-                    });
-                }
-
-                res.status(200).send({
-                    message: 'Item atualizado com sucesso'
-                });
-            }
-        );
-    });
-}
-
-// deletando item da loja
-exports.deleteItem = (req, res) => {
-    sql.getConnection((error, conn) => {
-        if(error) {return res.status(500).send({error: error})}
-        conn.query(
-            'DELETE FROM storefront WHERE product_id = ?',
-            [req.params.product_id],
+            'CALL evalCount(?, ?, ?)',
+            [req.body.product_id, req.body.product_size, req.body.product_qty],
             (error, response) => {
                 conn.release();
 
@@ -128,12 +20,127 @@ exports.deleteItem = (req, res) => {
 
                 if(response.affectedRows == 0){
                     return res.status(404).send({
-                        error: "ID nao encontrado"
+                        error: "Item nao encontrado"
+                    });
+                }
+
+                res.status(201).send({
+                    message: 'Item adicionado ao carrinho com sucesso'
+                });
+            }
+        );
+    });
+}
+
+// retornando todos os itens do carrinho
+exports.readCart = (req, res) => {
+    sql.getConnection((error, conn) => {
+        if(error) {return res.status(500).send({error: error})}
+        conn.query(
+            'SELECT * FROM cart',
+            (error, response) => {
+                conn.release();
+
+                if(error) {
+                    return res.status(500).send({
+                        error: error
                     });
                 }
 
                 res.status(200).send({
-                    message: 'Item deletado',
+                    message: 'Exibindo todos os itens no carrinho',
+                    response: response
+                });
+            }
+        );
+    });
+}
+
+// retornando item especifico da loja
+exports.readCartItem = (req, res) => {
+    sql.getConnection((error, conn) => {
+        if(error) {return res.status(500).send({error: error})}
+        conn.query(
+            'SELECT * FROM cart WHERE product_id = ? AND product_size = ?',
+            [req.params.product_id, req.body.product_size],
+            (error, response) => {
+                conn.release();
+
+                if(error) {
+                    return res.status(500).send({
+                        error: error
+                    });
+                }
+
+                if(response.length == 0){
+                    return res.status(404).send({
+                        error: "Item nao encontrado"
+                    });
+                }
+                
+                res.status(200).send({
+                    message: 'Exibindo infos do item no carrinho',
+                    response: response
+                });
+            }
+        );
+    });
+}
+
+// atualizando quantidade de item do carrinho
+exports.updateCartItem = (req, res) => {
+    sql.getConnection((error, conn) => {
+        if(error) {return res.status(500).send({error: error})}
+        conn.query(
+            'UPDATE cart SET product_qty = ? WHERE product_id = ? AND product_size = ?',
+            [req.body.product_qty, req.params.product_id, req.body.product_size],
+            (error, response) => {
+                conn.release();
+
+                if(error) {
+                    return res.status(500).send({
+                        error: error
+                    });
+                }
+
+                if(response.affectedRows == 0){
+                    return res.status(404).send({
+                        error: "Item nao encontrado"
+                    });
+                }
+
+                res.status(200).send({
+                    message: 'Item atualizado com sucesso no carrinho'
+                });
+            }
+        );
+    });
+}
+
+// deletando item do carrinho
+exports.deleteCartItem = (req, res) => {
+    sql.getConnection((error, conn) => {
+        if(error) {return res.status(500).send({error: error})}
+        conn.query(
+            'DELETE FROM cart WHERE product_id = ? AND product_size = ?',
+            [req.params.product_id, req.body.product_size],
+            (error, response) => {
+                conn.release();
+
+                if(error) {
+                    return res.status(500).send({
+                        error: error
+                    });
+                }
+
+                if(response.affectedRows == 0){
+                    return res.status(404).send({
+                        error: "Item nao encontrado"
+                    });
+                }
+
+                res.status(200).send({
+                    message: 'Item deletado do carrinho',
                     response: response
                 });
             }

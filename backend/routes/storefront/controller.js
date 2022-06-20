@@ -14,7 +14,5 @@ router.patch('/:product_id', service.updateItem);
 
 router.delete('/:product_id', service.deleteItem);
 
-// Cart
-
 
 module.exports = router;
