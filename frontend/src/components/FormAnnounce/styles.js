@@ -8,7 +8,7 @@ export const Section = styled.div `
     gap: 100px;
     margin: 100px 0;
     width: 100vw;
-
+    
     input {
         border: 1px solid #9D9A95;
         border-radius: 4px;
@@ -23,26 +23,10 @@ export const Section = styled.div `
         -moz-appearance: textfield;
         appearance: textfield;
     }
-    textarea {
-        border: 1px solid #9D9A95;
-        border-radius: 4px;
-        height: 134px;
-        resize: none;
-        padding: 13px 11px;
-        font-family: 'Montserrat', sans-serif;
-    }
     label {
         color: #275845;
         font-size: 1.125rem;
         font-weight: 500;
-    }
-    select {
-        border: 1px solid #9D9A95;
-        border-radius: 4px;
-        height: 42px;
-    }
-    option {
-        color: #275845;
     }
 `;
 
@@ -277,29 +261,5 @@ export const Size2 = styled.div `
         display: flex;
         flex-direction: row;
         gap: 50px;
-    }
-`;
-
-
-export const Button = styled.div `
-    display: flex;
-    justify-content: center;
-
-    button {
-        background-color: #53B38D;
-        color: #FAFAFA;
-        border-radius: 5px;
-        padding: 10px 30px;
-        font-weight: 500;
-        font-size: 1.375rem;
-        cursor: pointer;
-    }
-
-    @media (max-width: 680px){
-        width: 100%;
-
-        button {
-            width: 100%;
-        }
     }
 `;

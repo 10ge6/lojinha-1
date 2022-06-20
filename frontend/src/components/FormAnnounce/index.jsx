@@ -2,8 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import preview from "../../assets/preview.svg"
 import * as S from './styles'
-import { useEffect } from "react";
-
+import Input from  '../Input'
+import Submit from "../Submit"
+import Textarea from '../Textarea'
+import Select from "../Select";
 
 const createProduct = async (informations) => {
 
@@ -28,7 +30,7 @@ const createProduct = async (informations) => {
         body: JSON.stringify(storyProduct)
     }
 
-    const response = await fetch('http://localhost:300/storefront/insert', init)
+    const response = await fetch('http://localhost:300/storefront', init)
     const datas = response.status == 200 ?
         response.json() : [];
 }
@@ -74,14 +76,13 @@ function FormAnnounce() {
 
     function attDatas (soma) {
         setInformations(informations.product_size = soma)
-        console.log(informations)      
-        console.log(informations.product_brand)
-        createProduct(informations)
+        console.log(informations)
+              
     }
 
     useEffect((informations) => {
         createProduct(informations)
-    }, [])
+    }, [informations])
 
 
     return (
@@ -101,37 +102,21 @@ function FormAnnounce() {
                 </S.Flex>
                 <S.Form>
                     <S.Text>
-                        <S.Flex><label>Url da imagem</label><input type="url" name="product_pic" placeholder="Digite a url da imagem do seu produto." onChange={(e) => [handleChange(e), getUrl(e)]}/></S.Flex>
-                        <S.Flex><label>Título</label><input type="text" name="product_title" placeholder="Digite o título/nome do seu produto." onChange={(e) => handleChange(e)}/></S.Flex>
-                        <S.Flex> <label>Descrição do produto</label><textarea name="product_desc" maxLength={300} placeholder="Chegou o momento de descrever o seu produto! Você tem o máximo de 300 caracteres." onChange={(e) => handleChange(e)}></textarea></S.Flex>
+                        <Input type="url" name="product_pic" text="Url da imagem" placeholder="Digite a url da imagem do seu produto." handleOnChange={handleChange}/>
+                        <Input type="text" name="product_title" text="Título" placeholder="Digite o título/nome do seu produto." handleOnChange={handleChange}/>
+                        <Textarea name="product_desc" text="Descrição do produto" placeholder="Chegou o momento de descrever o seu produto! Você tem o máximo de 300 caracteres." handleOnChange={handleChange}/>
                     </S.Text>
                     <S.BrandAndColor>
-                        <S.Brand><S.Flex><label>Marca</label><input className="brand" type="text"  name="product_brand" placeholder="Digite a marca do seu produto." onChange={(e) => handleChange(e)}/></S.Flex></S.Brand>
-                        <S.Color><S.Flex><label>Cor</label><input className="color" type="text"  name="product_color" placeholder="Digite a cor do seu produto" onChange={(e) => handleChange(e)}/></S.Flex></S.Color>                        
+                        <S.Brand><Input className="brand" type="text" text="Marca" name="product_brand" placeholder="Digite a marca do seu produto." handleOnChange={handleChange}/></S.Brand>
+                        <S.Color><Input className="color" type="text" text="Cor" name="product_color" placeholder="Digite a cor do seu produto" handleOnChange={handleChange}/></S.Color>                        
                     </S.BrandAndColor>
                     <S.InfAndSize>
                         <S.CategoryAndPrice>
                             <S.Category>
-                                <S.Flex>
-                                    <label>Categoria</label>
-                                    <select name="product_category" id="product_category" onChange={(e) => handleChange(e)}>
-                                        <option>Categoria</option>
-                                        {categories.map(category => (
-                                            <option value={category}>{category}</option>
-                                            ))}
-                                    </select>
-                                </S.Flex>
-                                <S.Flex>
-                                    <label>Subcategoria</label>
-                                        <select name="product_subcategory" id="product_subcategory" onChange={(e) => handleChange(e)}>
-                                            <option>Subcategoria</option>
-                                            {subcategories.map(subcategory => (
-                                            <option value={subcategory}>{subcategory}</option>
-                                            ))}
-                                        </select>
-                                </S.Flex>
+                                <Select text="Categoria" name="product_category" option1={"Categoria"} options={categories} handleOnChange={handleChange}/>
+                                <Select text="Subcategoria" name="product_subcategory" option1={"Subcategoria"} options={subcategories} handleOnChange={handleChange}/>
                             </S.Category>
-                            <S.Flex><label>Preço</label><input type="number" min="0" name="product_price" step=".01"placeholder="Digite somente o valor do seu produto." onChange={(e) => [checkNumber(e), handleChange(e)]}/></S.Flex>
+                            <Input type="number" min="0" text="Preço" name="product_price" step=".01" placeholder="Digite somente o valor do seu produto." handleOnChange={handleChange}/>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
@@ -150,9 +135,7 @@ function FormAnnounce() {
                             </S.CheckboxCont> 
                         </S.Size>
                     </S.InfAndSize>
-                    <S.Button>
-                        <button type="submit" onClick={() => counter()}>Cadastrar produto</button>
-                    </S.Button>  
+                    <Submit text="Cadastrar produto" handleOnClick={counter}/> 
                 </S.Form>
             </S.Container>
         </S.Section>
