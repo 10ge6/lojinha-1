@@ -106,7 +106,7 @@ localhost:3000/cart
 
 ### PATCH
 
-localhost:3000/*(id)*
+localhost:3000/cart/*(id)*
 
 ```
 {
@@ -117,7 +117,7 @@ localhost:3000/*(id)*
 
 ### DELETE
 
-localhost:3000/*(id)*
+localhost:3000/cart/*(id)*
 
 ```
 {
