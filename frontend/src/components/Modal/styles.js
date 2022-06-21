@@ -23,11 +23,18 @@ export const Modal = styled.div`
    display: flex;
    flex-direction: column;
    justify-content: space-between;
+   gap: 40px;
    width: 65%;
    height: 90%;
    padding: 50px 66px;
    border-radius: 20px;
    background-color: #fafafa;
+   @media (max-height: 1020px) {
+      height: 100%;
+      overflow-y: scroll;
+      display: grid;
+      grid-template-rows: auto auto auto;
+   }
    @media (max-width: 1540px) {
       width: 80%;
    }
@@ -38,12 +45,23 @@ export const Modal = styled.div`
    @media (max-width: 768px) {
       width: 100%;
       height: 100%;
+      position: fixed;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      overflow-y: scroll;
+      gap: 60px;
+   }
+   @media (max-width: 400px) {
+      padding: 20px;
    }
 `;
 
 export const TopSideModal = styled.div`
    display: grid;
    grid-template-columns: 30px 1fr 30px;
+   @media (max-width: 768px) {
+      grid-template-rows: max-content max-content;
+   }
 `;
 
 export const CloseBtn = styled.button`
@@ -60,7 +78,14 @@ export const Title = styled.h1`
    font-weight: 500;
    grid-column: 2;
    justify-self: center;
-   margin-bottom: 25px;
+
+   @media (max-width: 768px) {
+      grid-row: 2;
+   }
+
+   @media (max-width: 500px) {
+      font-size: 25px;
+   }
 `;
 
 export const Content = styled.div`
@@ -68,6 +93,11 @@ export const Content = styled.div`
    justify-content: space-between;
    gap: 100px;
    height: 100%;
+
+   @media (max-width: 768px) {
+      flex-direction: column-reverse;
+      gap: 65px;
+   }
 `;
 
 export const Categories = styled.div`
@@ -78,12 +108,22 @@ export const Categories = styled.div`
    @media (max-width: 1024px) {
       justify-content: space-between;
    }
+
+   @media (max-width: 768px) {
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+   }
 `;
 
 export const Category = styled.div`
    display: flex;
    flex-direction: column;
    gap: 8px;
+
+   @media (max-width: 768px) {
+      align-items: center;
+   }
 `;
 
 export const CategoryTitle = styled.h2`
@@ -107,6 +147,14 @@ export const CategoryContent = styled.p`
    @media (max-width: 1132px) {
       font-size: 17px;
    }
+
+   @media (max-width: 768px) {
+      text-align: center;
+   }
+
+   @media (max-width: 450px) {
+      font-size: 16px;
+   }
 `;
 
 export const Price = styled.h2`
@@ -120,6 +168,11 @@ export const Img = styled.img`
    height: 350px;
    object-fit: cover;
    border-radius: 2px;
+
+   @media (max-width: 450px) {
+      width: 250px;
+      height: 250px;
+   }
 `;
 
 export const QuantitiesBox = styled.div`
@@ -127,11 +180,20 @@ export const QuantitiesBox = styled.div`
    align-items: center;
    width: 100%;
    justify-content: space-evenly;
+
+   @media (max-width: 768px) {
+      justify-content: center;
+      gap: 20px;
+   }
 `;
 
 export const Quantities = styled.p`
    font-size: 30px;
    font-weight: 700;
+
+   @media (max-width: 768px) {
+      font-size: 20px;
+   }
 `;
 
 export const ImgAndQuantities = styled.div`
@@ -148,6 +210,14 @@ export const EditBtn = styled.button`
    gap: 12px;
    font-size: 20px;
    cursor: pointer;
+
+   @media (max-width: 768px) {
+      font-size: 25px;
+   }
+
+   @media (max-width: 480px) {
+      font-size: 16px;
+   }
 `;
 
 export const DelBtn = styled.button`
@@ -156,6 +226,14 @@ export const DelBtn = styled.button`
    font-size: 20px;
    color: #f24e1e;
    cursor: pointer;
+
+   @media (max-width: 768px) {
+      font-size: 25px;
+   }
+
+   @media (max-width: 480px) {
+      font-size: 16px;
+   }
 `;
 
 export const CartAddBtn = styled.button`
@@ -175,6 +253,15 @@ export const CartAddBtn = styled.button`
       color: #53b38d;
       transition: 0.3s;
    }
+
+   @media (max-width: 768px) {
+      width: 100%;
+      max-width: none;
+   }
+
+   @media (max-height: 1020px) {
+      align-self: center;
+   }
 `;
 
 export const EditDelBtns = styled.div`
@@ -186,6 +273,12 @@ export const BottomBtns = styled.div`
    display: flex;
    justify-content: space-between;
    margin-top: 20px;
+
+   @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 54px;
+   }
 `;
 
 export const EditDelImgs = styled.img`
@@ -193,6 +286,14 @@ export const EditDelImgs = styled.img`
 
    @media (max-width: 1230px) {
       height: 30px;
+   }
+
+   @media (max-width: 768px) {
+      height: 45px;
+   }
+
+   @media (max-width: 480px) {
+      height: 20px;
    }
 `;
 
@@ -218,6 +319,7 @@ export const RadioInput = styled.input`
    transition: 0.3s;
    margin-right: -50%;
    background-color: #f8f8f8;
+   border-radius: 5px;
 
    :checked {
       border: solid 2px #53b38d;
@@ -228,4 +330,16 @@ export const InputLabel = styled.label`
    width: 25px;
    text-align: center;
    color: #53b38d;
+`;
+
+export const CountBtns = styled.img`
+   @media (max-width: 768px) {
+      height: 30px;
+   }
+`;
+
+export const CloseImg = styled.img`
+   @media (max-width: 450px) {
+      width: 20px;
+   }
 `;

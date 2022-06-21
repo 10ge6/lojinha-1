@@ -35,7 +35,7 @@ function Modal({ visible, url, setVisible }) {
                         setVisible(false);
                      }}
                   >
-                     <img src={closeBtn} alt='Botão de fechar modal' />
+                     <S.CloseImg src={closeBtn} alt='Botão de fechar modal' />
                   </S.CloseBtn>
                </S.TopSideModal>
                <S.Content>
@@ -74,11 +74,11 @@ function Modal({ visible, url, setVisible }) {
                               }
                            }}
                         >
-                           <img src={minus} alt='Botão de diminuir quantidade' />
+                           <S.CountBtns src={minus} alt='Botão de diminuir quantidade' />
                         </S.Button>
                         <S.Quantities>{count}</S.Quantities>
                         <S.Button onClick={() => setCount((count) => count + 1)}>
-                           <img src={plus} alt='Botão de aumentar quantidade' />
+                           <S.CountBtns src={plus} alt='Botão de aumentar quantidade' />
                         </S.Button>
                      </S.QuantitiesBox>
                      <S.RadioInputsDiv>
