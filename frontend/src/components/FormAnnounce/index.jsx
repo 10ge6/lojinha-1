@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import preview from "../../assets/preview.svg"
 import * as S from './styles'
 import Input from  '../Input'
@@ -8,11 +9,13 @@ import Textarea from '../Textarea'
 import Select from '../Select'
 import Checkbox from '../Checkbox'
 
+
 function FormAnnounce() {
 
     const [checkboxOn, setCheckboxOn] = useState(false);
     const subcategories = ["Camisa", "Tênis", "Bolsas"]
     const categories = ["Feminimo", "Infantil", "Masculino", "Unissex"]
+    const navigate = useNavigate()
 
     const[informations, setInformations] = useState({
         product_pic: "",
@@ -28,7 +31,10 @@ function FormAnnounce() {
 
     function handleChange (e) {
         setInformations((state) => ({...state, [e.target.name]: e.target.value}))
-        console.log(informations)
+    }
+
+    function handlePrice(e) {
+        setInformations((state) => ({...state, [e.target.name]: Number(e.target.value) * 100}))
     }
 
     function handleCheckbox(e){
@@ -50,7 +56,14 @@ function FormAnnounce() {
             },
             body: JSON.stringify(informations)
         })
-
+        .then((resp) => resp.json())
+        .then((data) => {
+            navigate('/')
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        
     }
 
     return (
@@ -84,7 +97,7 @@ function FormAnnounce() {
                                 <Select text="Categoria" name="product_category" option1={"Categoria"} options={categories} handleOnChange={handleChange}/>
                                 <Select text="Subcategoria" name="product_subcategory" option1={"Subcategoria"} options={subcategories} handleOnChange={handleChange}/>
                             </S.Category>
-                            <Input type="number" text="Preço" name="product_price"  placeholder="Digite somente um valor válido do seu produto." handleOnChange={handleChange}/>
+                            <Input type="number" text="Preço" name="product_price" step=".01" placeholder="Digite somente um valor válido do seu produto." handleOnChange={handlePrice}/>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
@@ -112,12 +125,3 @@ function FormAnnounce() {
 }
 
 export default FormAnnounce
-
-/*  
-<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="1" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> PP</label>
-<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="2" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> P</label>
-<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="4" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> M</label>
-                                 
-<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="8" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> G</label>
-<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="16" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> GG</label>
-<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="32" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> XG</label>*/
