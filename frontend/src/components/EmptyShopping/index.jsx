@@ -2,25 +2,31 @@ import React from "react";
 import * as S from './styles'
 import * as S from '../ProductSection/styles'
 import setinha from '../../assets/setinha.svg'
+import image from '../../assets/image.svg'
 
 function EmptyShopping () {
     return (
-        <div>
+        <S.Shopping>
             <S.Section>
-                <img src={setinha} alt="seta"/>
-                <h3>Carrinho</h3>
+                <S.Title>
+                    <img src={setinha} alt="seta"/>
+                    <h3>Carrinho</h3>
+                </S.Title>
                 <S.Text>
-                <h1>Seu carrinho está vazio :(</h1>
-                <h2>Continue navegando pela Lojinha e encontre produtos incríveis!</h2>
+                    <h1>Seu carrinho está vazio :(</h1>
+                    <h2><a>Continue navegando</a> pela Lojinha e encontre produtos incríveis!</h2>
                 </S.Text>
             </S.Section>
             <S.Article>
-                <S.ProductImg></S.ProductImg>
-                <S.ProductSize></S.ProductSize>
-                <S.ProductTitle></S.ProductTitle>
-                <S.ProductBrand></S.ProductBrand>
+                <h3>Visto recentemente</h3>
+                <S.ProductCard>
+                    <S.ProductImg><img src={image}/></S.ProductImg>
+                    <S.ProductSizeDiv><S.ProductSize><p>M</p></S.ProductSize><S.ProductSize><p>G</p></S.ProductSize></S.ProductSizeDiv>
+                    <S.ProductTitle><p>camisa social polo original</p></S.ProductTitle>
+                    <S.ProductBrand><p>polo</p></S.ProductBrand>
+                </S.ProductCard>  
             </S.Article>
-        </div>
+        </S.Shopping>
     )
 }
 
