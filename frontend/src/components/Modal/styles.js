@@ -33,7 +33,8 @@ export const Modal = styled.div`
       height: 100%;
       overflow-y: scroll;
       display: grid;
-      grid-template-rows: auto auto auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
    }
    @media (max-width: 1540px) {
       width: 80%;
@@ -47,6 +48,7 @@ export const Modal = styled.div`
       height: 100%;
       position: fixed;
       display: grid;
+      grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       overflow-y: scroll;
       gap: 60px;
