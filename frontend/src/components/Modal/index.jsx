@@ -73,6 +73,7 @@ function Modal({ visible, url, setVisible }) {
                      onClick={() => {
                         setCount(1);
                         setVisible(false);
+                        setMessage('');
                      }}
                   >
                      <S.CloseImg src={closeBtn} alt='Botão de fechar modal' />
