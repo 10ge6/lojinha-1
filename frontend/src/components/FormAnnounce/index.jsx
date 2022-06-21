@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import preview from "../../assets/preview.svg"
 import * as S from './styles'
 import Input from  '../Input'
-import Submit from "../Submit"
+import Submit from '../Submit'
 import Textarea from '../Textarea'
-import Select from "../Select";
+import Select from '../Select'
+import Checkbox from '../Checkbox'
 
 const createProduct = async (informations) => {
 
@@ -38,47 +39,36 @@ const createProduct = async (informations) => {
 function FormAnnounce() {
 
     const [checkboxOn, setCheckboxOn] = useState(false);
-    const [urlImage, setUrlImage] = useState(preview);
-    const [number, setNumber] = useState();
-    const [informations, setInformations] = useState({});
     const subcategories = ["Camisa", "Tênis", "Bolsas"]
     const categories = ["Feminimo", "Infantil", "Masculino", "Unissex"]
-    const numberSize = []
-    let soma = 0
-    let i=0;
 
-    function getUrl(e) {
-        setUrlImage(e.target.value)
-    }
+    const[informations, setInformations] = useState({
+        product_pic: "",
+        product_title: "",
+        product_desc: "",
+        product_brand: "", 
+        product_color: "", 
+        product_category: "", 
+        product_subcategory: "", 
+        product_price: "", 
+        product_size: 0
+    });
 
-    function checkNumber(e) {
-        setNumber(e.target.value)
-        number <= 0 ? alert("Por favor, digite um valor acima de R$ 0,00.") : handleChange
-    }
 
     function handleChange (e) {
-        setInformations({...informations, [e.target.name]: e.target.value})
+        setInformations((state) => ({...state, [e.target.name]: e.target.value}))
         console.log(informations)
     }
 
-    function counter(){
-        let elements = []
-        for (i=0; i<7; i++) {
-            elements = document.getElementsByName("checkbox")[i];
-            elements.checked ? numberSize.push(elements.value) : null;
+    function handleCheckbox(e){
+        if(e.target.checked){
+            setInformations((state) => ({...state, product_size: state.product_size + Number(e.target.value)}))
         }
-        const intNumberSize = numberSize.map(Number)
-        for(i=0; i<intNumberSize.length;i++) {
-            soma += intNumberSize[i];
+        else {
+            setInformations((state) => ({...state, product_size: state.product_size - Number(e.target.value)}))  
         }
-        attDatas(soma)
     }
 
-    function attDatas (soma) {
-        setInformations(informations.product_size = soma)
-        console.log(informations)
-              
-    }
 
     useEffect((informations) => {
         createProduct(informations)
@@ -96,7 +86,7 @@ function FormAnnounce() {
                     <S.Preview>
                         <label className="preview">Preview da imagem</label>
                         <S.Image>
-                            <img className={urlImage != preview ? "previewImage" : null } src={urlImage} alt=""/>
+                            <img className={informations.product_pic != preview ? "previewImage" : null } src={informations.product_pic !== "" ? informations.product_pic : preview} alt=""/>
                         </S.Image>
                     </S.Preview> 
                 </S.Flex>
@@ -116,26 +106,26 @@ function FormAnnounce() {
                                 <Select text="Categoria" name="product_category" option1={"Categoria"} options={categories} handleOnChange={handleChange}/>
                                 <Select text="Subcategoria" name="product_subcategory" option1={"Subcategoria"} options={subcategories} handleOnChange={handleChange}/>
                             </S.Category>
-                            <Input type="number" min="0" text="Preço" name="product_price" step=".01" placeholder="Digite somente o valor do seu produto." handleOnChange={handleChange}/>
+                            <Input type="number" text="Preço" name="product_price"  placeholder="Digite somente o valor do seu produto." handleOnChange={handleChange}/>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
                             <S.CheckboxCont>
                                 <S.Size1>
                                     <label><input type="checkbox" name="checkbox" value="0" onClick={() => setCheckboxOn(state => !state)}/> Único</label>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="1" disabled={checkboxOn}/> PP</label>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="2" disabled={checkboxOn}/> P</label> 
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="4" disabled={checkboxOn}/> M</label>
+                                    <Checkbox value="1" text="PP" handleOnChange={handleCheckbox}/>
+                                    <Checkbox value="2" text="P" handleOnChange={handleCheckbox}/>
+                                    <Checkbox value="4" text="M" handleOnChange={handleCheckbox}/>
                                 </S.Size1>
                                 <S.Size2>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="8" disabled={checkboxOn}/> G</label>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="16" disabled={checkboxOn}/> GG</label>
-                                    <label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="32" disabled={checkboxOn}/> XG</label>
+                                    <Checkbox value="8" text="G" handleOnChange={handleCheckbox}/>
+                                    <Checkbox value="16" text="GG" handleOnChange={handleCheckbox}/>
+                                    <Checkbox value="32" text="XG" handleOnChange={handleCheckbox}/>
                                 </S.Size2>
                             </S.CheckboxCont> 
                         </S.Size>
                     </S.InfAndSize>
-                    <Submit text="Cadastrar produto" handleOnClick={counter}/> 
+                    <Submit text="Cadastrar produto"/> 
                 </S.Form>
             </S.Container>
         </S.Section>
@@ -144,3 +134,5 @@ function FormAnnounce() {
 }
 
 export default FormAnnounce
+
+/*<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="32" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> XG</label> */

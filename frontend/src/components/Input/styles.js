@@ -18,6 +18,11 @@ export const Flex = styled.div `
         -moz-appearance: textfield;
         appearance: textfield;
     }
+
+    input[type=number]:invalid {
+        color: #ff0000;
+    }
+
     label {
         color: #275845;
         font-size: 1.125rem;
