@@ -355,3 +355,8 @@ export const CloseImg = styled.img`
       width: 20px;
    }
 `;
+
+export const Message = styled.h3`
+   font-weight: 500;
+   color: red;
+`;

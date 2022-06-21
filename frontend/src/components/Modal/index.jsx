@@ -11,6 +11,7 @@ import { getSize } from '../ProductSection';
 function Modal({ visible, url, setVisible }) {
    const [modalData, setModalData] = useState([]);
    const [count, setCount] = useState(1);
+   const [message, setMessage] = useState('');
 
    const getData = async () => {
       const response = await fetch(url);
@@ -25,9 +26,42 @@ function Modal({ visible, url, setVisible }) {
       });
    };
 
+   const findSize = (arr) => {
+      let size = 'F';
+      for (let i = 0; i < arr.length; i++) {
+         if (arr[i].checked) {
+            if (arr[i].value == 'ÚNICO') {
+               size = 0;
+            } else if (arr[i].value == 'PP') {
+               size = 1;
+            } else if (arr[i].value == 'P') {
+               size = 2;
+            } else if (arr[i].value == 'M') {
+               size = 4;
+            } else if (arr[i].value == 'G') {
+               size = 8;
+            } else if (arr[i].value == 'GG') {
+               size = 16;
+            } else if (arr[i].value == 'XG') {
+               size = 32;
+            }
+         }
+      }
+
+      return size;
+   };
+
+   const addToCart = async (id, size) => {
+      const response = await fetch('http://localhost:8000/cart', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ product_id: id, product_size: size, product_qty: count }),
+      });
+   };
+
    useEffect(() => {
       getData().then((data) => setModalData(data));
-   }, [modalData]);
+   }, [url]);
 
    if (visible) {
       return (
@@ -99,12 +133,13 @@ function Modal({ visible, url, setVisible }) {
                            }
                            return (
                               <S.RadioInputDiv key={index}>
-                                 <S.RadioInput id={size} name='product_size' type='radio' value={size} />
+                                 <S.RadioInput required id={size} name='product_size' type='radio' value={size} />
                                  <S.InputLabel htmlFor={size}>{size}</S.InputLabel>
                               </S.RadioInputDiv>
                            );
                         })}
                      </S.RadioInputsDiv>
+                     <S.Message>{message}</S.Message>
                   </S.ImgAndQuantities>
                </S.Content>
                <S.BottomBtns>
@@ -125,7 +160,20 @@ function Modal({ visible, url, setVisible }) {
                         <h1>Deletar</h1>
                      </S.DelBtn>
                   </S.EditDelBtns>
-                  <S.CartAddBtn>Adicionar ao carrinho</S.CartAddBtn>
+                  <S.CartAddBtn
+                     onClick={() => {
+                        let sizeNum = findSize(document.getElementsByName('product_size'));
+                        if (sizeNum != 'F') {
+                           addToCart(modalData.product_id, sizeNum);
+                           setVisible(false);
+                           setMessage('');
+                        } else {
+                           setMessage('Selecione um tamanho');
+                        }
+                     }}
+                  >
+                     Adicionar ao carrinho
+                  </S.CartAddBtn>
                </S.BottomBtns>
             </S.Modal>
          </S.ModalBg>
