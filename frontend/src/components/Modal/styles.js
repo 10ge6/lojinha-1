@@ -23,11 +23,20 @@ export const Modal = styled.div`
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   width: 60%;
+   width: 65%;
    height: 90%;
    padding: 50px 66px;
    border-radius: 20px;
    background-color: #fafafa;
+   @media (max-width: 1360px) {
+      width: 70%;
+   }
+   @media (max-width: 1150px) {
+      width: 77.3%;
+   }
+   @media (max-width: 1024px) {
+      width: 95%;
+   }
 `;
 
 export const TopSideModal = styled.div`
@@ -48,18 +57,24 @@ export const Title = styled.h1`
    font-weight: 500;
    grid-column: 2;
    justify-self: center;
+   margin-bottom: 25px;
 `;
 
 export const Content = styled.div`
    display: flex;
    justify-content: space-between;
    gap: 100px;
+   height: 100%;
 `;
 
 export const Categories = styled.div`
    display: flex;
    flex-direction: column;
-   gap: 16px;
+   gap: 10px;
+
+   @media (max-width: 1024px) {
+      justify-content: space-between;
+   }
 `;
 
 export const Category = styled.div`
@@ -71,12 +86,20 @@ export const Category = styled.div`
 export const CategoryTitle = styled.h2`
    font-weight: 600;
    font-size: 30px;
+
+   @media (max-width: 1024px) {
+      font-size: 22px;
+   }
 `;
 
 export const CategoryContent = styled.p`
    font-weight: 400;
    font-size: 20px;
    font-family: 'Montserrat';
+
+   @media (max-width: 1245px) {
+      font-size: 18px;
+   }
 `;
 
 export const Price = styled.h2`
@@ -87,8 +110,19 @@ export const Price = styled.h2`
 
 export const Img = styled.img`
    width: 18vw;
-   height: 18vw;
+   min-width: 300px;
+   max-width: 348px;
+   min-height: 300px;
+   max-height: 348px;
    object-fit: cover;
+   border-radius: 2px;
+
+   @media (max-width: 828px) {
+      min-width: 250px;
+      max-width: 300px;
+      min-height: 250px;
+      max-height: 300px;
+   }
 `;
 
 export const QuantitiesBox = styled.div`
@@ -98,7 +132,7 @@ export const QuantitiesBox = styled.div`
 `;
 
 export const Quantities = styled.p`
-   font-size: 36px;
+   font-size: 30px;
    font-weight: 700;
 `;
 
@@ -132,6 +166,8 @@ export const CartAddBtn = styled.button`
    color: #f8f8f8;
    font-size: 20px;
    width: 18vw;
+   min-width: 300px;
+   max-width: 348px;
    cursor: pointer;
    border: solid 1px #53b38d;
 
@@ -139,6 +175,10 @@ export const CartAddBtn = styled.button`
       background-color: #f8f8f8;
       color: #53b38d;
       transition: 0.3s;
+   }
+   @media (max-width: 828px) {
+      min-width: 250px;
+      max-width: 300px;
    }
 `;
 
@@ -150,4 +190,13 @@ export const EditDelBtns = styled.div`
 export const BottomBtns = styled.div`
    display: flex;
    justify-content: space-between;
+   margin-top: 20px;
+`;
+
+export const EditDelImgs = styled.img`
+   height: 45px;
+
+   @media (max-width: 1230px) {
+      height: 30px;
+   }
 `;

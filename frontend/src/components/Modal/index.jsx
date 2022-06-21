@@ -27,7 +27,12 @@ function Modal({ visible, url, setVisible }) {
             <S.Modal>
                <S.TopSideModal>
                   <S.Title>{modalData.product_title}</S.Title>
-                  <S.CloseBtn onClick={() => setVisible(false)}>
+                  <S.CloseBtn
+                     onClick={() => {
+                        setCount(1);
+                        setVisible(false);
+                     }}
+                  >
                      <img src={closeBtn} alt='Botão de fechar modal' />
                   </S.CloseBtn>
                </S.TopSideModal>
@@ -79,11 +84,11 @@ function Modal({ visible, url, setVisible }) {
                <S.BottomBtns>
                   <S.EditDelBtns>
                      <S.EditBtn>
-                        <img src={edit} alt='Botão de editar' />
+                        <S.EditDelImgs src={edit} alt='Botão de editar' />
                         <h1>Editar</h1>
                      </S.EditBtn>
                      <S.DelBtn>
-                        <img src={erase} alt='Botão de deletar' />
+                        <S.EditDelImgs src={erase} alt='Botão de deletar' />
                         <h1>Deletar</h1>
                      </S.DelBtn>
                   </S.EditDelBtns>
