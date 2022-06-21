@@ -116,11 +116,8 @@ export const Price = styled.h2`
 `;
 
 export const Img = styled.img`
-   width: 18vw;
-   min-width: 300px;
-   max-width: 348px;
-   min-height: 300px;
-   max-height: 348px;
+   width: 350px;
+   height: 350px;
    object-fit: cover;
    border-radius: 2px;
 `;
@@ -128,6 +125,7 @@ export const Img = styled.img`
 export const QuantitiesBox = styled.div`
    display: flex;
    align-items: center;
+   width: 100%;
    justify-content: space-evenly;
 `;
 
@@ -139,6 +137,7 @@ export const Quantities = styled.p`
 export const ImgAndQuantities = styled.div`
    display: flex;
    flex-direction: column;
+   align-items: center;
    gap: 15px;
 `;
 
@@ -195,4 +194,38 @@ export const EditDelImgs = styled.img`
    @media (max-width: 1230px) {
       height: 30px;
    }
+`;
+
+export const RadioInputDiv = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-left: -2px;
+`;
+
+export const RadioInputsDiv = styled.div`
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+`;
+
+export const RadioInput = styled.input`
+   appearance: none;
+
+   width: 35px;
+   height: 35px;
+   border: solid 2px #275845;
+   transition: 0.3s;
+   margin-right: -50%;
+   background-color: #f8f8f8;
+
+   :checked {
+      border: solid 2px #53b38d;
+   }
+`;
+
+export const InputLabel = styled.label`
+   width: 25px;
+   text-align: center;
+   color: #53b38d;
 `;

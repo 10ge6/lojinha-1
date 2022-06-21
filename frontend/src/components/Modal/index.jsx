@@ -6,6 +6,8 @@ import minus from '../../assets/minusBtn.svg';
 import plus from '../../assets/plusBtn.svg';
 import edit from '../../assets/editBtn.svg';
 import erase from '../../assets/deleteBtn.svg';
+import { getSize } from '../ProductSection';
+import { Section } from '../../styles/Global';
 
 function Modal({ visible, url, setVisible }) {
    const [modalData, setModalData] = useState([]);
@@ -79,6 +81,16 @@ function Modal({ visible, url, setVisible }) {
                            <img src={plus} alt='Botão de aumentar quantidade' />
                         </S.Button>
                      </S.QuantitiesBox>
+                     <S.RadioInputsDiv>
+                        {getSize(modalData.product_size).map((size, index) => {
+                           return (
+                              <S.RadioInputDiv key={index}>
+                                 <S.RadioInput id={size} name='product_size' type='radio' value={size} />
+                                 <S.InputLabel htmlFor={size}>{size}</S.InputLabel>
+                              </S.RadioInputDiv>
+                           );
+                        })}
+                     </S.RadioInputsDiv>
                   </S.ImgAndQuantities>
                </S.Content>
                <S.BottomBtns>

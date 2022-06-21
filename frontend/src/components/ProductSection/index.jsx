@@ -4,7 +4,23 @@ import { useState, useEffect } from 'react';
 import * as S from './styles';
 import Modal from '../Modal';
 
-function ProductSection() {
+export function getSize(num) {
+   let actualNum = num;
+   const arrExNum = [32, 16, 8, 4, 2, 1];
+   const arrExSize = ['XG', 'GG', 'G', 'M', 'P', 'PP'];
+   let arrSizes = [];
+   for (let i = 0; i < 6; i++) {
+      if (num == 0) {
+         return ['ÚNICO'];
+      } else if (arrExNum[i] <= actualNum) {
+         arrSizes.push(arrExSize[i]);
+         actualNum -= arrExNum[i];
+      }
+   }
+   return arrSizes;
+}
+
+export function ProductSection() {
    const [users, setUsers] = useState([]);
    const [visible, setVisible] = useState(false);
    const [url, setUrl] = useState(109);
@@ -20,22 +36,6 @@ function ProductSection() {
          return <S.ProductPrice>{text.slice(0, text.length - 3)}</S.ProductPrice>;
       }
       return <S.ProductPrice>{text}</S.ProductPrice>;
-   }
-
-   function getSize(num) {
-      let actualNum = num;
-      const arrExNum = [32, 16, 8, 4, 2, 1];
-      const arrExSize = ['XG', 'GG', 'G', 'M', 'P', 'PP'];
-      let arrSizes = [];
-      for (let i = 0; i < 6; i++) {
-         if (num == 0) {
-            return ['ÚNICO'];
-         } else if (arrExNum[i] <= actualNum) {
-            arrSizes.push(arrExSize[i]);
-            actualNum -= arrExNum[i];
-         }
-      }
-      return arrSizes;
    }
 
    useEffect(() => {
@@ -83,5 +83,3 @@ function ProductSection() {
       </Section>
    );
 }
-
-export default ProductSection;
