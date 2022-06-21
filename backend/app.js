@@ -30,11 +30,11 @@ app.use((req, res, next) => {
 
 // rotas
 const storefrontController = require('./routes/storefront/controller');
-// const cartController = require('./routes/cart/controller');
+const cartController = require('./routes/cart/controller');
 
-// endpoint
+// endpoints
 app.use('/storefront', storefrontController);
-// app.use('/cart', cartController);
+app.use('/cart', cartController);
 
 // fallback
 app.use((req, res) => {
