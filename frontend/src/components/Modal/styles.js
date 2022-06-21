@@ -29,7 +29,7 @@ export const Modal = styled.div`
    padding: 50px 66px;
    border-radius: 20px;
    background-color: #fafafa;
-   @media (max-height: 1020px) {
+   @media (max-height: 954px) {
       height: 100%;
       overflow-y: scroll;
       display: grid;
@@ -130,6 +130,10 @@ export const CategoryTitle = styled.h2`
    font-weight: 600;
    font-size: 30px;
 
+   @media (max-width: 1140px) {
+      font-size: 16px;
+   }
+
    @media (max-width: 1024px) {
       font-size: 22px;
    }
@@ -140,12 +144,20 @@ export const CategoryContent = styled.p`
    font-size: 20px;
    font-family: 'Montserrat';
 
-   @media (max-width: 1245px) {
+   @media (max-width: 1736px) {
       font-size: 18px;
+   }
+
+   @media (max-width: 1300px) {
+      font-size: 14px;
    }
 
    @media (max-width: 1132px) {
       font-size: 17px;
+   }
+
+   @media (max-width: 854px) {
+      font-size: 14px;
    }
 
    @media (max-width: 768px) {
