@@ -89,6 +89,14 @@ function Modal({ visible, url, setVisible }) {
                      </S.QuantitiesBox>
                      <S.RadioInputsDiv>
                         {getSize(modalData.product_size).map((size, index) => {
+                           if (size == 'ÚNICO') {
+                              return (
+                                 <S.RadioInputDiv key={index}>
+                                    <S.RadioInput id={size} name='product_size' type='radio' value={size} />
+                                    <S.InputLabel htmlFor={size}>{size.slice(0, 2)}</S.InputLabel>
+                                 </S.RadioInputDiv>
+                              );
+                           }
                            return (
                               <S.RadioInputDiv key={index}>
                                  <S.RadioInput id={size} name='product_size' type='radio' value={size} />
