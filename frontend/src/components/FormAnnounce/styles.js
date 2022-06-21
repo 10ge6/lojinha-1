@@ -138,7 +138,7 @@ export const Preview = styled.div `
     }
 `;
 
-export const Form = styled.div `
+export const Form = styled.form `
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -209,10 +209,6 @@ export const Category = styled.div `
     display: flex;
     justify-content: space-between;
     
-    select {
-        width: 144px;
-        color: #275845;
-    }
 `;
 
 export const Size = styled.div `
@@ -227,12 +223,6 @@ export const Size = styled.div `
 export const CheckboxCont = styled.div `
     display: flex;
     gap: 20px;
-
-    label {
-        &.on {
-            color: #9D9A95;
-        }
-    }
 
     @media (max-width: 680px){
         display: flex;

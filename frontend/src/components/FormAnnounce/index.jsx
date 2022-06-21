@@ -8,34 +8,6 @@ import Textarea from '../Textarea'
 import Select from '../Select'
 import Checkbox from '../Checkbox'
 
-const createProduct = async (informations) => {
-
-    const storyProduct = {
-        product_pic: informations.product_pic,
-        product_title: informations.product_title,
-        product_desc: informations.product_desc,
-        product_brand: informations.product_brand, 
-        product_color: informations.product_color, 
-        product_category: informations.product_category, 
-        product_subcategory: informations.product_subcategory, 
-        product_price: informations.product_price, 
-        product_size: informations.product_size
-
-    }
-
-    const init = {
-        method: 'POST',
-        headers: {
-            "Content-Type": 'application/json'
-        },
-        body: JSON.stringify(storyProduct)
-    }
-
-    const response = await fetch('http://localhost:300/storefront', init)
-    const datas = response.status == 200 ?
-        response.json() : [];
-}
-
 function FormAnnounce() {
 
     const [checkboxOn, setCheckboxOn] = useState(false);
@@ -54,7 +26,6 @@ function FormAnnounce() {
         product_size: 0
     });
 
-
     function handleChange (e) {
         setInformations((state) => ({...state, [e.target.name]: e.target.value}))
         console.log(informations)
@@ -69,11 +40,18 @@ function FormAnnounce() {
         }
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
 
-    useEffect((informations) => {
-        createProduct(informations)
-    }, [informations])
+        fetch('http://localhost:300/storefront', {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(informations)
+        })
 
+    }
 
     return (
         <S.Section>
@@ -86,11 +64,11 @@ function FormAnnounce() {
                     <S.Preview>
                         <label className="preview">Preview da imagem</label>
                         <S.Image>
-                            <img className={informations.product_pic != preview ? "previewImage" : null } src={informations.product_pic !== "" ? informations.product_pic : preview} alt=""/>
+                            <img className={informations.product_pic !== "" ? "previewImage" : null } src={informations.product_pic !== "" ? informations.product_pic : preview} alt=""/>
                         </S.Image>
                     </S.Preview> 
                 </S.Flex>
-                <S.Form>
+                <S.Form onSubmit={handleSubmit}>
                     <S.Text>
                         <Input type="url" name="product_pic" text="Url da imagem" placeholder="Digite a url da imagem do seu produto." handleOnChange={handleChange}/>
                         <Input type="text" name="product_title" text="Título" placeholder="Digite o título/nome do seu produto." handleOnChange={handleChange}/>
@@ -106,21 +84,21 @@ function FormAnnounce() {
                                 <Select text="Categoria" name="product_category" option1={"Categoria"} options={categories} handleOnChange={handleChange}/>
                                 <Select text="Subcategoria" name="product_subcategory" option1={"Subcategoria"} options={subcategories} handleOnChange={handleChange}/>
                             </S.Category>
-                            <Input type="number" text="Preço" name="product_price"  placeholder="Digite somente o valor do seu produto." handleOnChange={handleChange}/>
+                            <Input type="number" text="Preço" name="product_price"  placeholder="Digite somente um valor válido do seu produto." handleOnChange={handleChange}/>
                         </S.CategoryAndPrice>
                         <S.Size>
                             <label>Tamanho</label>
                             <S.CheckboxCont>
                                 <S.Size1>
                                     <label><input type="checkbox" name="checkbox" value="0" onClick={() => setCheckboxOn(state => !state)}/> Único</label>
-                                    <Checkbox value="1" text="PP" handleOnChange={handleCheckbox}/>
-                                    <Checkbox value="2" text="P" handleOnChange={handleCheckbox}/>
-                                    <Checkbox value="4" text="M" handleOnChange={handleCheckbox}/>
+                                        <Checkbox value="1" text="PP" stateCheckbox={checkboxOn} handleOnChange={handleCheckbox}/>
+                                        <Checkbox value="2" text="P" stateCheckbox={checkboxOn} handleOnChange={handleCheckbox}/>
+                                        <Checkbox value="4" text="M" stateCheckbox={checkboxOn} handleOnChange={handleCheckbox}/>
                                 </S.Size1>
                                 <S.Size2>
-                                    <Checkbox value="8" text="G" handleOnChange={handleCheckbox}/>
-                                    <Checkbox value="16" text="GG" handleOnChange={handleCheckbox}/>
-                                    <Checkbox value="32" text="XG" handleOnChange={handleCheckbox}/>
+                                    <Checkbox value="8" text="G" stateCheckbox={checkboxOn} handleOnChange={handleCheckbox}/>
+                                    <Checkbox value="16" text="GG" stateCheckbox={checkboxOn} handleOnChange={handleCheckbox}/>
+                                    <Checkbox value="32" text="XG" stateCheckbox={checkboxOn} handleOnChange={handleCheckbox}/>
                                 </S.Size2>
                             </S.CheckboxCont> 
                         </S.Size>
@@ -135,4 +113,11 @@ function FormAnnounce() {
 
 export default FormAnnounce
 
-/*<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="32" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> XG</label> */
+/*  
+<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="1" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> PP</label>
+<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="2" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> P</label>
+<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="4" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> M</label>
+                                 
+<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="8" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> G</label>
+<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="16" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> GG</label>
+<label className={checkboxOn ? "on" : null}><input type="checkbox" name="checkbox" value="32" onChange={(e) => {handleCheckbox(e)}}  disabled={checkboxOn}/> XG</label>*/

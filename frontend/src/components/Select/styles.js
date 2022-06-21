@@ -14,7 +14,10 @@ export const Flex = styled.div `
         border: 1px solid #9D9A95;
         border-radius: 4px;
         height: 42px;
+        width: 144px;
+        color: #275845;
     }
+
     option {
         color: #275845;
     }

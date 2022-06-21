@@ -19,8 +19,9 @@ export const Flex = styled.div `
         appearance: textfield;
     }
 
-    input[type=number]:invalid {
-        color: #ff0000;
+    input[type=number]:not(:placeholder-shown):invalid{
+        border-color: #cc1100;
+        color: #cc1100;  
     }
 
     label {

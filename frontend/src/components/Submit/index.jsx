@@ -1,10 +1,10 @@
 import React from "react"
 import * as S from './styles'
 
-function Submit({ text, handleOnClick }) {
+function Submit({ text }) {
     return (
         <S.Button>
-            <button type="submit" onClick={handleOnClick}>{text}</button>
+            <button>{text}</button>
         </S.Button>  
     )
 }

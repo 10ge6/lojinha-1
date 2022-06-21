@@ -5,7 +5,7 @@ function Input({text, name, placeholder, handleOnChange}) {
     return(
         <S.Flex>
             <label htmlFor={name}>{text}</label>
-            <textarea name={name} maxLength={300} placeholder={placeholder} onChange={handleOnChange}></textarea>
+            <textarea name={name} maxLength={300} placeholder={placeholder} onChange={handleOnChange} required></textarea>
         </S.Flex>  
     )
 }

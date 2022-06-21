@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Checkbox = `
+export const Checkbox = styled.div `
 
     input {
         vertical-align: middle;
@@ -12,4 +12,9 @@ export const Checkbox = `
         font-weight: 500;
     }
 
+    label {
+        &.on {
+            color: #9D9A95;
+        }
+    }
 `;
