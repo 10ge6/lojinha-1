@@ -28,14 +28,16 @@ export const Modal = styled.div`
    padding: 50px 66px;
    border-radius: 20px;
    background-color: #fafafa;
-   @media (max-width: 1360px) {
-      width: 70%;
+   @media (max-width: 1540px) {
+      width: 80%;
    }
-   @media (max-width: 1150px) {
-      width: 77.3%;
-   }
-   @media (max-width: 1024px) {
+   @media (max-width: 1040px) {
       width: 95%;
+      padding: 44px 36px;
+   }
+   @media (max-width: 768px) {
+      width: 100%;
+      height: 100%;
    }
 `;
 
@@ -52,6 +54,7 @@ export const CloseBtn = styled.button`
 
 export const Title = styled.h1`
    font-family: 'Montserrat';
+   text-align: center;
    font-size: 36px;
    color: #252822;
    font-weight: 500;
@@ -100,6 +103,10 @@ export const CategoryContent = styled.p`
    @media (max-width: 1245px) {
       font-size: 18px;
    }
+
+   @media (max-width: 1132px) {
+      font-size: 17px;
+   }
 `;
 
 export const Price = styled.h2`
@@ -116,13 +123,6 @@ export const Img = styled.img`
    max-height: 348px;
    object-fit: cover;
    border-radius: 2px;
-
-   @media (max-width: 828px) {
-      min-width: 250px;
-      max-width: 300px;
-      min-height: 250px;
-      max-height: 300px;
-   }
 `;
 
 export const QuantitiesBox = styled.div`
@@ -175,10 +175,6 @@ export const CartAddBtn = styled.button`
       background-color: #f8f8f8;
       color: #53b38d;
       transition: 0.3s;
-   }
-   @media (max-width: 828px) {
-      min-width: 250px;
-      max-width: 300px;
    }
 `;
 
