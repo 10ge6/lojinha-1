@@ -40,10 +40,10 @@ function FormAnnounce() {
         }
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
-        fetch('http://localhost:300/storefront', {
+        fetch('http://localhost:3000/storefront', {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json'
