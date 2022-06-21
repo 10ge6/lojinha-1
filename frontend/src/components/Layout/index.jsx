@@ -1,18 +1,19 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import Header from '../Header';
+import {Outlet} from "react-router-dom";
+import Header from "../Header";
 import Footer from "../Footer";
-import GlobalStyle from '../../styles/Global';
+import GlobalStyle from "../../styles/Global";
+import Height from "./styles";
 
 const Layout = () => {
-    return(
-      <div>
-        <GlobalStyle/>
-        <Header/>
-        <Outlet/>
-        <Footer/>
-      </div>
-    );
-}
+  return (
+    <Height>
+      <GlobalStyle />
+      <Header />
+      <Outlet />
+      <Footer />
+    </Height>
+  );
+};
 
-export default Layout
+export default Layout;

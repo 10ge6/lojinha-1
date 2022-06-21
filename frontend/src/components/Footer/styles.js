@@ -24,7 +24,7 @@ export const MediaImg = styled.img`
 `;
 
 export const Logo = styled.img`
-  margin-right: 25px;
+  margin-right: 16px;
 
   @media (max-width: 1024px) {
     margin: 0;
@@ -38,9 +38,6 @@ export const Logo = styled.img`
 export const NavLink = styled.li`
   font-size: 18px;
   font-weight: 500;
-  @media (max-width: 1100px) {
-    font-size: 15px;
-  }
 
   @media (max-width: 1024px) {
     font-size: 18px;
@@ -95,15 +92,16 @@ export const InfoLink = styled.a`
 
 export const Bg = styled.div`
   background-color: #f5f5dc;
+  margin-top: auto;
 `;
 
 export const Style = styled.footer`
-  padding: 56px 0 24px 0;
+  padding: 48px 0 24px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 80px;
 
   @media (max-width: 1024px) {
     gap: 45px;
