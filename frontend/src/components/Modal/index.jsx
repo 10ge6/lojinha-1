@@ -7,7 +7,6 @@ import plus from '../../assets/plusBtn.svg';
 import edit from '../../assets/editBtn.svg';
 import erase from '../../assets/deleteBtn.svg';
 import { getSize } from '../ProductSection';
-import { Section } from '../../styles/Global';
 
 function Modal({ visible, url, setVisible }) {
    const [modalData, setModalData] = useState([]);
@@ -19,9 +18,16 @@ function Modal({ visible, url, setVisible }) {
       return data.response[0];
    };
 
+   const deleteData = async (url) => {
+      const response = await fetch(url, {
+         method: 'DELETE',
+         headers: { 'Content-Type': 'application/json' },
+      });
+   };
+
    useEffect(() => {
       getData().then((data) => setModalData(data));
-   }, [url]);
+   }, [modalData]);
 
    if (visible) {
       return (
@@ -99,7 +105,14 @@ function Modal({ visible, url, setVisible }) {
                         <S.EditDelImgs src={edit} alt='Botão de editar' />
                         <h1>Editar</h1>
                      </S.EditBtn>
-                     <S.DelBtn>
+                     <S.DelBtn
+                        onClick={() => {
+                           deleteData(url);
+                           setVisible(false);
+                           window.scrollTo(0, 0);
+                           window.location.reload();
+                        }}
+                     >
                         <S.EditDelImgs src={erase} alt='Botão de deletar' />
                         <h1>Deletar</h1>
                      </S.DelBtn>
