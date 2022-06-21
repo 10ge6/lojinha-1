@@ -7,7 +7,7 @@ import plus from '../../assets/plusBtn.svg';
 import edit from '../../assets/editBtn.svg';
 import erase from '../../assets/deleteBtn.svg';
 
-function Modal({ visible, url }) {
+function Modal({ visible, url, setVisible }) {
    const [modalData, setModalData] = useState([]);
    const [count, setCount] = useState(1);
 
@@ -27,11 +27,7 @@ function Modal({ visible, url }) {
             <S.Modal>
                <S.TopSideModal>
                   <S.Title>{modalData.product_title}</S.Title>
-                  <S.CloseBtn
-                     onClick={() => {
-                        setVisible(false);
-                     }}
-                  >
+                  <S.CloseBtn onClick={() => setVisible(false)}>
                      <img src={closeBtn} alt='Botão de fechar modal' />
                   </S.CloseBtn>
                </S.TopSideModal>

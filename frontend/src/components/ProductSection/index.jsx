@@ -49,7 +49,7 @@ function ProductSection() {
          <S.AllProducts>
             <S.Products>Produtos</S.Products>
             <S.ProductList>
-               <Modal visible={visible} url={`http://localhost:8000/storefront/${url}`} />
+               <Modal visible={visible} url={`http://localhost:8000/storefront/${url}`} setVisible={setVisible} />
                {users.map((user) => (
                   <S.ProductCard
                      onClick={() => {
