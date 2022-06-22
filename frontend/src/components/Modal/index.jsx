@@ -7,11 +7,13 @@ import plus from '../../assets/plusBtn.svg';
 import edit from '../../assets/editBtn.svg';
 import erase from '../../assets/deleteBtn.svg';
 import { getSize } from '../ProductSection';
+import Modal from 'react-modal';
 
-function Modal({ visible, url, setVisible }) {
+Modal.setAppElement('#root');
+
+function ModalProduct({ visible, url, closeModal }) {
    const [modalData, setModalData] = useState([]);
    const [count, setCount] = useState(1);
-   const [message, setMessage] = useState('');
 
    const getData = async () => {
       const response = await fetch(url);
@@ -63,119 +65,110 @@ function Modal({ visible, url, setVisible }) {
       getData().then((data) => setModalData(data));
    }, [url]);
 
-   if (visible) {
-      return (
-         <S.ModalBg>
-            <S.Modal>
-               <S.TopSideModal>
-                  <S.Title>{modalData.product_title}</S.Title>
-                  <S.CloseBtn
-                     onClick={() => {
-                        setCount(1);
-                        setVisible(false);
+   return (
+      <Modal
+         className='modal'
+         overlayClassName='modal-overlay'
+         isOpen={visible}
+         onRequestClose={closeModal}
+         contentLabel='Modal dos produtos'
+      >
+         <S.Modal
+            onSubmit={(e) => {
+               e.preventDefault();
+               addToCart(modalData.product_id, findSize(document.getElementsByName('product_size')));
+               closeModal();
+            }}
+         >
+            <S.TopSideModal>
+               <S.Title>{modalData.product_title}</S.Title>
+               <S.CloseBtn
+                  type='button'
+                  onClick={() => {
+                     setCount(1);
+                     closeModal();
+                  }}
+               >
+                  <S.CloseImg src={closeBtn} alt='Botão de fechar modal' />
+               </S.CloseBtn>
+            </S.TopSideModal>
+            <S.Content>
+               <S.Categories>
+                  <S.Category>
+                     <S.CategoryTitle>Descrição</S.CategoryTitle>
+                     <S.CategoryContent>{modalData.product_desc}</S.CategoryContent>
+                  </S.Category>
+                  <S.Category>
+                     <S.CategoryTitle>Vendedor</S.CategoryTitle>
+                     <S.CategoryContent>RickRoll</S.CategoryContent>
+                  </S.Category>
+                  <S.Category>
+                     <S.CategoryTitle>Marca</S.CategoryTitle>
+                     <S.CategoryContent>{modalData.product_brand}</S.CategoryContent>
+                  </S.Category>
+                  <S.Category>
+                     <S.CategoryTitle>Cor</S.CategoryTitle>
+                     <S.CategoryContent>{modalData.product_color}</S.CategoryContent>
+                  </S.Category>
+                  <S.Price>
+                     {(modalData.product_price / 100).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+                  </S.Price>
+               </S.Categories>
+               <S.ImgAndQuantities>
+                  <S.Img
+                     src={modalData.product_pic}
+                     onError={({ currentTarget }) => {
+                        currentTarget.src =
+                           'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
                      }}
-                  >
-                     <S.CloseImg src={closeBtn} alt='Botão de fechar modal' />
-                  </S.CloseBtn>
-               </S.TopSideModal>
-               <S.Content>
-                  <S.Categories>
-                     <S.Category>
-                        <S.CategoryTitle>Descrição</S.CategoryTitle>
-                        <S.CategoryContent>{modalData.product_desc}</S.CategoryContent>
-                     </S.Category>
-                     <S.Category>
-                        <S.CategoryTitle>Vendedor</S.CategoryTitle>
-                        <S.CategoryContent>RickRoll</S.CategoryContent>
-                     </S.Category>
-                     <S.Category>
-                        <S.CategoryTitle>Marca</S.CategoryTitle>
-                        <S.CategoryContent>{modalData.product_brand}</S.CategoryContent>
-                     </S.Category>
-                     <S.Category>
-                        <S.CategoryTitle>Cor</S.CategoryTitle>
-                        <S.CategoryContent>{modalData.product_color}</S.CategoryContent>
-                     </S.Category>
-                     <S.Price>{(modalData.product_price / 100).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</S.Price>
-                  </S.Categories>
-                  <S.ImgAndQuantities>
-                     <S.Img
-                        src={modalData.product_pic}
-                        onError={({ currentTarget }) => {
-                           currentTarget.src = 'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
-                        }}
-                        alt='Imagem do produto'
-                     />
-                     <S.QuantitiesBox>
-                        <S.Button
-                           onClick={() => {
-                              if (count > 1) {
-                                 setCount((count) => count - 1);
-                              }
-                           }}
-                        >
-                           <S.CountBtns src={minus} alt='Botão de diminuir quantidade' />
-                        </S.Button>
-                        <S.Quantities>{count}</S.Quantities>
-                        <S.Button onClick={() => setCount((count) => count + 1)}>
-                           <S.CountBtns src={plus} alt='Botão de aumentar quantidade' />
-                        </S.Button>
-                     </S.QuantitiesBox>
-                     <S.RadioInputsDiv>
-                        {getSize(modalData.product_size).map((size, index) => {
-                           if (size == 'ÚNICO') {
-                              return (
-                                 <S.RadioInputDiv key={index}>
-                                    <S.RadioInput id={size} name='product_size' type='radio' value={size} />
-                                    <S.InputLabel htmlFor={size}>{size.slice(0, 2)}</S.InputLabel>
-                                 </S.RadioInputDiv>
-                              );
-                           }
-                           return (
-                              <S.RadioInputDiv key={index}>
-                                 <S.RadioInput required id={size} name='product_size' type='radio' value={size} />
-                                 <S.InputLabel htmlFor={size}>{size}</S.InputLabel>
-                              </S.RadioInputDiv>
-                           );
-                        })}
-                     </S.RadioInputsDiv>
-                  </S.ImgAndQuantities>
-               </S.Content>
-               <S.BottomBtns>
-                  <S.EditDelBtns>
-                     <S.EditBtn>
-                        <S.EditDelImgs src={edit} alt='Botão de editar' />
-                        <h1>Editar</h1>
-                     </S.EditBtn>
-                     <S.DelBtn
+                     alt='Imagem do produto'
+                  />
+                  <S.QuantitiesBox>
+                     <S.Button
+                        type='button'
                         onClick={() => {
-                           deleteData(url);
-                           setVisible(false);
-                           window.scrollTo(0, 0);
-                           window.location.reload();
+                           if (count > 1) {
+                              setCount((count) => count - 1);
+                           }
                         }}
                      >
-                        <S.EditDelImgs src={erase} alt='Botão de deletar' />
-                        <h1>Deletar</h1>
-                     </S.DelBtn>
-                  </S.EditDelBtns>
-                  <S.CartAddBtn
+                        <S.CountBtns src={minus} alt='Botão de diminuir quantidade' />
+                     </S.Button>
+                     <S.Quantities>{count}</S.Quantities>
+                     <S.Button type='button' onClick={() => setCount((count) => count + 1)}>
+                        <S.CountBtns src={plus} alt='Botão de aumentar quantidade' />
+                     </S.Button>
+                  </S.QuantitiesBox>
+                  <S.RadioInputsDiv>
+                     {getSize(modalData.product_size).map((size, index) => {
+                        return <S.RadioInput required key={index} name='product_size' type='radio' value={size} />;
+                     })}
+                  </S.RadioInputsDiv>
+               </S.ImgAndQuantities>
+            </S.Content>
+            <S.BottomBtns>
+               <S.EditDelBtns>
+                  <S.EditBtn type='button'>
+                     <S.EditDelImgs src={edit} alt='Botão de editar' />
+                     <S.BtnText>Editar</S.BtnText>
+                  </S.EditBtn>
+                  <S.DelBtn
+                     type='button'
                      onClick={() => {
-                        let sizeNum = findSize(document.getElementsByName('product_size'));
-                        if (sizeNum != 'F') {
-                           addToCart(modalData.product_id, sizeNum);
-                           setVisible(false);
-                        } else {
-                        }
+                        deleteData(url).then(() => {
+                           window.location.reload();
+                        });
                      }}
                   >
-                     Adicionar ao carrinho
-                  </S.CartAddBtn>
-               </S.BottomBtns>
-            </S.Modal>
-         </S.ModalBg>
-      );
-   }
+                     <S.EditDelImgs src={erase} alt='Botão de deletar' />
+                     <S.BtnText>Deletar</S.BtnText>
+                  </S.DelBtn>
+               </S.EditDelBtns>
+               <S.CartAddBtn type='submit'>Adicionar ao carrinho</S.CartAddBtn>
+            </S.BottomBtns>
+         </S.Modal>
+      </Modal>
+   );
 }
 
-export default Modal;
+export default ModalProduct;

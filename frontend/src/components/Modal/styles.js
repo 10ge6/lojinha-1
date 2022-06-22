@@ -17,30 +17,26 @@ export const ModalBg = styled.div`
    background-color: #2ae89ccf;
 `;
 
-export const Modal = styled.div`
+export const Modal = styled.form`
    display: flex;
    flex-direction: column;
    justify-content: space-between;
    gap: 40px;
-   width: 75%;
-   height: 90%;
+   width: 100%;
+   height: 100%;
    padding: 50px 66px;
    border-radius: 20px;
    background-color: #fafafa;
    @media (max-height: 954px) {
-      height: 100%;
       overflow-y: scroll;
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr 1fr;
    }
    @media (max-width: 1040px) {
-      width: 95%;
       padding: 44px 36px;
    }
    @media (max-width: 768px) {
-      width: 100%;
-      height: 100%;
       border-radius: 0;
       position: fixed;
       display: grid;
@@ -74,6 +70,7 @@ export const Title = styled.h1`
    font-weight: 500;
    grid-column: 2;
    justify-self: center;
+   align-self: center;
 
    @media (max-width: 768px) {
       grid-row: 2;
@@ -89,6 +86,7 @@ export const Content = styled.div`
 
    @media (max-width: 768px) {
       flex-direction: column-reverse;
+      align-items: center;
       gap: 65px;
    }
 `;
@@ -184,6 +182,10 @@ export const ImgAndQuantities = styled.div`
    flex-direction: column;
    align-items: center;
    gap: 15px;
+   width: 348px;
+   @media (max-width: 450px) {
+      width: 80vw;
+   }
 `;
 
 export const EditBtn = styled.button`
@@ -206,16 +208,14 @@ export const EditBtn = styled.button`
 export const DelBtn = styled.button`
    display: flex;
    align-items: center;
-   font-size: 20px;
    color: #f24e1e;
    cursor: pointer;
+`;
 
-   @media (max-width: 768px) {
+export const BtnText = styled.h3`
+   font-size: 30px;
+   @media (max-width: 400px) {
       font-size: 25px;
-   }
-
-   @media (max-width: 480px) {
-      font-size: 20px;
    }
 `;
 
@@ -225,7 +225,7 @@ export const CartAddBtn = styled.button`
    background-color: #53b38d;
    color: #f8f8f8;
    font-size: 20px;
-   width: 348px;
+   width: 300px;
    cursor: pointer;
    border: solid 1px #53b38d;
 
@@ -281,26 +281,40 @@ export const RadioInputsDiv = styled.div`
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
+   width: 100%;
+   gap: 20px;
 `;
 
 export const RadioInput = styled.input`
    appearance: none;
 
-   width: 35px;
-   height: 35px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 5px;
+   min-width: 40px;
    border: solid 2px #275845;
    transition: 0.3s;
-   margin-right: -50%;
-   background-color: #f8f8f8;
    border-radius: 5px;
+   background-color: #f8f8f8;
+
+   ::before {
+      content: attr(value);
+      font-size: 15px;
+      color: #53b38d;
+   }
 
    :checked {
       border: solid 2px #53b38d;
+      background-color: #53b38d;
+   }
+
+   :checked::before {
+      color: #f8f8f8;
    }
 `;
 
 export const InputLabel = styled.label`
-   width: 25px;
    text-align: center;
    color: #53b38d;
 `;

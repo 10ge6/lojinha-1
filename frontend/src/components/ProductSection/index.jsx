@@ -22,8 +22,17 @@ export function getSize(num) {
 
 export function ProductSection() {
    const [users, setUsers] = useState([]);
-   const [visible, setVisible] = useState(false);
    const [url, setUrl] = useState(109);
+   const [modalVisible, setModalVisible] = useState(false);
+
+   const openModal = () => {
+      setModalVisible(true);
+   };
+
+   const closeModal = () => {
+      setModalVisible(false);
+   };
+
    async function getUsers() {
       const response = await fetch('http://localhost:8000/storefront');
       const data = await response.json();
@@ -49,11 +58,11 @@ export function ProductSection() {
          <S.AllProducts>
             <S.Products>Produtos</S.Products>
             <S.ProductList>
-               <Modal visible={visible} url={`http://localhost:8000/storefront/${url}`} setVisible={setVisible} />
+               <Modal visible={modalVisible} url={`http://localhost:8000/storefront/${url}`} closeModal={closeModal} />
                {users.map((user) => (
                   <S.ProductCard
                      onClick={() => {
-                        setVisible(true);
+                        openModal();
                         setUrl(user.product_id);
                      }}
                      key={user.product_id}
