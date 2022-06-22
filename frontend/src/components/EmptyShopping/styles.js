@@ -67,6 +67,10 @@ export const Text = styled.div `
         font-size: 1.375rem;
     }
 
+    a {
+        text-decoration: underline;
+    }
+
     @media (max-width: 960px) {
         display: flex;
         align-items: center;
@@ -112,7 +116,7 @@ export const image = styled.div `
 `;
 export const ContainerSize = styled.div `
     display: flex;
-    margin: -32px 0 0 2px;
+    margin: -37px 0 4px 2px;
     gap: 2px;
 `;
 export const Size = styled.div `
@@ -121,7 +125,7 @@ export const Size = styled.div `
     font-weight: 700;
     font-size: 0.75rem;
     background-color: white;
-    padding: 6px 10px;
+    padding: 8px;
     border-radius: 2px;
 `;
 export const Price = styled.div `

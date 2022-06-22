@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import { Link } from 'react-router-dom'
 import * as S from './styles' 
 import setinha from '../../assets/setinha.svg'
 import image from '../../assets/image.svg'
@@ -14,7 +15,7 @@ function EmptyShopping () {
                 <S.ContainerText>
                     <S.Text>
                         <h1>Seu carrinho está vazio :(</h1>
-                        <h2><a>Continue navegando</a> pela Lojinha e encontre produtos incríveis!</h2>
+                        <h2><Link to='/'>Continue navegando</Link> pela Lojinha e encontre produtos incríveis!</h2>
                     </S.Text>
                 </S.ContainerText>
             </S.Section>
