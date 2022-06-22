@@ -4,14 +4,14 @@ import CepShopping from '../CepShopping'
 import  ProductShopping from '../ProductShopping'
 import * as S from './styles'
 
-async function getProducts() {
-    const response = await fetch("http://localhost:8000/cart");
-    const data = await response.json();
-    return data.response;
-}
 
 function ShoppingCart () {
-    const [numberId, setnumberId] = useState() 
+    const [datasCart, setDatasCart] = useState({
+        product_id: 0,
+        product_size: 0,
+        product_qty: 0
+
+    }) 
 
     useEffect(() => {
         fetch('http://localhost:8000/cart', {
@@ -21,7 +21,10 @@ function ShoppingCart () {
             },
         })
         .then((resp) => resp.json)
-        .then((data) => {})
+        .then((data) => {
+            console.log(data)
+            setDatasCart(data)
+        })
         .catch((err) => console.log(err))
 
     },[])
