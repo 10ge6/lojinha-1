@@ -125,3 +125,11 @@ localhost:3000/cart/*(id)*
 }
 ```
 
+# Pesquisa
+
+localhost:3000/storefront?query= (por nome de produto)
+
+localhost:3000/storefront?category= (por categoria)
+
+localhost:3000/storefront?query=&category= **ou** localhost:3000/storefront?category=&query= (ambos)
+
