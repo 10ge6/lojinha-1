@@ -11,6 +11,14 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
+export const scrollLock = (bool) => {
+   if (bool) {
+      document.body.style.overflow = 'hidden';
+   } else {
+      document.body.style.overflow = '';
+   }
+};
+
 function ModalProduct({ visible, url, closeModal }) {
    const [modalData, setModalData] = useState([]);
    const [count, setCount] = useState(1);
@@ -63,7 +71,8 @@ function ModalProduct({ visible, url, closeModal }) {
 
    useEffect(() => {
       getData().then((data) => setModalData(data));
-   }, [url]);
+      scrollLock(visible);
+   }, [url, visible]);
 
    return (
       <Modal
