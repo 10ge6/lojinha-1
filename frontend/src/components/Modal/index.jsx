@@ -24,7 +24,7 @@ function ModalProduct({ visible, url, closeModal }) {
    const [count, setCount] = useState(1);
 
    const getData = async () => {
-      const response = await fetch(url);
+      const response = await fetch(`http://localhost:8000/storefront/${url}`);
       const data = await response.json();
       return data.response[0];
    };

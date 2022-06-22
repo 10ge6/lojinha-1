@@ -20,21 +20,11 @@ export function getSize(num) {
    return arrSizes;
 }
 
-export function ProductSection() {
+export function ProductList({ urlFetch, setUrl, openModal }) {
    const [users, setUsers] = useState([]);
-   const [url, setUrl] = useState(109);
-   const [modalVisible, setModalVisible] = useState(false);
-
-   const openModal = () => {
-      setModalVisible(true);
-   };
-
-   const closeModal = () => {
-      setModalVisible(false);
-   };
 
    async function getUsers() {
-      const response = await fetch('http://localhost:8000/storefront');
+      const response = await fetch(`http://localhost:8000/storefront/${urlFetch}`);
       const data = await response.json();
       return data.response;
    }
@@ -54,40 +44,58 @@ export function ProductSection() {
    }, []);
 
    return (
+      <S.ProductList>
+         {users.map((user) => (
+            <S.ProductCard
+               onClick={() => {
+                  openModal();
+                  setUrl(user.product_id);
+               }}
+               key={user.product_id}
+            >
+               <S.ProductImg
+                  src={user.product_pic}
+                  onError={({ currentTarget }) => {
+                     currentTarget.src =
+                        'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
+                  }}
+                  alt='Imagem do produto'
+               />
+               <S.ProductSizeDiv>
+                  {getSize(user.product_size).map((size, index) => {
+                     return <S.ProductSize key={index}>{size}</S.ProductSize>;
+                  })}
+               </S.ProductSizeDiv>
+
+               {textPrice(user.product_price)}
+               <S.ProductTitle>{user.product_title}</S.ProductTitle>
+               <S.ProductBrand>{user.product_brand}</S.ProductBrand>
+            </S.ProductCard>
+         ))}
+      </S.ProductList>
+   );
+}
+
+function ProductSection() {
+   const [url, setUrl] = useState();
+   const [modalVisible, setModalVisible] = useState(false);
+
+   const openModal = () => {
+      setModalVisible(true);
+   };
+
+   const closeModal = () => {
+      setModalVisible(false);
+   };
+   return (
       <Section>
          <S.AllProducts>
             <S.Products>Produtos</S.Products>
-            <Modal visible={modalVisible} url={`http://localhost:8000/storefront/${url}`} closeModal={closeModal} />
-            <S.ProductList>
-               {users.map((user) => (
-                  <S.ProductCard
-                     onClick={() => {
-                        openModal();
-                        setUrl(user.product_id);
-                     }}
-                     key={user.product_id}
-                  >
-                     <S.ProductImg
-                        src={user.product_pic}
-                        onError={({ currentTarget }) => {
-                           currentTarget.src =
-                              'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
-                        }}
-                        alt='Imagem do produto'
-                     />
-                     <S.ProductSizeDiv>
-                        {getSize(user.product_size).map((size, index) => {
-                           return <S.ProductSize key={index}>{size}</S.ProductSize>;
-                        })}
-                     </S.ProductSizeDiv>
-
-                     {textPrice(user.product_price)}
-                     <S.ProductTitle>{user.product_title}</S.ProductTitle>
-                     <S.ProductBrand>{user.product_brand}</S.ProductBrand>
-                  </S.ProductCard>
-               ))}
-            </S.ProductList>
+            <Modal visible={modalVisible} url={url} closeModal={closeModal} />
+            <ProductList urlFetch={''} setUrl={setUrl} openModal={openModal} />
          </S.AllProducts>
       </Section>
    );
 }
+
+export default ProductSection;
