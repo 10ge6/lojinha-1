@@ -28,12 +28,12 @@ exports.createItem = (req, res) => {
     });
 }
 
-// retornando todos os itens da loja
+// retornando itens da loja (default todos, ?query= / ?category=)
 exports.readStorefront = (req, res) => {
     sql.getConnection((error, conn) => {
         if(error) {return res.status(500).send({error: error})}
         conn.query(
-            'SELECT * FROM storefront',
+            'SELECT * FROM `storefront` WHERE `product_title` LIKE \'%' + [req.query.query] + '%\' AND `product_category` LIKE \'%' + [req.query.category] + '%\'',
             (error, response) => {
                 conn.release();
 
