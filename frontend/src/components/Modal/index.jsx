@@ -87,6 +87,7 @@ function ModalProduct({ visible, url, closeModal }) {
                e.preventDefault();
                addToCart(modalData.product_id, findSize(document.getElementsByName('product_size')));
                closeModal();
+               setCount(1);
             }}
          >
             <S.TopSideModal>
