@@ -1,9 +1,10 @@
 import React from "react";
+import EmptyShopping from "../components/EmptyShopping";
 
 function Shopping() {
     return ( 
         <div>
-        <p>Carrinho</p>
+        <EmptyShopping/>
         </div>
     );
 }
