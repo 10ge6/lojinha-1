@@ -28,18 +28,24 @@ exports.createItem = (req, res) => {
     });
 }
 
-// retornando todos os itens da loja
+// retornando itens da loja (default todos, ?query= / ?category=)
 exports.readStorefront = (req, res) => {
     sql.getConnection((error, conn) => {
         if(error) {return res.status(500).send({error: error})}
         conn.query(
-            'SELECT * FROM storefront',
+            'SELECT * FROM `storefront` WHERE `product_title` LIKE \'%' + [req.query.query] + '%\' AND `product_category` LIKE \'%' + [req.query.category] + '%\'',
             (error, response) => {
                 conn.release();
 
                 if(error) {
                     return res.status(500).send({
                         error: error
+                    });
+                }
+
+                if(response.length == 0){
+                    return res.status(404).send({
+                        error: "Nao encontrado"
                     });
                 }
 
@@ -117,6 +123,8 @@ exports.deleteItem = (req, res) => {
         conn.query(
             'DELETE FROM storefront WHERE product_id = ?',
             [req.params.product_id],
+            // 'DELETE FROM cart WHERE product_id = ?;',       // assegurando que, caso o item esteja tambem no carrinho, seja deletado de ambas tables
+            // [req.params.product_id],
             (error, response) => {
                 conn.release();
 
@@ -136,6 +144,22 @@ exports.deleteItem = (req, res) => {
                     message: 'Item deletado',
                     response: response
                 });
+            }
+        );
+    });
+    sql.getConnection((error, conn) => {
+        if(error) {return res.status(500).send({error: error})}
+        conn.query(
+            'DELETE FROM cart WHERE product_id = ?;',       // assegurando que, caso o item esteja tambem no carrinho, seja deletado de ambas tables
+            [req.params.product_id],                        // nao setei multipleStatements: true e fiz de vez pq nao sei testar pra sql injection lol
+            (error, response) => {
+                conn.release();
+
+                if(error) {
+                    return res.status(500).send({
+                        error: error
+                    });
+                }
             }
         );
     });
