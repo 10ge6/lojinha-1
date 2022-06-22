@@ -43,6 +43,12 @@ exports.readStorefront = (req, res) => {
                     });
                 }
 
+                if(response.length == 0){
+                    return res.status(404).send({
+                        error: "Nao encontrado"
+                    });
+                }
+
                 res.status(200).send({
                     message: 'Exibindo todos os itens',
                     response: response
