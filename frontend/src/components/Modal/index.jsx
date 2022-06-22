@@ -24,16 +24,16 @@ function ModalProduct({ visible, url, closeModal }) {
    const [count, setCount] = useState(1);
 
    const getData = async () => {
-      const response = await fetch(`http://localhost:8000/storefront/${url}`);
+      const response = await fetch(`http://localhost:8000/storefront/${url}`).catch((error) => console.log(error));
       const data = await response.json();
       return data.response[0];
    };
 
-   const deleteData = async (url) => {
-      const response = await fetch(url, {
+   const deleteData = async (id) => {
+      const response = await fetch(`http://localhost:8000/storefront/${id}`, {
          method: 'DELETE',
          headers: { 'Content-Type': 'application/json' },
-      });
+      }).catch((error) => console.log(error));
    };
 
    const findSize = (arr) => {
@@ -66,11 +66,13 @@ function ModalProduct({ visible, url, closeModal }) {
          method: 'POST',
          headers: { 'Content-Type': 'application/json' },
          body: JSON.stringify({ product_id: id, product_size: size, product_qty: count }),
-      });
+      }).catch((error) => console.log(error));
    };
 
    useEffect(() => {
-      getData().then((data) => setModalData(data));
+      getData()
+         .then((data) => setModalData(data))
+         .catch((error) => console.error(error));
       scrollLock(visible);
    }, [url, visible]);
 
@@ -165,9 +167,11 @@ function ModalProduct({ visible, url, closeModal }) {
                   <S.DelBtn
                      type='button'
                      onClick={() => {
-                        deleteData(url).then(() => {
-                           window.location.reload();
-                        });
+                        deleteData(modalData.product_id)
+                           .then(() => {
+                              window.location.reload();
+                           })
+                           .catch((error) => console.log(error));
                      }}
                   >
                      <S.EditDelImgs src={erase} alt='Botão de deletar' />
