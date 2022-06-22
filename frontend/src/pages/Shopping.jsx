@@ -1,9 +1,10 @@
 import React from "react";
+import Shopping from "../components/Shopping";
 
 function Shopping() {
     return ( 
         <div>
-        <p>Carrinho</p>
+        <Shopping/>
         </div>
     );
 }
