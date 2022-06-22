@@ -6,12 +6,7 @@ import * as S from './styles'
 
 
 function ShoppingCart () {
-    const [datasCart, setDatasCart] = useState({
-        product_id: 0,
-        product_size: 0,
-        product_qty: 0
-
-    }) 
+    const [datasCart, setDatasCart] = useState([]) 
 
     useEffect(() => {
         fetch('http://localhost:8000/cart', {
@@ -20,10 +15,10 @@ function ShoppingCart () {
                 'Content-Type': 'application/json'
             },
         })
-        .then((resp) => resp.json)
+        .then((resp) => resp.json())
         .then((data) => {
             console.log(data)
-            setDatasCart(data)
+            setDatasCart(data.response)
         })
         .catch((err) => console.log(err))
 
@@ -34,11 +29,12 @@ function ShoppingCart () {
             <S.Product>
                 <CepShopping/>
                 <S.Line></S.Line>
-                <ProductShopping/>
+                {datasCart.map((dataCart) => (
+                    <ProductShopping numberId={dataCart.product_id} size={dataCart.product_size} amount={dataCart.product_qty}/>
+                ))}
             </S.Product>
             <S.Order>
-                <h2>Resumo do pedido</h2>
-                <div></div>
+                <h2>Resumo do pedido</h2> 
             </S.Order>
         </S.Shopping>
     )

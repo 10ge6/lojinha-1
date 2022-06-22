@@ -1,9 +1,10 @@
 import React from "react"
 import * as S from './styles'
 
-function ProductShopping(image, color, size, brand, amount, price, handleRemove) {
+function ProductShopping({numberId, size, amount}) {
     return (
-        <div></div>
+        <div>
+        </div>
     )    
 }
 
