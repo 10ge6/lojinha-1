@@ -13,9 +13,10 @@ export const ProductList = styled.div`
    }
 `;
 
-export const ProductCard = styled.a`
+export const ProductCard = styled.button`
    display: flex;
    flex-direction: column;
+   align-items: flex-start;
    gap: 9px;
    cursor: pointer;
 `;
@@ -23,7 +24,7 @@ export const ProductCard = styled.a`
 export const ProductImg = styled.img`
    height: 300px;
    width: 100%;
-   margin-bottom: -40px;
+   margin-bottom: -42px;
    object-fit: cover;
    @media (max-width: 744px) {
       height: 50vw;

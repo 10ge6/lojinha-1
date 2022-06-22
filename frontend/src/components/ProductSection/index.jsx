@@ -57,8 +57,8 @@ export function ProductSection() {
       <Section>
          <S.AllProducts>
             <S.Products>Produtos</S.Products>
+            <Modal visible={modalVisible} url={`http://localhost:8000/storefront/${url}`} closeModal={closeModal} />
             <S.ProductList>
-               <Modal visible={modalVisible} url={`http://localhost:8000/storefront/${url}`} closeModal={closeModal} />
                {users.map((user) => (
                   <S.ProductCard
                      onClick={() => {
@@ -67,20 +67,19 @@ export function ProductSection() {
                      }}
                      key={user.product_id}
                   >
-                     <div>
-                        <S.ProductImg
-                           src={user.product_pic}
-                           onError={({ currentTarget }) => {
-                              currentTarget.src = 'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
-                           }}
-                           alt='Imagem do produto'
-                        />
-                        <S.ProductSizeDiv>
-                           {getSize(user.product_size).map((size, index) => {
-                              return <S.ProductSize key={index}>{size}</S.ProductSize>;
-                           })}
-                        </S.ProductSizeDiv>
-                     </div>
+                     <S.ProductImg
+                        src={user.product_pic}
+                        onError={({ currentTarget }) => {
+                           currentTarget.src =
+                              'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
+                        }}
+                        alt='Imagem do produto'
+                     />
+                     <S.ProductSizeDiv>
+                        {getSize(user.product_size).map((size, index) => {
+                           return <S.ProductSize key={index}>{size}</S.ProductSize>;
+                        })}
+                     </S.ProductSizeDiv>
 
                      {textPrice(user.product_price)}
                      <S.ProductTitle>{user.product_title}</S.ProductTitle>
