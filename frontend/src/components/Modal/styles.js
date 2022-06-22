@@ -10,10 +10,8 @@ export const ModalBg = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   right: 0;
    left: 0;
    top: 0;
-   bottom: 0;
    width: 100%;
    height: 100%;
    background-color: #2ae89ccf;
@@ -24,7 +22,7 @@ export const Modal = styled.div`
    flex-direction: column;
    justify-content: space-between;
    gap: 40px;
-   width: 65%;
+   width: 75%;
    height: 90%;
    padding: 50px 66px;
    border-radius: 20px;
@@ -36,9 +34,6 @@ export const Modal = styled.div`
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr 1fr;
    }
-   @media (max-width: 1540px) {
-      width: 80%;
-   }
    @media (max-width: 1040px) {
       width: 95%;
       padding: 44px 36px;
@@ -46,14 +41,13 @@ export const Modal = styled.div`
    @media (max-width: 768px) {
       width: 100%;
       height: 100%;
+      border-radius: 0;
       position: fixed;
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       overflow-y: scroll;
       gap: 60px;
-   }
-   @media (max-width: 400px) {
       padding: 20px;
    }
 `;
@@ -75,7 +69,7 @@ export const CloseBtn = styled.button`
 export const Title = styled.h1`
    font-family: 'Montserrat';
    text-align: center;
-   font-size: 36px;
+   font-size: 24px;
    color: #252822;
    font-weight: 500;
    grid-column: 2;
@@ -83,9 +77,6 @@ export const Title = styled.h1`
 
    @media (max-width: 768px) {
       grid-row: 2;
-   }
-
-   @media (max-width: 500px) {
       font-size: 25px;
    }
 `;
@@ -106,15 +97,13 @@ export const Categories = styled.div`
    display: flex;
    flex-direction: column;
    gap: 10px;
-
-   @media (max-width: 1024px) {
-      justify-content: space-between;
-   }
+   justify-content: space-between;
 
    @media (max-width: 768px) {
       align-items: center;
       justify-content: center;
       gap: 60px;
+      text-align: center;
    }
 `;
 
@@ -132,11 +121,7 @@ export const CategoryTitle = styled.h2`
    font-weight: 600;
    font-size: 30px;
 
-   @media (max-width: 1140px) {
-      font-size: 16px;
-   }
-
-   @media (max-width: 1024px) {
+   @media (max-width: 1300px) {
       font-size: 22px;
    }
 `;
@@ -146,27 +131,11 @@ export const CategoryContent = styled.p`
    font-size: 20px;
    font-family: 'Montserrat';
 
-   @media (max-width: 1736px) {
-      font-size: 18px;
-   }
-
    @media (max-width: 1300px) {
       font-size: 14px;
    }
 
-   @media (max-width: 1132px) {
-      font-size: 17px;
-   }
-
-   @media (max-width: 854px) {
-      font-size: 14px;
-   }
-
    @media (max-width: 768px) {
-      text-align: center;
-   }
-
-   @media (max-width: 450px) {
       font-size: 16px;
    }
 `;
@@ -184,8 +153,8 @@ export const Img = styled.img`
    border-radius: 2px;
 
    @media (max-width: 450px) {
-      width: 250px;
-      height: 250px;
+      width: 80vw;
+      height: 80vw;
    }
 `;
 
@@ -230,7 +199,7 @@ export const EditBtn = styled.button`
    }
 
    @media (max-width: 480px) {
-      font-size: 16px;
+      font-size: 20px;
    }
 `;
 
@@ -246,7 +215,7 @@ export const DelBtn = styled.button`
    }
 
    @media (max-width: 480px) {
-      font-size: 16px;
+      font-size: 20px;
    }
 `;
 
@@ -256,9 +225,7 @@ export const CartAddBtn = styled.button`
    background-color: #53b38d;
    color: #f8f8f8;
    font-size: 20px;
-   width: 18vw;
-   min-width: 300px;
-   max-width: 348px;
+   width: 348px;
    cursor: pointer;
    border: solid 1px #53b38d;
 
@@ -286,6 +253,7 @@ export const EditDelBtns = styled.div`
 export const BottomBtns = styled.div`
    display: flex;
    justify-content: space-between;
+   gap: 25px;
    margin-top: 20px;
 
    @media (max-width: 768px) {
@@ -298,16 +266,8 @@ export const BottomBtns = styled.div`
 export const EditDelImgs = styled.img`
    height: 45px;
 
-   @media (max-width: 1230px) {
-      height: 30px;
-   }
-
-   @media (max-width: 768px) {
-      height: 45px;
-   }
-
    @media (max-width: 480px) {
-      height: 20px;
+      height: 27px;
    }
 `;
 
@@ -315,7 +275,6 @@ export const RadioInputDiv = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
-   margin-left: -2px;
 `;
 
 export const RadioInputsDiv = styled.div`
@@ -356,9 +315,4 @@ export const CloseImg = styled.img`
    @media (max-width: 450px) {
       width: 20px;
    }
-`;
-
-export const Message = styled.h3`
-   font-weight: 500;
-   color: red;
 `;

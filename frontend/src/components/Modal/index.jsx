@@ -73,7 +73,6 @@ function Modal({ visible, url, setVisible }) {
                      onClick={() => {
                         setCount(1);
                         setVisible(false);
-                        setMessage('');
                      }}
                   >
                      <S.CloseImg src={closeBtn} alt='Botão de fechar modal' />
@@ -140,7 +139,6 @@ function Modal({ visible, url, setVisible }) {
                            );
                         })}
                      </S.RadioInputsDiv>
-                     <S.Message>{message}</S.Message>
                   </S.ImgAndQuantities>
                </S.Content>
                <S.BottomBtns>
@@ -167,9 +165,7 @@ function Modal({ visible, url, setVisible }) {
                         if (sizeNum != 'F') {
                            addToCart(modalData.product_id, sizeNum);
                            setVisible(false);
-                           setMessage('');
                         } else {
-                           setMessage('Selecione um tamanho');
                         }
                      }}
                   >
