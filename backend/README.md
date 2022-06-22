@@ -22,7 +22,7 @@ product_size = 0 indica tamanho único.
 
 ## cart
 
-Contém product_id e product_size. Imagem, nome, cor, marca e preço então recebidos por outro pedido através do id.
+Contém product_id e product_size. Imagem, nome, cor, marca e preço então recebidos por outro pedido (para storefront) através do id.
 
 # Exemplos de uso
 
@@ -74,7 +74,7 @@ localhost:3000/storefront/*(id)*
 
 ### DELETE
 
-localhost:3000/storefront/*(id)*
+localhost:3000/storefront/*(id)* (caso o item também se encontre no cart, será deletado de ambas tables)
 
 ## cart
 
@@ -125,3 +125,10 @@ localhost:3000/cart/*(id)*
 }
 ```
 
+# Pesquisa
+
+localhost:3000/storefront?query= (por nome de produto)
+
+localhost:3000/storefront?category= (por categoria)
+
+localhost:3000/storefront?query=&category= **ou** localhost:3000/storefront?category=&query= (ambos)
