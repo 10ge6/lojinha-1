@@ -2,14 +2,18 @@ import styled from 'styled-components'
 
 export const Shopping = styled.div `
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 120px;
 `;
 export const Product = styled.div `
-
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 30px;
 `;
 
 export const Order = styled.div `
-
+    width: 40%;
 `;
 
 

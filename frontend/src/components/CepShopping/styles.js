@@ -3,12 +3,24 @@ import styled from "styled-components"
 export const Container = styled.div `
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 50px;
 `;
 
 export const Title = styled.div `
     display: flex;
+    align-items: center;
     gap: 6px;
+
+    .setinha {
+        width: 6px;
+        height: 8px;
+    }
+
+    .map {
+        width: 27px;
+        height: 27px;
+    }
 
     h3 {
         color: #275845;
@@ -42,6 +54,6 @@ export const Source = styled.div `
     button {
         background: transparent;
         color: #53B38D;
-        margin: -30px;
+        margin: -55px;
     }
 `;

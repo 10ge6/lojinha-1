@@ -1,7 +1,7 @@
 import React from "react"
-import styles from './styles'
+import * as S from './styles'
 
-function ProductShopping() {
+function ProductShopping(image, color, size, brand, amount, price, handleRemove) {
     return (
         <div></div>
     )    
