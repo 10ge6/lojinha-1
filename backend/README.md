@@ -22,7 +22,7 @@ product_size = 0 indica tamanho único.
 
 ## cart
 
-Contém product_id e product_size. Imagem, nome, cor, marca e preço então recebidos por outro pedido através do id.
+Contém product_id e product_size. Imagem, nome, cor, marca e preço então recebidos por outro pedido (para storefront) através do id.
 
 # Exemplos de uso
 
@@ -30,15 +30,15 @@ Contém product_id e product_size. Imagem, nome, cor, marca e preço então rece
 
 ### GET
 
-localhost:3000/storefront
+localhost:8000/storefront
 
 **ou**
 
-localhost:3000/storefront/*(id)*
+localhost:8000/storefront/*(id)*
 
 ### POST
 
-localhost:3000/storefront
+localhost:8000/storefront
 
 ```
 {
@@ -56,7 +56,7 @@ localhost:3000/storefront
 
 ### PATCH
 
-localhost:3000/storefront/*(id)*
+localhost:8000/storefront/*(id)*
 
 ```
 {
@@ -74,17 +74,17 @@ localhost:3000/storefront/*(id)*
 
 ### DELETE
 
-localhost:3000/storefront/*(id)*
+localhost:8000/storefront/*(id)* (caso o item também se encontre no cart, será deletado de ambas tables)
 
 ## cart
 
 ### GET
 
-localhost:3000/cart
+localhost:8000/cart
 
 **ou**
 
-localhost:3000/cart/*(id)*
+localhost:8000/cart/*(id)*
 
 ```
 {
@@ -94,7 +94,7 @@ localhost:3000/cart/*(id)*
 
 ### POST
 
-localhost:3000/cart
+localhost:8000/cart
 
 ```
 {
@@ -106,7 +106,7 @@ localhost:3000/cart
 
 ### PATCH
 
-localhost:3000/cart/*(id)*
+localhost:8000/cart/*(id)*
 
 ```
 {
@@ -117,7 +117,7 @@ localhost:3000/cart/*(id)*
 
 ### DELETE
 
-localhost:3000/cart/*(id)*
+localhost:8000/cart/*(id)*
 
 ```
 {
@@ -127,9 +127,8 @@ localhost:3000/cart/*(id)*
 
 # Pesquisa
 
-localhost:3000/storefront?query= (por nome de produto)
+localhost:8000/storefront?query= (por nome de produto)
 
-localhost:3000/storefront?category= (por categoria)
+localhost:8000/storefront?category= (por categoria)
 
-localhost:3000/storefront?query=&category= **ou** localhost:3000/storefront?category=&query= (ambos)
-
+localhost:8000/storefront?query=&category= **ou** localhost:8000/storefront?category=&query= (ambos)
