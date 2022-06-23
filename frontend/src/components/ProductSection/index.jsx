@@ -24,7 +24,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
    const [users, setUsers] = useState([]);
 
    async function getUsers() {
-      const response = await fetch(`http://localhost:8000/storefront/${urlFetch}`);
+      const response = await fetch(`http://localhost:8000/storefront${urlFetch}`);
       const data = await response.json();
       return data.response;
    }
@@ -77,7 +77,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
 }
 
 function ProductSection() {
-   const [url, setUrl] = useState();
+   const [url, setUrl] = useState('');
    const [modalVisible, setModalVisible] = useState(false);
 
    const openModal = () => {
