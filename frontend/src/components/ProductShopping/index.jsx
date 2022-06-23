@@ -42,15 +42,15 @@ function ProductShopping({numberId, size, amount}) {
         }   
     }
 
-    function getPrice(priceItem) {
+    
+    /*function getPrice(priceItem) {
         useEffect(() => {        
             setPrice(priceItem * count)
             console.log(price)          
         
         }, [])
-    }
+    }*/
 
-   
 
     return (
         <div>
@@ -65,11 +65,11 @@ function ProductShopping({numberId, size, amount}) {
                                     <p>Vendido por <span>RickRoll</span></p>
                                 </S.Title>
                             </S.InfContainer>
-                            <S.InfContainer>
+                            <S.InfContainer2>
                                 <p>Cor: {product.product_color}</p>
                                 <p>Tamanho: {itemSize}</p>
                                 <p>Marca: {product.product_brand}</p>
-                            </S.InfContainer>   
+                            </S.InfContainer2>   
                         </S.Informations>
                     </S.Product>
                     <S.Options>
@@ -78,13 +78,15 @@ function ProductShopping({numberId, size, amount}) {
                             <p>{count}</p>
                             <button onClick={() => setCount(count + 1)}>+</button>
                         </S.Count>
-                        <h2>R$ {getPrice(product.product_price)}</h2>
-                        <S.Button><button>Deletar</button></S.Button>
+                        <h2>R$ </h2>
+                        <S.Button><button><p>Deletar</p></button></S.Button>
                     </S.Options>
                 </S.Container>  
             ))}
         </div>
     )    
 }
+
+/*{getPrice(product.product_price)}*/
 
 export default ProductShopping

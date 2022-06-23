@@ -2,6 +2,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import CepShopping from '../CepShopping'
 import  ProductShopping from '../ProductShopping'
+import SummaryOrder from "../SummaryOrder"
 import * as S from './styles'
 
 
@@ -33,7 +34,7 @@ function ShoppingCart () {
                 ))}
             </S.Product>
             <S.Order>
-                <h2>Resumo do pedido</h2> 
+                <SummaryOrder/> 
             </S.Order>
         </S.Shopping>
     )

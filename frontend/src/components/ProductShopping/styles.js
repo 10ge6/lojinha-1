@@ -3,6 +3,11 @@ import styled from "styled-components"
 export const Container = styled.div `
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 960px) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 export const Product = styled.div `
@@ -22,6 +27,9 @@ export const ProductImage = styled.div `
 `;
 
 export const Title = styled.div `
+    display: flex;
+    flex-direction: column;
+
     h1 {
         font-weight: 500;
         font-size: 1.125rem;
@@ -32,6 +40,17 @@ export const Title = styled.div `
     }
     span {
         color: #53B38D;
+    }
+
+    @media (max-width: 375px) {
+        h1 {
+            font-size: 0.875rem;
+        }
+        
+        p {
+            font-size: 0.469rem;
+        }
+
     }
 
 `;
@@ -53,7 +72,19 @@ export const Informations = styled.div `
 `;
 
 export const InfContainer = styled.div ``;
+export const InfContainer2 = styled.div `
+    display: flex;
+    flex-direction: column;
 
+    @media (max-width: 375px) {
+        display: flex;
+        justify-content: space-around;
+
+        p {
+            font-size: 0.719rem;
+        }
+    }
+`;
 
 export const Options = styled.div `
     display: flex;
@@ -64,6 +95,15 @@ export const Options = styled.div `
         font-weight: 500;
         font-size: 1.125rem;
         color: #53B38D;
+    }
+
+    @media (max-width: 375px) {
+        display: flex;
+        flex-direction: row;
+
+        h2 {
+            font-size: 1rem;
+        }
     }
 
 `;
@@ -85,8 +125,12 @@ export const Count = styled.div `
 
 export const Button = styled.div `
     background: transparent;
-    text-decoration: underline;
-    color: #F24E1E;
-    font-weight: 600;
-    font-size: 0.875rem;
+    cursor: pointer;
+    
+    p{
+        text-decoration: underline;
+        color: #F24E1E;
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
 `;
