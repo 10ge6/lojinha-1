@@ -25,19 +25,19 @@ function ProductShopping({numberId, size, amount}) {
 
 
     function getSize(number={size}) {
-        let sSize = ""
         const arrExNum = [32, 16, 8, 4, 2, 1];
         const arrExSize = ["XG", "GG", "G", "M", "P", "PP"];
-        for (let i=0; i<7; i++) {
-            let numberSize = number
-            let aux = numberSize.size
-            if (aux == arrExNum[i]) {
-                sSize == arrExSize[i]
-                setItemSize(sSize)
-            } else {
-                setItemSize("Único")
+        let numberSize = number
+        let aux = numberSize.size
+        if(aux != 0) {
+            for (let i=0; i<7; i++) {
+                if (aux == arrExNum[i]) {
+                    setItemSize(arrExSize[i])
+                } 
             }
-        }    
+        } else {
+            setItemSize("Único")
+        }   
     }
 
 
