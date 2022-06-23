@@ -1,5 +1,7 @@
 import React from "react"
+import {Section} from "../../styles/Global"
 import { useState, useEffect } from "react"
+import setinha from '../../assets/setinha.svg'
 import CepShopping from '../CepShopping'
 import  ProductShopping from '../ProductShopping'
 import SummaryOrder from "../SummaryOrder"
@@ -25,18 +27,27 @@ function ShoppingCart () {
     },[])
 
     return (
-        <S.Shopping>
-            <S.Product>
-                <CepShopping/>
-                <S.Line></S.Line>
-                {datasCart.map((dataCart) => (
-                    <ProductShopping numberId={dataCart.product_id} size={dataCart.product_size} amount={dataCart.product_qty}/>
-                ))}
-            </S.Product>
-            <S.Order>
-                <SummaryOrder/> 
-            </S.Order>
-        </S.Shopping>
+        <Section>
+            <S.ContainerAll>
+                <S.Title>
+                    <img className="setinha" src={setinha}/>
+                    <h3>Carrinho</h3>
+                </S.Title>
+                <S.Shopping>
+                    <S.Product>
+                        <CepShopping/>
+                        <S.Line></S.Line>
+                        {datasCart.map((dataCart) => (
+                            <ProductShopping numberId={dataCart.product_id} size={dataCart.product_size} amount={dataCart.product_qty}/>
+                        ))}
+                    </S.Product>
+                    <S.Order>
+                        <SummaryOrder/> 
+                    </S.Order>
+                </S.Shopping>
+            </S.ContainerAll>
+        </Section>
+        
     )
 }
 

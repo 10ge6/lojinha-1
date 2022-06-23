@@ -12,20 +12,9 @@ export const Title = styled.div `
     align-items: center;
     gap: 6px;
 
-    .setinha {
-        width: 6px;
-        height: 8px;
-    }
-
     .map {
         width: 27px;
         height: 27px;
-    }
-
-    h3 {
-        color: #275845;
-        font-weight: 600;
-        font-size: 1.375rem;
     }
     
     h2 {

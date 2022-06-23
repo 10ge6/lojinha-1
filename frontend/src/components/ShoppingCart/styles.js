@@ -1,9 +1,15 @@
 import styled from 'styled-components'
 
+export const ContainerAll = styled.div `
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 90px 0 90px 0;
+`;
+
 export const Shopping = styled.div `
     display: flex;
-    justify-content: center;
-    gap: 120px;
+    gap: 160px;
 
     @media (max-width: 960px) {
         display: flex;
@@ -40,5 +46,26 @@ export const Line = styled.div `
     @media (max-width: 960px) {
         width: 70%;
         align-self: center;
+    }
+`;
+
+export const Title = styled.div `
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .setinha {
+        width: 6px;
+        height: 8px;
+    }
+
+    h3 {
+        color: #275845;
+        font-weight: 600;
+        font-size: 1.375rem;
+    }
+
+    @media (max-width: 960px) {
+        justify-content: center;
     }
 `;

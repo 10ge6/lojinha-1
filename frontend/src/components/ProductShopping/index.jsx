@@ -42,15 +42,11 @@ function ProductShopping({numberId, size, amount}) {
             setItemSize("Único")
         }   
     }
-
     
-    /*function getPrice(priceItem) {
-        useEffect(() => {        
-            setPrice(priceItem * count)
-            console.log(price)          
-        
-        }, [])
-    }*/
+    function getPrice(priceItem, count) {       
+        setPrice(priceItem * count)
+        console.log(price)          
+    }
 
     function sizeProduct(id, itemSize) {
         const arrExNum = [32, 16, 8, 4, 2, 1];
@@ -112,7 +108,7 @@ function ProductShopping({numberId, size, amount}) {
                             <p>{count}</p>
                             <button onClick={() => setCount((count) => count + 1)}>+</button>
                         </S.Count>
-                        <h2>R$ </h2>
+                        <h2>{(product.product_price/ 100).toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</h2>
                         <S.Button><button onClick={() => sizeProduct(product.product_id, itemSize)}><p>Deletar</p></button></S.Button>
                     </S.Options>
                 </S.Container>  
@@ -121,7 +117,7 @@ function ProductShopping({numberId, size, amount}) {
     )    
 }
 
-/*{getPrice(product.product_price)}*/
+
 
 export default ProductShopping
 

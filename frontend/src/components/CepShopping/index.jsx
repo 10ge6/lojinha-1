@@ -1,15 +1,10 @@
 import React from "react"
-import setinha from '../../assets/setinha.svg'
 import map from '../../assets/map.svg'
 import * as S from './styles'
 
 function CepShopping(){
     return(
         <S.Container>
-            <S.Title>
-                <img className="setinha" src={setinha}/>
-                <h3>Carrinho</h3>
-            </S.Title>
             <S.Cep>
                 <S.Title>
                     <img className="map" src={map}/>

@@ -109,6 +109,7 @@ export const Options = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: flex-end;
 
     h2 {
         font-weight: 500;

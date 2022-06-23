@@ -18,7 +18,7 @@ export const Summary = styled.div `
         }
     }
 
-    @media (max-width:375px ) {
+    @media (max-width:560px ) {
         h2 {
             font-size: 1.5rem;
         }
@@ -35,7 +35,7 @@ export const Line = styled.div `
     }
 `;
 
-export const Informations = styled.div `
+export const Informations2 = styled.div `
     display: flex;
     justify-content: space-between;
 
@@ -69,7 +69,7 @@ export const Total = styled.div `
     }
 `;
 
-export const Button = styled.div `
+export const Button2 = styled.div `
     display: flex;
     justify-content: center;
     width: 100%;
@@ -79,25 +79,28 @@ export const Button = styled.div `
         color: white;
         font-size: 1.25rem;
         box-sizing: border-box;
-        padding: 10px 100px;
+        padding: 10px 80px;
         border-radius: 5px;
+        cursor: pointer;
     }
 
-    @media (max-width: 528px ) {
-       
+    @media (max-width: 587px ) {
         button {
             width: 100%;
             font-size: 1rem;
         } 
     }
 
-    @media (max-width: 479px ) {
-       
+   
+   @media (max-width: 469px ) {
        button {
-           padding: 10px 60px;
-           font-size: 1rem;
+        padding: 10px 60px;
        } 
    }
-   
-    
+
+   @media (max-width: 406px ) {
+       button {
+        padding: 10px 50px;
+       } 
+   }
 `;
