@@ -54,10 +54,21 @@ export const Informations = styled.div `
 
 export const InfContainer = styled.div ``;
 
-export const Color = styled.div ``;
 
-export const Brand = styled.div ``;
+export const Options = styled.div `
+`;
 
-export const Size = styled.div ``;
+export const Count = styled.div `
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #53B38D;
+    border-radius: 4px;
+    width: 48px;
+    height: 23px;
 
-export const Options = styled.div ``;
+    button {
+        background: transparent;
+        cursor: pointer;
+    }
+`;

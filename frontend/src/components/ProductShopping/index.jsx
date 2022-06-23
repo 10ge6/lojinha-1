@@ -6,6 +6,8 @@ function ProductShopping({numberId, size, amount}) {
 
     const [products, setProducts] = useState([])
     const [itemSize, setItemSize] = useState("")
+    const [count, setCount] = useState(amount)
+
 
     useEffect(() => {
         fetch(`http://localhost:8000/storefront/${numberId}`, {
@@ -27,11 +29,10 @@ function ProductShopping({numberId, size, amount}) {
     function getSize(number={size}) {
         const arrExNum = [32, 16, 8, 4, 2, 1];
         const arrExSize = ["XG", "GG", "G", "M", "P", "PP"];
-        let numberSize = number
-        let aux = numberSize.size
-        if(aux != 0) {
+        let numberSize = number.size
+        if(numberSize != 0) {
             for (let i=0; i<7; i++) {
-                if (aux == arrExNum[i]) {
+                if (numberSize == arrExNum[i]) {
                     setItemSize(arrExSize[i])
                 } 
             }
@@ -55,16 +56,23 @@ function ProductShopping({numberId, size, amount}) {
                                 </S.Title>
                             </S.InfContainer>
                             <S.InfContainer>
-                                <S.Color><p>Cor: {product.product_color}</p></S.Color>
-                                <S.Size><p>Tamanho: {itemSize}</p></S.Size>
-                                <S.Brand><p>Marca: {product.product_brand}</p></S.Brand>
+                                <p>Cor: {product.product_color}</p>
+                                <p>Tamanho: {itemSize}</p>
+                                <p>Marca: {product.product_brand}</p>
                             </S.InfContainer>   
                         </S.Informations>
                     </S.Product>
                     <S.Options>
+                        <S.Count>
+                            <button onClick={() => setCount(count - 1)}>-</button>
+                            <p>{count}</p>
+                            <button onClick={() => setCount(count + 1)}>+</button>
+                        </S.Count>
+                        <h2></h2>
+
+                        
                         <p>deletar</p>
                     </S.Options>
-
                 </S.Container>  
             ))}
         </div>
