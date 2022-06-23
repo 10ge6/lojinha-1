@@ -1,9 +1,10 @@
 import React from "react";
+import FormAnnounce from '../components/FormAnnounce'
 
 function Announce() {
     return ( 
         <div>
-        <p>Anunciar</p>
+            <FormAnnounce/>
         </div>
     );
 }
