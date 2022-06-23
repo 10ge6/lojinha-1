@@ -13,7 +13,9 @@ export const Summary = styled.div `
 
     @media (max-width: 960px) {
         justify-content: center;
-        align-items: center;
+        h2 {
+            text-align: center;
+        }
     }
 
     @media (max-width:375px ) {
@@ -26,10 +28,10 @@ export const Summary = styled.div `
 export const Line = styled.div `
     width: 100%;
     border: 1px solid #9D9A95; 
-    width: 100%;
 
     @media (max-width: 960px) {
-        width: 60%;
+        align-self: center;
+        width: 70%;
     }
 `;
 
@@ -70,20 +72,32 @@ export const Total = styled.div `
 export const Button = styled.div `
     display: flex;
     justify-content: center;
+    width: 100%;
 
     button {
         background-color: #53B38D;
         color: white;
         font-size: 1.25rem;
         box-sizing: border-box;
-        padding: 16px 148px;
+        padding: 10px 100px;
+        border-radius: 5px;
     }
 
-    @media (max-width:375px ) {
-       width: 100%;
+    @media (max-width: 528px ) {
+       
         button {
+            width: 100%;
             font-size: 1rem;
         } 
     }
+
+    @media (max-width: 479px ) {
+       
+       button {
+           padding: 10px 60px;
+           font-size: 1rem;
+       } 
+   }
+   
     
 `;

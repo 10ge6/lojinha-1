@@ -3,26 +3,39 @@ import styled from "styled-components"
 export const Container = styled.div `
     display: flex;
     justify-content: space-between;
-
-    @media (max-width: 960px) {
+    
+    @media (max-width: 480px) {
         display: flex;
         flex-direction: column;
+        gap: 8px;
     }
 `;
 
 export const Product = styled.div `
     display: flex;
+
+    @media (max-width: 480px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const ProductImage = styled.div `
-    width: 127px;
-    height: 126px;
 
     img {
         width: 127px;
         height: 126px;
         object-fit: cover;
         border-radius: 2px;
+    }
+
+    @media (max-width: 480px) {
+        
+        img {
+            width: 286px;
+            height: 287px;
+        }
     }
 `;
 
@@ -42,13 +55,15 @@ export const Title = styled.div `
         color: #53B38D;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 480px) {
         h1 {
             font-size: 0.875rem;
+            text-align: center;
         }
         
         p {
             font-size: 0.469rem;
+            text-align: center;
         }
 
     }
@@ -69,6 +84,10 @@ export const Informations = styled.div `
         font-weight: 400;
         font-size: 0.75rem;
     }
+
+    @media (max-width: 480px) {
+        gap: 8px;
+    }
 `;
 
 export const InfContainer = styled.div ``;
@@ -76,10 +95,10 @@ export const InfContainer2 = styled.div `
     display: flex;
     flex-direction: column;
 
-    @media (max-width: 375px) {
+    @media (max-width: 480px) {
         display: flex;
-        justify-content: space-around;
-
+        flex-direction: row;
+        gap: 10px;
         p {
             font-size: 0.719rem;
         }
@@ -97,7 +116,7 @@ export const Options = styled.div `
         color: #53B38D;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 480px) {
         display: flex;
         flex-direction: row;
 

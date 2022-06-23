@@ -33,6 +33,10 @@ export const Title = styled.div `
         font-weight: 600;
         font-size: 2rem;
     }
+
+    @media (max-width: 960px) {
+        justify-content: center;
+    }
 `;
 
 export const Cep = styled.div `
@@ -56,4 +60,13 @@ export const Source = styled.div `
         color: #53B38D;
         margin: -55px;
     }
+
+    @media (max-width: 960px) {
+        display: flex;
+        justify-content: center;
+        input {
+            width: 80%
+        }
+    }
+
 `;
