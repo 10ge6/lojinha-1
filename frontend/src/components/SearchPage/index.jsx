@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { ProductList } from '../ProductSection';
 import { Section } from '../../styles/Global';
 import Modal from '../Modal';
+import * as S from './styles';
 
 function SearchPage() {
    const [searchParams, setSearchParams] = useSearchParams();
@@ -20,8 +21,11 @@ function SearchPage() {
 
    return (
       <Section>
+         <S.Title>Resultados de "{searchParams.get('query')}"</S.Title>
          <Modal visible={modal} url={url} closeModal={closeModal} />
-         <ProductList urlFetch={url} setUrl={setUrl} openModal={openModal} />
+         <S.Products>
+            <ProductList urlFetch={url} setUrl={setUrl} openModal={openModal} />
+         </S.Products>
       </Section>
    );
 }
