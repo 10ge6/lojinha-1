@@ -7,6 +7,7 @@ function ProductShopping({numberId, size, amount}) {
     const [products, setProducts] = useState([])
     const [itemSize, setItemSize] = useState("")
     const [count, setCount] = useState(amount)
+    const [price, setPrice] = useState()
 
 
     useEffect(() => {
@@ -41,6 +42,15 @@ function ProductShopping({numberId, size, amount}) {
         }   
     }
 
+    function getPrice(priceItem) {
+        useEffect(() => {        
+            setPrice(priceItem * count)
+            console.log(price)          
+        
+        }, [])
+    }
+
+   
 
     return (
         <div>
@@ -68,10 +78,8 @@ function ProductShopping({numberId, size, amount}) {
                             <p>{count}</p>
                             <button onClick={() => setCount(count + 1)}>+</button>
                         </S.Count>
-                        <h2></h2>
-
-                        
-                        <p>deletar</p>
+                        <h2>R$ {getPrice(product.product_price)}</h2>
+                        <S.Button><button>Deletar</button></S.Button>
                     </S.Options>
                 </S.Container>  
             ))}

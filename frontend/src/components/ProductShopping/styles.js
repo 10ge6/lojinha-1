@@ -56,6 +56,16 @@ export const InfContainer = styled.div ``;
 
 
 export const Options = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h2 {
+        font-weight: 500;
+        font-size: 1.125rem;
+        color: #53B38D;
+    }
+
 `;
 
 export const Count = styled.div `
@@ -71,4 +81,12 @@ export const Count = styled.div `
         background: transparent;
         cursor: pointer;
     }
+`;
+
+export const Button = styled.div `
+    background: transparent;
+    text-decoration: underline;
+    color: #F24E1E;
+    font-weight: 600;
+    font-size: 0.875rem;
 `;
