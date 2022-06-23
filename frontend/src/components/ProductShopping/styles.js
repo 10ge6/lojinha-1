@@ -125,7 +125,10 @@ export const Count = styled.div `
 
 export const Button = styled.div `
     background: transparent;
-    cursor: pointer;
+    
+    button {
+        cursor: pointer;
+    }
     
     p{
         text-decoration: underline;

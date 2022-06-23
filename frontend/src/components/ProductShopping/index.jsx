@@ -8,6 +8,7 @@ function ProductShopping({numberId, size, amount}) {
     const [itemSize, setItemSize] = useState("")
     const [count, setCount] = useState(amount)
     const [price, setPrice] = useState()
+    const [numberSize, setNumberSize] = useState(0);
 
 
     useEffect(() => {
@@ -51,6 +52,38 @@ function ProductShopping({numberId, size, amount}) {
         }, [])
     }*/
 
+    function sizeProduct(id, itemSize) {
+        const arrExNum = [32, 16, 8, 4, 2, 1];
+        const arrExSize = ["XG", "GG", "G", "M", "P", "PP"];
+        if(String(itemSize) != "Único") {
+            for (let i=0; i<7; i++) {
+                if (itemSize == arrExSize[i]) {
+                    setNumberSize(arrExNum[i])
+                    removeProduct(id, numberSize)
+                } 
+            }
+        } else {
+            removeProduct(id, numberSize)
+        }         
+    }
+
+    function removeProduct(id, numberSize) {
+        fetch(`http://localhost:8000/cart/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "product_size": `${numberSize}`
+            }),
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            setProducts((products.filter((product) => product.product_id !== id && product.product_size !== numberSize)))
+        })
+        .catch((err) => console.log(err)) 
+    }
+
 
     return (
         <div>
@@ -74,12 +107,13 @@ function ProductShopping({numberId, size, amount}) {
                     </S.Product>
                     <S.Options>
                         <S.Count>
-                            <button onClick={() => setCount(count - 1)}>-</button>
+                            <button onClick={() =>
+                                {if (count > 1) {setCount((count) => count - 1)}}}>-</button>
                             <p>{count}</p>
-                            <button onClick={() => setCount(count + 1)}>+</button>
+                            <button onClick={() => setCount((count) => count + 1)}>+</button>
                         </S.Count>
                         <h2>R$ </h2>
-                        <S.Button><button><p>Deletar</p></button></S.Button>
+                        <S.Button><button onClick={() => sizeProduct(product.product_id, itemSize)}><p>Deletar</p></button></S.Button>
                     </S.Options>
                 </S.Container>  
             ))}
@@ -90,3 +124,4 @@ function ProductShopping({numberId, size, amount}) {
 /*{getPrice(product.product_price)}*/
 
 export default ProductShopping
+
