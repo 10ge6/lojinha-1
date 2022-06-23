@@ -1,6 +1,7 @@
 import React from "react"
 import { useState, useEffect } from 'react'
 import * as S from './styles'
+import SummaryOrder from "../SummaryOrder"
 
 function ProductShopping({numberId, size, amount}) {
 
@@ -9,6 +10,7 @@ function ProductShopping({numberId, size, amount}) {
     const [count, setCount] = useState(amount)
     const [price, setPrice] = useState()
     const [numberSize, setNumberSize] = useState(0);
+    const [totalItem, setTotalItem] = useState();
 
 
     useEffect(() => {
@@ -80,6 +82,10 @@ function ProductShopping({numberId, size, amount}) {
         .catch((err) => console.log(err)) 
     }
 
+
+    /*tentando passar pra calcular o total */
+
+    
 
     return (
         <div>

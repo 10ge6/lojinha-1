@@ -8,7 +8,7 @@ function SummaryOrder(){
                 <S.Line></S.Line>
                     <S.Informations2>
                         <p>Subtotal (1 item)</p>
-                        <p>R$</p>
+                        <p>R$ </p>
                     </S.Informations2>
                     <S.Informations2>
                         <p>Entrega</p>
