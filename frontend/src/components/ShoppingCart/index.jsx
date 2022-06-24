@@ -38,11 +38,11 @@ function ShoppingCart () {
                         <CepShopping/>
                         <S.Line></S.Line>
                         {datasCart.map((dataCart) => (
-                            <ProductShopping numberId={dataCart.product_id} size={dataCart.product_size} amount={dataCart.product_qty}/>
+                            <ProductShopping numberId={dataCart.product_id} size={dataCart.product_size} amount={dataCart.product_qty} setDatasCart={setDatasCart}/>
                         ))}
                     </S.Product>
                     <S.Order>
-                        <SummaryOrder/> 
+                        <SummaryOrder datasCart={datasCart}/> 
                     </S.Order>
                 </S.Shopping>
             </S.ContainerAll>
