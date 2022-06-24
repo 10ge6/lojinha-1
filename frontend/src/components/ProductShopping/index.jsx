@@ -1,138 +1,97 @@
 import React from "react"
 import { useState, useEffect } from 'react'
 import * as S from './styles'
-import SummaryOrder from "../SummaryOrder"
 
-function ProductShopping({numberId, size, amount, setDatasCart}) {
-
-    const [products, setProducts] = useState({
-        product_id: 0,	
-        product_pic: "",	
-        product_title: "",	
-        product_desc: "",	
-        product_brand:"",	
-        product_color: "",	
-        product_category: "",	
-        product_subcategory: "",	
-        product_price: 0,
-        product_size: 0
-    })
-
+function ProductShopping({product_id, product_size, product_qty, product_pic, product_title, product_brand, product_color, product_price, setDeleteItem, setDatasCart}) {
 
     const [itemSize, setItemSize] = useState("")
-    const [count, setCount] = useState(amount)
-    const [price, setPrice] = useState()
-    const [numberSize, setNumberSize] = useState(0);
-    const [total, setTotal] = useState();
-
+    
     useEffect(() => {
-        fetch(`http://localhost:8000/storefront/${numberId}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setProducts(data.response[0])
-            getSize()
-                       
-        })
-        .catch((err) => console.log(err))
-
-    },[])
-
-    function getSize(number={size}) {
         const arrExNum = [32, 16, 8, 4, 2, 1];
         const arrExSize = ["XG", "GG", "G", "M", "P", "PP"];
-        let numberSize = number.size
-        if(numberSize != 0) {
+        if(product_size != 0) {
             for (let i=0; i<7; i++) {
-                if (numberSize == arrExNum[i]) {
+                if (product_size == arrExNum[i]) {
                     setItemSize(arrExSize[i])
+                   
                 } 
             }
         } else {
             setItemSize("Único")
         }   
-    }
+    })
     
-    /*function getPrice(priceItem, count) {       
-        setPrice(priceItem * count)
-        console.log(price)          
-    }
 
-    function sizeProduct(id, itemSize) {
-        const arrExNum = [32, 16, 8, 4, 2, 1];
-        const arrExSize = ["XG", "GG", "G", "M", "P", "PP"];
-        if(String(itemSize) != "Único") {
-            for (let i=0; i<7; i++) {
-                if (itemSize == arrExSize[i]) {
-                    setNumberSize(arrExNum[i])
-                    removeProduct(id, numberSize)
-                } 
-            }
-        } else {
-            removeProduct(id, numberSize)
-        }         
-    }
-
-    function removeProduct(id, numberSize) {
+    function removeProduct(id, size) {   
         fetch(`http://localhost:8000/cart/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "product_size": `${numberSize}`
+                "product_size": `${size}`
             }),
         })
         .then((resp) => resp.json())
         .then((data) => {
-            setProducts((products.filter((product) => product.product_id !== id && product.product_size !== numberSize)))
+            setDeleteItem({deleteItem: true})
+            setDeleteItem({deleteItem: false})
         })
-        .catch((err) => console.log(err)) 
+        .catch((err) => console.log(err))
     }
 
-
-    /*tentando passar pra calcular o total 
-    function getTotal() {
-        {products.map((product) => (
-            setTotal((product.product_price / 100) * count)
-        ))}
-            console.log(Total)
-    }
     
-    getTotal*/
-    
-
     return (
         <div>
             <S.Container>
                 <S.Product>
-                    <S.ProductImage><img src={products.product_pic}/></S.ProductImage>
+                    <S.ProductImage><img src={product_pic}/></S.ProductImage>
                     <S.Informations>
                         <S.InfContainer>
                             <S.Title>
-                                <h1>{products.product_title}</h1>
+                                <h1>{product_title}</h1>
                                 <p>Vendido por <span>RickRoll</span></p>
                             </S.Title>
                         </S.InfContainer>
                         <S.InfContainer2>
-                            <p>Cor: {products.product_color}</p>
+                            <p>Cor: {product_color}</p>
                             <p>Tamanho: {itemSize}</p>
-                            <p>Marca: {products.product_brand}</p>
+                            <p>Marca: {product_brand}</p>
                         </S.InfContainer2>   
                     </S.Informations>
                 </S.Product>
                 <S.Options>
                     <S.Count>
-                        <button >-</button>
-                        <p>{amount}</p>
-                        <button >+</button>
+                        <button onClick={() => {
+                            if (product_qty > 1) {
+                                setDatasCart((products) => 
+                                    products.map((product) => {
+                                        if(products.product_id === product_id && products.product_size === product_size){
+                                            return {
+                                                ...product, product_qty: product - 1,
+                                            }
+                                        }
+                                        return product
+                                    })
+                                )
+                            }
+                        }} >-</button>
+                        <p>{product_qty}</p>
+                        <button onClick={() => {
+                            setDatasCart((products) => 
+                                products.map((product) => {
+                                    if(products.product_id === product_id && products.product_size === product_size){
+                                        return {
+                                            ...product, product_qty: product + 1,
+                                        }
+                                    }
+                                    return product
+                                })
+                            )
+                        }}>+</button>
                     </S.Count>
-                    <h2>{((products.product_price/ 100) * amount).toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</h2>
-                    <S.Button><button onClick={() => sizeProduct(products.product_id, itemSize)}><p>Deletar</p></button></S.Button>
+                    <h2>{((product_price/ 100) * product_qty).toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</h2>
+                    <S.Button><button onClick={() => removeProduct(product_id, product_size)}><p>Deletar</p></button></S.Button>
                 </S.Options>
             </S.Container>  
             

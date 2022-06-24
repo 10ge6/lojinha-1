@@ -10,6 +10,7 @@ import * as S from './styles'
 
 function ShoppingCart () {
     const [datasCart, setDatasCart] = useState([]) 
+    const [deleteItem, setDeleteItem] = useState(false)
 
     useEffect(() => {
         fetch('http://localhost:8000/cart', {
@@ -24,7 +25,7 @@ function ShoppingCart () {
         })
         .catch((err) => console.log(err))
 
-    },[])
+    },[deleteItem])
 
     return (
         <Section>
@@ -38,11 +39,21 @@ function ShoppingCart () {
                         <CepShopping/>
                         <S.Line></S.Line>
                         {datasCart.map((dataCart) => (
-                            <ProductShopping numberId={dataCart.product_id} size={dataCart.product_size} amount={dataCart.product_qty} setDatasCart={setDatasCart}/>
+                            <ProductShopping 
+                            product_id={dataCart.product_id} 
+                            product_size={dataCart.product_size} 
+                            product_qty={dataCart.product_qty}
+                            product_pic={dataCart.product_pic}
+                            product_title={dataCart.product_title}
+                            product_brand={dataCart.product_brand}
+                            product_color={dataCart.product_color}
+                            product_price={dataCart.product_price}
+                            setDeleteItem={setDeleteItem}
+                            setDatasCart={setDatasCart}/>
                         ))}
                     </S.Product>
                     <S.Order>
-                        <SummaryOrder datasCart={datasCart}/> 
+                        <SummaryOrder dataCart/> 
                     </S.Order>
                 </S.Shopping>
             </S.ContainerAll>
