@@ -4,7 +4,7 @@
 
 [Exemplos de requests](#exemplos-de-requests)
 
-[Exemplo de pesquisa](#exemplos-de-pesquisa)
+[Exemplos de pesquisa](#exemplos-de-pesquisa)
 
 [Exemplo de paginação](#exemplo-de-paginação)
 
