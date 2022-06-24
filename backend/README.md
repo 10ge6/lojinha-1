@@ -1,3 +1,13 @@
+# Índice
+
+[Estrutura das tables](#estrutura-das-tables)
+
+[Exemplos de requests](#exemplos-de-requests)
+
+[Exemplo de pesquisa](#exemplos-de-pesquisa)
+
+[Exemplo de paginação](#exemplo-de-paginação)
+
 # Estrutura das tables
 
 ## storefront
@@ -24,7 +34,7 @@ product_size = 0 indica tamanho único.
 
 Contém product_id e product_size. Imagem, nome, cor, marca e preço então recebidos por outro pedido (para storefront) através do id.
 
-# Exemplos de uso
+# Exemplos de requests
 
 ## storefront
 
@@ -155,10 +165,31 @@ localhost:8000/cart/*(id)*
 }
 ```
 
-# Pesquisa
+# Exemplos de pesquisa
 
 localhost:8000/storefront?query= (por nome de produto)
 
 localhost:8000/storefront?category= (por categoria)
 
 localhost:8000/storefront?query=&category= **ou** localhost:8000/storefront?category=&query= (ambos)
+
+# Exemplo de paginação
+
+É necessário ao frontend, de modo a renderizar os botões indicando a quantidade de páginas da loja, obter a quantidade de itens presentes em storefront:
+
+localhost:8000/storefront?count
+
+retorna no formato:
+```
+{
+    "COUNT(*)": 
+}
+```
+
+Para realizar a requisição em si, o número de páginas deve ser fornecido:
+
+localhost:8000/storefront?page=
+
+Naturalmente este pode ser combinado com a pesquisa:
+
+localhost:8000/storefront?page=&query=&category= (em qualquer ordem)
