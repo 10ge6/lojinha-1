@@ -32,8 +32,14 @@ exports.createItem = (req, res) => {
 exports.readStorefront = (req, res) => {
     sql.getConnection((error, conn) => {
         if(error) {return res.status(500).send({error: error})}
+        let str = 'SELECT * FROM `storefront` WHERE `product_title` LIKE \'%' + [req.query.query] + '%\' AND `product_category` LIKE \'%' + [req.query.category] + '%\'';
+        if(Number([req.query.page]) > 0) str += ' ORDER BY `product_id` ASC LIMIT 10 OFFSET ' + ((Number([req.query.page]) - 1) * 10);
+        if([req.query.count][0] !== undefined) {
+            str = 'SELECT COUNT(*) FROM `storefront`';
+            console.log([req.query.count]);
+        }
         conn.query(
-            'SELECT * FROM `storefront` WHERE `product_title` LIKE \'%' + [req.query.query] + '%\' AND `product_category` LIKE \'%' + [req.query.category] + '%\'',
+            str,
             (error, response) => {
                 conn.release();
 
@@ -50,7 +56,7 @@ exports.readStorefront = (req, res) => {
                 }
 
                 res.status(200).send({
-                    message: 'Exibindo todos os itens',
+                    message: 'Exibindo request',
                     response: response
                 });
             }
