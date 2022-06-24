@@ -186,6 +186,8 @@ retorna no formato:
 }
 ```
 
+**Cada página contém, no máximo, 10 itens.**
+
 Para realizar a requisição em si, o número de páginas deve ser fornecido:
 
 localhost:8000/storefront?page=
