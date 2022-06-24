@@ -1,3 +1,13 @@
+# Índice
+
+[Estrutura das tables](#estrutura-das-tables)
+
+[Exemplos de requests](#exemplos-de-requests)
+
+[Exemplos de pesquisa](#exemplos-de-pesquisa)
+
+[Exemplo de paginação](#exemplo-de-paginação)
+
 # Estrutura das tables
 
 ## storefront
@@ -24,7 +34,7 @@ product_size = 0 indica tamanho único.
 
 Contém product_id e product_size. Imagem, nome, cor, marca e preço então recebidos por outro pedido (para storefront) através do id.
 
-# Exemplos de uso
+# Exemplos de requests
 
 ## storefront
 
@@ -36,10 +46,26 @@ localhost:8000/storefront
 
 localhost:8000/storefront/*(id)*
 
+retorna todos ou um, respectivamente, no formato:
+```
+{
+	"product_id": ,
+	"product_pic": "",
+ 	"product_title": "",
+ 	"product_desc": "",
+ 	"product_brand": "",
+ 	"product_color": "",
+ 	"product_category": "",
+ 	"product_subcategory": "",
+	"product_price": ,
+	"product_size": 
+}
+```
+
 ### POST
 
 localhost:8000/storefront
-
++
 ```
 {
 	"product_pic": "",
@@ -50,14 +76,14 @@ localhost:8000/storefront
  	"product_category": "",
  	"product_subcategory": "",
 	"product_price": ,
-	"product_size":
+	"product_size": 
 }
 ```
 
 ### PATCH
 
 localhost:8000/storefront/*(id)*
-
++
 ```
 {
 	"product_pic": "",
@@ -68,7 +94,7 @@ localhost:8000/storefront/*(id)*
 	"product_category": "",
 	"product_subcategory": "",
 	"product_price": ,
-	"product_size":
+	"product_size": 
 }
 ```
 
@@ -85,50 +111,87 @@ localhost:8000/cart
 **ou**
 
 localhost:8000/cart/*(id)*
-
++
 ```
 {
-    "product_size": 4
+    "product_size": 
+}
+```
+
+retorna todos ou um, respectivamente, no formato:
+```
+{
+	"product_id": ,
+	"product_size": ,
+ 	"product_qty": ,
+ 	"product_pic": "",
+	"product_title": "",
+ 	"product_brand": "",
+ 	"product_color": "",
+	"product_price": 
 }
 ```
 
 ### POST
 
 localhost:8000/cart
-
++
 ```
 {
     "product_id": ,
     "product_size": ,
-    "product_qty":
+    "product_qty": 
 }
 ```
 
 ### PATCH
 
 localhost:8000/cart/*(id)*
-
++
 ```
 {
     "product_qty": ,
-    "product_size":
+    "product_size": 
 }
 ```
 
 ### DELETE
 
 localhost:8000/cart/*(id)*
-
++
 ```
 {
-    "product_size":
+    "product_size": 
 }
 ```
 
-# Pesquisa
+# Exemplos de pesquisa
 
 localhost:8000/storefront?query= (por nome de produto)
 
 localhost:8000/storefront?category= (por categoria)
 
 localhost:8000/storefront?query=&category= **ou** localhost:8000/storefront?category=&query= (ambos)
+
+# Exemplo de paginação
+
+É necessário ao frontend, de modo a renderizar os botões indicando a quantidade de páginas da loja, obter a quantidade de itens presentes em storefront:
+
+localhost:8000/storefront?count
+
+retorna no formato:
+```
+{
+    "COUNT(*)": 
+}
+```
+
+**Cada página contém, no máximo, 10 itens.**
+
+Para realizar a requisição em si, o número de páginas deve ser fornecido:
+
+localhost:8000/storefront?page=
+
+Naturalmente este pode ser combinado com a pesquisa:
+
+localhost:8000/storefront?page=&query=&category= (em qualquer ordem)
