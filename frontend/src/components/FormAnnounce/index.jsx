@@ -9,7 +9,7 @@ import Textarea from '../Textarea';
 import Select from '../Select';
 import Checkbox from '../Checkbox';
 
-function FormAnnounce() {
+function FormAnnounce({ id, text, method }) {
    const [checkboxOn, setCheckboxOn] = useState(false);
    const subcategories = ['Camisa', 'Tênis', 'Bolsas'];
    const categories = ['Feminimo', 'Infantil', 'Masculino', 'Unissex'];
@@ -28,7 +28,7 @@ function FormAnnounce() {
    });
 
    async function getProduct() {
-      const response = await fetch('http://localhost:8000/storefront/');
+      const response = await fetch(`http://localhost:8000/storefront/${id}`);
       const data = await response.json();
       if (data.response.length == 1) {
          return data.response[0];
@@ -37,7 +37,10 @@ function FormAnnounce() {
 
    function setCheckboxes(num) {
       const boolArr = getSizes(num);
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 7; i++) {
+         if (document.getElementsByTagName('input')[6].checked == true) {
+            setCheckboxOn(true);
+         }
          document.getElementsByTagName('input')[i + 6].checked = boolArr[i];
       }
    }
@@ -71,12 +74,13 @@ function FormAnnounce() {
          document.getElementsByTagName('select')[1].value = value.product_subcategory;
          document.getElementsByTagName('input')[5].value = value.product_price / 100;
          setCheckboxes(value.product_size);
-         setInformations((state) => ({ ...state, product_pic: value.product_pic }));
+         updateInformations(value.product_size);
       }
    }
 
    useEffect(() => {
       getProduct().then((product) => setProductsValue(product));
+      updateInformations();
    }, []);
 
    function handleChange(e) {
@@ -87,6 +91,15 @@ function FormAnnounce() {
       setInformations((state) => ({ ...state, [e.target.name]: Number(e.target.value) * 100 }));
    }
 
+   function setCheckboxFalse() {
+      setInformations({ ...informations, product_size: 0 });
+      if (document.getElementsByTagName('input')[6].checked) {
+         for (let i = 0; i < 6; i++) {
+            document.getElementsByTagName('input')[i + 7].checked = false;
+         }
+      }
+   }
+
    function handleCheckbox(e) {
       if (e.target.checked) {
          setInformations((state) => ({ ...state, product_size: state.product_size + Number(e.target.value) }));
@@ -95,11 +108,25 @@ function FormAnnounce() {
       }
    }
 
+   function updateInformations(price) {
+      setInformations({
+         product_pic: document.getElementsByTagName('input')[1].value,
+         product_title: document.getElementsByTagName('input')[2].value,
+         product_desc: document.getElementsByTagName('textarea')[0].value,
+         product_brand: document.getElementsByTagName('input')[3].value,
+         product_color: document.getElementsByTagName('input')[4].value,
+         product_category: document.getElementsByTagName('select')[0].value,
+         product_subcategory: document.getElementsByTagName('select')[1].value,
+         product_price: document.getElementsByTagName('input')[5].value * 100,
+         product_size: price,
+      });
+   }
+
    const handleSubmit = (e) => {
       e.preventDefault();
 
-      fetch('http://localhost:8000/storefront', {
-         method: 'POST',
+      fetch(`http://localhost:8000/storefront/${id}`, {
+         method: method,
          headers: {
             'Content-Type': 'application/json',
          },
@@ -107,7 +134,7 @@ function FormAnnounce() {
       })
          .then((resp) => resp.json())
          .then((data) => {
-            navigate('/');
+            // navigate('/');
          })
          .catch((err) => {
             console.log(err);
@@ -214,7 +241,10 @@ function FormAnnounce() {
                                  type='checkbox'
                                  name='checkbox'
                                  value='0'
-                                 onClick={() => setCheckboxOn((state) => !state)}
+                                 onClick={() => {
+                                    setCheckboxFalse();
+                                    setCheckboxOn((state) => !state);
+                                 }}
                               />{' '}
                               Único
                            </label>
@@ -230,7 +260,7 @@ function FormAnnounce() {
                      </S.CheckboxCont>
                   </S.Size>
                </S.InfAndSize>
-               <Submit text='Cadastrar produto' />
+               <Submit text={text} />
             </S.Form>
          </S.Container>
       </S.Section>
