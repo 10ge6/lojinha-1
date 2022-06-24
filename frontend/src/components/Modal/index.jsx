@@ -8,6 +8,7 @@ import edit from '../../assets/editBtn.svg';
 import erase from '../../assets/deleteBtn.svg';
 import { getSize } from '../ProductSection';
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 
@@ -22,6 +23,7 @@ export const scrollLock = (bool) => {
 function ModalProduct({ visible, url, closeModal }) {
    const [modalData, setModalData] = useState([]);
    const [count, setCount] = useState(1);
+   const navigate = useNavigate();
 
    const getData = async () => {
       const response = await fetch(`http://localhost:8000/storefront/${url}`).catch((error) => console.log(error));
@@ -160,7 +162,13 @@ function ModalProduct({ visible, url, closeModal }) {
             </S.Content>
             <S.BottomBtns>
                <S.EditDelBtns>
-                  <S.EditBtn type='button'>
+                  <S.EditBtn
+                     type='button'
+                     onClick={() => {
+                        scrollLock();
+                        navigate(`/edit?id=${modalData.product_id}`);
+                     }}
+                  >
                      <S.EditDelImgs src={edit} alt='Botão de editar' />
                      <S.BtnText>Editar</S.BtnText>
                   </S.EditBtn>
