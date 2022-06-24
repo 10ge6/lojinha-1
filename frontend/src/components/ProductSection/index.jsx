@@ -3,6 +3,7 @@ import { Section } from '../../styles/Global';
 import { useState, useEffect } from 'react';
 import * as S from './styles';
 import Modal from '../Modal';
+import NotFound from '../PageNotFound';
 
 export function getSize(num) {
    let actualNum = num;
@@ -24,7 +25,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
    const [users, setUsers] = useState([]);
 
    async function getUsers() {
-      const response = await fetch(`http://localhost:8000/storefront/${urlFetch}`);
+      const response = await fetch(`http://localhost:8000/storefront${urlFetch}`);
       const data = await response.json();
       return data.response;
    }
@@ -43,41 +44,49 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
       });
    }, []);
 
-   return (
-      <S.ProductList>
-         {users.map((user) => (
-            <S.ProductCard
-               onClick={() => {
-                  openModal();
-                  setUrl(user.product_id);
-               }}
-               key={user.product_id}
-            >
-               <S.ProductImg
-                  src={user.product_pic}
-                  onError={({ currentTarget }) => {
-                     currentTarget.src =
-                        'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
+   if (users != undefined) {
+      return (
+         <S.ProductList>
+            {users.map((user) => (
+               <S.ProductCard
+                  onClick={() => {
+                     openModal();
+                     setUrl(user.product_id);
                   }}
-                  alt='Imagem do produto'
-               />
-               <S.ProductSizeDiv>
-                  {getSize(user.product_size).map((size, index) => {
-                     return <S.ProductSize key={index}>{size}</S.ProductSize>;
-                  })}
-               </S.ProductSizeDiv>
+                  key={user.product_id}
+               >
+                  <S.ProductImg
+                     src={user.product_pic}
+                     onError={({ currentTarget }) => {
+                        currentTarget.src =
+                           'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
+                     }}
+                     alt='Imagem do produto'
+                  />
+                  <S.ProductSizeDiv>
+                     {getSize(user.product_size).map((size, index) => {
+                        return <S.ProductSize key={index}>{size}</S.ProductSize>;
+                     })}
+                  </S.ProductSizeDiv>
 
-               {textPrice(user.product_price)}
-               <S.ProductTitle>{user.product_title}</S.ProductTitle>
-               <S.ProductBrand>{user.product_brand}</S.ProductBrand>
-            </S.ProductCard>
-         ))}
-      </S.ProductList>
-   );
+                  {textPrice(user.product_price)}
+                  <S.ProductTitle>{user.product_title}</S.ProductTitle>
+                  <S.ProductBrand>{user.product_brand}</S.ProductBrand>
+               </S.ProductCard>
+            ))}
+         </S.ProductList>
+      );
+   } else {
+      return (
+         <div>
+            <NotFound />
+         </div>
+      );
+   }
 }
 
 function ProductSection() {
-   const [url, setUrl] = useState();
+   const [url, setUrl] = useState('');
    const [modalVisible, setModalVisible] = useState(false);
 
    const openModal = () => {

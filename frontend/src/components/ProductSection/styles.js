@@ -94,3 +94,7 @@ export const ProductSize = styled.p`
    background-color: #fafafa;
    border-radius: 2px;
 `;
+
+export const Error = styled.div`
+   width: 100%;
+`;
