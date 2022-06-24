@@ -114,7 +114,7 @@ function ProductShopping({numberId, size, amount}) {
                             <p>{count}</p>
                             <button onClick={() => setCount((count) => count + 1)}>+</button>
                         </S.Count>
-                        <h2>{(product.product_price/ 100).toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</h2>
+                        <h2>{((product.product_price/ 100) * count).toLocaleString("pt-br", {style: "currency", currency: "BRL"})}</h2>
                         <S.Button><button onClick={() => sizeProduct(product.product_id, itemSize)}><p>Deletar</p></button></S.Button>
                     </S.Options>
                 </S.Container>  
