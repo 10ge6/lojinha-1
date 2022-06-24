@@ -53,7 +53,7 @@ function ShoppingCart () {
                         ))}
                     </S.Product>
                     <S.Order>
-                        <SummaryOrder dataCart/> 
+                        <SummaryOrder datasCart={datasCart}/> 
                     </S.Order>
                 </S.Shopping>
             </S.ContainerAll>

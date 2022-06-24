@@ -66,9 +66,9 @@ function ProductShopping({product_id, product_size, product_qty, product_pic, pr
                             if (product_qty > 1) {
                                 setDatasCart((products) => 
                                     products.map((product) => {
-                                        if(products.product_id === product_id && products.product_size === product_size){
+                                        if(product.product_id === product_id && product.product_size === product_size){
                                             return {
-                                                ...product, product_qty: product - 1,
+                                                ...product, product_qty: product_qty - 1,
                                             }
                                         }
                                         return product
@@ -80,9 +80,9 @@ function ProductShopping({product_id, product_size, product_qty, product_pic, pr
                         <button onClick={() => {
                             setDatasCart((products) => 
                                 products.map((product) => {
-                                    if(products.product_id === product_id && products.product_size === product_size){
+                                    if(product.product_id === product_id && product.product_size === product_size){
                                         return {
-                                            ...product, product_qty: product + 1,
+                                            ...product, product_qty: product_qty + 1,
                                         }
                                     }
                                     return product

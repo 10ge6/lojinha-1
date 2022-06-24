@@ -36,6 +36,8 @@ export const Cep = styled.div `
 `;
 
 export const Source = styled.div `
+    display: flex;
+
     input {
         box-sizing: border-box;
         padding: 11px 20px;
@@ -45,16 +47,31 @@ export const Source = styled.div `
     }
 
     button {
-        background: transparent;
+        display: flex;
+        align-self: center;
+        border: none;
+        background-color: transparent;
         color: #53B38D;
         margin: -55px;
+        
+
     }
 
     @media (max-width: 960px) {
         display: flex;
         justify-content: center;
+        
         input {
             width: 80%
+        }
+    }
+
+    @media (max-width: 480px) {
+        display: flex;
+        justify-content: center;
+        
+        input {
+            width: 100%
         }
     }
 
