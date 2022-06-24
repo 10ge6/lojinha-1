@@ -5,7 +5,7 @@ import X from '../../assets/X.svg';
 import * as S from './styles';
 import { useState, useEffect } from 'react';
 import { Section } from '../../styles/Global';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { scrollLock } from '../Modal';
 
 function Header() {
@@ -23,20 +23,9 @@ function Header() {
                   <img src={logoLojinha} alt='logo da lojinha' />
                   <h1>Lojinha</h1>
                </S.Logo>
-               <S.Search className={menuOpen ? 'open' : 'closed'}>
-                  <input
-                     id='search-bar'
-                     onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                           location.href = `/search?query=${document.getElementById('search-bar').value}`;
-                        }
-                     }}
-                     type='text'
-                     placeholder='Pesquisar por um produto'
-                  />
-                  <button
-                     onClick={() => (location.href = `/search?query=${document.getElementById('search-bar').value}`)}
-                  >
+               <S.Search action='/search' className={menuOpen ? 'open' : 'closed'}>
+                  <input id='search-bar' name='query' type='text' placeholder='Pesquisar por um produto' />
+                  <button>
                      <img src={lupaPesquisa} alt='lupa para pesquisa' />
                   </button>
                </S.Search>
