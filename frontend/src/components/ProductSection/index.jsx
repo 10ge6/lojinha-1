@@ -109,7 +109,7 @@ function ProductSection() {
    function getPageBtns(actualPage, max) {
       let arr = [];
       for (let i = 1; i <= max; i++) {
-         if (arr.length > actualPage && arr.length < max - 1) {
+         if (arr.length > actualPage + 1 && arr.length < max - 1) {
             arr.push('...');
             arr.push(max);
             break;
