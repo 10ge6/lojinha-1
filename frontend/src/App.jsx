@@ -6,6 +6,7 @@ import Shopping from './pages/Shopping';
 import Error from './pages/Error';
 import Layout from './components/Layout';
 import Search from './pages/Search';
+import EditPage from './pages/EditPage';
 
 function App() {
    return (
@@ -16,6 +17,7 @@ function App() {
                <Route path='/products' element={<Products />} />
                <Route path='/announce' element={<Announce />} />
                <Route path='/shopping' element={<Shopping />} />
+               <Route path='edit' element={<EditPage />} />
                <Route path='/search' element={<Search />} />
                <Route path='*' element={<Error />} />
             </Route>

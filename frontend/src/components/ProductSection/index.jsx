@@ -41,6 +41,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
    useEffect(() => {
       getUsers().then((users) => {
          setUsers(users);
+         window.scrollTo(0, 0);
       });
    }, [urlFetch]);
 
