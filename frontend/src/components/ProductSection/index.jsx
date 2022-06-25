@@ -27,7 +27,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
    const [users, setUsers] = useState([]);
 
    async function getUsers() {
-      const response = await fetch(`http://localhost:8000/storefront${urlFetch}`);
+      const response = await fetch(`http://localhost:8000/storefront/${urlFetch}`);
       const data = await response.json();
       return data.response;
    }
@@ -92,7 +92,6 @@ function ProductSection() {
    const [modalVisible, setModalVisible] = useState(false);
    const [page, setPage] = useState(1);
    const [maxPage, setMaxPage] = useState(0);
-   const [greenTxt, setGreenTxt] = useState('');
 
    function decreasePage() {
       if (page > 1) {

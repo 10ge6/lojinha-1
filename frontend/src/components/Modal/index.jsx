@@ -99,7 +99,6 @@ function ModalProduct({ visible, url, closeModal }) {
                <S.CloseBtn
                   type='button'
                   onClick={() => {
-                     setCount(1);
                      closeModal();
                   }}
                >
