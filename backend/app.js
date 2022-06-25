@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
-app.use(express.static('../frontend/dist'));
+app.use('/', express.static('../frontend/dist'));
+app.use('/404', express.static('../frontend/dist'));
+app.use('/announce', express.static('../frontend/dist'));
+app.use('/products', express.static('../frontend/dist'));
+app.use('/search', express.static('../frontend/dist'));
+app.use('/shopping', express.static('../frontend/dist'));
 
 const morgan = require('morgan');
 
@@ -37,12 +42,7 @@ app.use('/storefront', storefrontController);
 app.use('/cart', cartController);
 
 // fallback
-app.use((req, res) => {
-    res.status(404);
-    return res.send({
-        error: "Endpoint nao encontrado"
-    });
-})
+app.use('*', express.static('../frontend/dist'));
 
 app.use((error, res) => {
     res.status(500);
