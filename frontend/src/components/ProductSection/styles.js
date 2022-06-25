@@ -98,3 +98,16 @@ export const ProductSize = styled.p`
 export const Error = styled.div`
    width: 100%;
 `;
+
+export const PaginationDiv = styled.div`
+   display: flex;
+   gap: 20px;
+   align-items: center;
+   align-self: center;
+`;
+
+export const PaginationDivNum = styled.div`
+   display: flex;
+   align-items: flex-end;
+   gap: 20px;
+`;

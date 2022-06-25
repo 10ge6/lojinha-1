@@ -80,7 +80,6 @@ function FormAnnounce({ id, text, method }) {
 
    useEffect(() => {
       getProduct().then((product) => setProductsValue(product));
-      updateInformations();
       window.scrollTo(0, 0);
    }, []);
 
@@ -135,7 +134,7 @@ function FormAnnounce({ id, text, method }) {
       })
          .then((resp) => resp.json())
          .then((data) => {
-            navigate('/');
+            // navigate('/');
          })
          .catch((err) => {
             console.log(err);

@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import * as S from './styles';
 import Modal from '../Modal';
 import NotFound from '../PageNotFound';
+import previousPgBtn from '../../assets/previousPageBtn.svg';
+import nextPgBtn from '../../assets/nextPageBtn.svg';
 
 export function getSize(num) {
    let actualNum = num;
@@ -41,7 +43,6 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
    useEffect(() => {
       getUsers().then((users) => {
          setUsers(users);
-         window.scrollTo(0, 0);
       });
    }, [urlFetch]);
 
@@ -89,7 +90,8 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
 function ProductSection() {
    const [url, setUrl] = useState('');
    const [modalVisible, setModalVisible] = useState(false);
-   const [page, setPage] = useState(3);
+   const [page, setPage] = useState(1);
+   const [maxPage, setMaxPage] = useState(0);
 
    function decreasePage() {
       if (page > 1) {
@@ -100,12 +102,31 @@ function ProductSection() {
    async function getNumAllProducts() {
       const response = await fetch('http://localhost:8000/storefront?count');
       const data = await response.json();
-      return data.response[0][0];
+      return data.response[0].item_count;
    }
 
-   getNumAllProducts().then((data) => console.log(data));
+   function getPageBtns(actualPage, max) {
+      let arr = [];
+      for (let i = 1; i <= max; i++) {
+         if (arr.length > actualPage + 1) {
+            arr.push('...');
+            arr.push(max);
+            break;
+         }
+         arr.push(i);
+      }
+      return arr;
+   }
 
-   function increasePage() {}
+   getNumAllProducts().then((items) => setMaxPage(Math.ceil(items / 10)));
+
+   console.log(getPageBtns(5, 15));
+
+   function increasePage() {
+      if (page < maxPage) {
+         setPage((page) => page + 1);
+      }
+   }
 
    const openModal = () => {
       setModalVisible(true);
@@ -120,8 +141,22 @@ function ProductSection() {
             <S.Products>Produtos</S.Products>
             <Modal visible={modalVisible} url={url} closeModal={closeModal} />
             <ProductList urlFetch={`/?page=${page}`} setUrl={setUrl} openModal={openModal} />
-            <button onClick={() => decreasePage()}>Diminuir</button>
-            <button onClick={() => {}}>Aumentar</button>
+            <S.PaginationDiv>
+               <button onClick={() => decreasePage()}>
+                  <img src={previousPgBtn} alt='Botão de ir pra página anterior' />
+               </button>
+               <S.PaginationDivNum>
+                  {getPageBtns(page, maxPage).map((item) => {
+                     if (item == '...') {
+                        return <p>{item}</p>;
+                     }
+                     return <button onClick={() => setPage(item)}>{item}</button>;
+                  })}
+               </S.PaginationDivNum>
+               <button onClick={() => increasePage()}>
+                  <img src={nextPgBtn} alt='Botão de ir pra próxima página' />
+               </button>
+            </S.PaginationDiv>
          </S.AllProducts>
       </Section>
    );
