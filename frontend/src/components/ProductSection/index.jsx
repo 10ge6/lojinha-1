@@ -27,7 +27,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
    const [users, setUsers] = useState([]);
 
    async function getUsers() {
-      const response = await fetch(`http://localhost:8000/storefront/${urlFetch}`);
+      const response = await fetch(`http://localhost:8000/storefront${urlFetch}`);
       const data = await response.json();
       return data.response;
    }
@@ -146,7 +146,7 @@ function ProductSection() {
          <S.AllProducts>
             <S.Products>Produtos</S.Products>
             <Modal visible={modalVisible} url={url} closeModal={closeModal} />
-            <ProductList urlFetch={`/?page=${page}`} setUrl={setUrl} openModal={openModal} />
+            <ProductList urlFetch={`?page=${page}`} setUrl={setUrl} openModal={openModal} />
             <S.PaginationDiv>
                <button onClick={() => decreasePage()}>
                   <img src={previousPgBtn} alt='Botão de ir pra página anterior' />
