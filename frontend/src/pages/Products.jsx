@@ -1,9 +1,10 @@
 import React from "react";
+import ProductSection from '../components/ProductSection';
 
 function Products() {
     return ( 
         <div>
-        <p>Produtos</p>
+        <ProductSection urlFetch={''} />
         </div>
     );
 }
