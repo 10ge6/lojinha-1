@@ -32,11 +32,16 @@ export const Cep = styled.div `
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @media (max-width: 960px) {
+        align-items: center;
+    }
     
 `;
 
 export const Source = styled.div `
     display: flex;
+    position: relative;
 
     input {
         box-sizing: border-box;
@@ -47,32 +52,26 @@ export const Source = styled.div `
     }
 
     button {
+        position: absolute;
         display: flex;
         align-self: center;
         border: none;
         background-color: transparent;
         color: #53B38D;
-        margin: -55px;
-        
+        padding: 0 20px 0 0;
+        right: 0;
 
     }
 
     @media (max-width: 960px) {
         display: flex;
         justify-content: center;
+        width: 90%
         
-        input {
-            width: 80%
-        }
     }
 
-    @media (max-width: 480px) {
-        display: flex;
-        justify-content: center;
-        
-        input {
-            width: 100%
-        }
+    @media (max-width: 560px) {
+        width: 100%
     }
 
 `;

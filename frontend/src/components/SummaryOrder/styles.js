@@ -44,7 +44,7 @@ export const Informations2 = styled.div `
         font-size: 1.125rem;
         color: #252822;
     }
-    @media (max-width:375px ) {
+    @media (max-width:480px ) {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -62,7 +62,7 @@ export const Total = styled.div `
         color: #53B38D;
     }
 
-    @media (max-width:375px ) {
+    @media (max-width:480px ) {
         display: flex;
         flex-direction: column;
         align-items: center;

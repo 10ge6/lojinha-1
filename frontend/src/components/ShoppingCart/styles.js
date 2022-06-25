@@ -28,6 +28,10 @@ export const Product = styled.div `
     @media (max-width: 960px) {
         width: 70%;
     }
+
+    @media (max-width: 580px) {
+        width: 90%;
+    }
 `;
 
 export const Order = styled.div `
@@ -35,6 +39,9 @@ export const Order = styled.div `
 
     @media (max-width: 960px) {
         width: 70%;
+    }
+    @media (max-width: 580px) {
+        width: 90%;
     }
 `;
 
