@@ -101,7 +101,9 @@ export const Error = styled.div`
 
 export const PaginationDiv = styled.div`
    display: flex;
+   flex-wrap: wrap;
    gap: 20px;
+   justify-content: center;
    align-items: center;
    align-self: center;
 
@@ -124,6 +126,8 @@ export const PaginationDiv = styled.div`
 
 export const PaginationDivNum = styled.div`
    display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
    gap: 20px;
 `;
 
