@@ -1,3 +1,5 @@
 # lojinha-1
 
-atv final
+react + express + mysql
+
+!(screenshot da lojinha)[lojinha.png]
