@@ -35,7 +35,7 @@ exports.readStorefront = (req, res) => {
         let str = 'SELECT * FROM `storefront` WHERE `product_title` LIKE \'%' + [req.query.query] + '%\' AND `product_category` LIKE \'%' + [req.query.category] + '%\'';
         if(Number([req.query.page]) > 0) str += ' ORDER BY `product_id` ASC LIMIT 10 OFFSET ' + ((Number([req.query.page]) - 1) * 10);
         if([req.query.count][0] !== undefined) {
-            str = 'SELECT COUNT(*) FROM `storefront`';
+            str = 'SELECT COUNT(*) AS `item_count` FROM `storefront`';
             console.log([req.query.count]);
         }
         conn.query(
