@@ -182,7 +182,7 @@ localhost:8000/storefront?count
 retorna no formato:
 ```
 {
-    "COUNT(*)": 
+    "item_count": 
 }
 ```
 
