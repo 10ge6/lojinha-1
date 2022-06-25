@@ -32,7 +32,7 @@ product_size = 0 indica tamanho único.
 
 ## cart
 
-Contém product_id e product_size. Imagem, nome, cor, marca e preço então recebidos por outro pedido (para storefront) através do id.
+Contém product_id, product_size (apenas o requisitado pelo user), product_qty (int qtd do item no carrinho), product_pic, product_title, product_brand, product_color e product_price.
 
 # Exemplos de requests
 
