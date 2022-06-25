@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import * as S from './styles';
 import Modal from '../Modal';
 import NotFound from '../PageNotFound';
+import previousPgBtn from '../../assets/previousPageBtn.svg';
+import nextPgBtn from '../../assets/nextPageBtn.svg';
 
 export function getSize(num) {
    let actualNum = num;
@@ -41,9 +43,8 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
    useEffect(() => {
       getUsers().then((users) => {
          setUsers(users);
-         window.scrollTo(0, 0);
       });
-   }, []);
+   }, [urlFetch]);
 
    if (users != undefined) {
       return (
@@ -62,7 +63,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
                         currentTarget.src =
                            'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
                      }}
-                     alt='Imagem do produto'
+                     alt={`${user.product_subcategory} ${user.product_category} de cor ${user.product_color} da marca ${user.product_brand}`}
                   />
                   <S.ProductSizeDiv>
                      {getSize(user.product_size).map((size, index) => {
@@ -89,6 +90,73 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
 function ProductSection() {
    const [url, setUrl] = useState('');
    const [modalVisible, setModalVisible] = useState(false);
+   const [page, setPage] = useState(1);
+   const [maxPage, setMaxPage] = useState(0);
+
+   function decreasePage() {
+      if (page > 1) {
+         setPage((page) => page - 1);
+      }
+   }
+
+   async function getNumAllProducts() {
+      const response = await fetch('http://localhost:8000/storefront?count');
+      const data = await response.json();
+      return data.response[0].item_count;
+   }
+
+   function getPageBtns(actualPage, max) {
+      let arr = [];
+      for (let i = 1; i <= max; i++) {
+         if (arr.length > actualPage + 1 && arr.length < max - 1) {
+            arr.push('...');
+            arr.push(max);
+            break;
+         }
+         arr.push(i);
+      }
+      return arr;
+   }
+
+   getNumAllProducts().then((items) => setMaxPage(Math.ceil(items / 10)));
+
+   function increasePage() {
+      if (page < maxPage) {
+         setPage((page) => page + 1);
+      }
+   }
+
+   function actualPage(num) {
+      if (page == num) {
+         return 'actual-page';
+      } else {
+         return '';
+      }
+   }
+
+   function firstPage() {
+      if (page == 1) {
+         return 'first-page';
+      } else {
+         return 'button';
+      }
+   }
+
+   function lastPage() {
+      if (page == maxPage) {
+         return 'last-page';
+      } else {
+         return 'button';
+      }
+   }
+
+   function disableBtn(num) {
+      if (page == num) {
+         return true;
+      } else {
+         return false;
+      }
+   }
 
    const openModal = () => {
       setModalVisible(true);
@@ -102,7 +170,31 @@ function ProductSection() {
          <S.AllProducts>
             <S.Products>Produtos</S.Products>
             <Modal visible={modalVisible} url={url} closeModal={closeModal} />
-            <ProductList urlFetch={''} setUrl={setUrl} openModal={openModal} />
+            <ProductList urlFetch={`?page=${page}`} setUrl={setUrl} openModal={openModal} />
+            <S.PaginationDiv>
+               <button className={firstPage()} disabled={disableBtn(1)} onClick={() => decreasePage()}>
+                  <img src={previousPgBtn} alt='Botão de ir pra página anterior' />
+               </button>
+               <S.PaginationDivNum>
+                  {getPageBtns(page, maxPage).map((item) => {
+                     if (item == '...') {
+                        return <S.TripleDot>{item}</S.TripleDot>;
+                     }
+                     return (
+                        <S.PageBtn
+                           className={actualPage(item)}
+                           disabled={disableBtn(item)}
+                           onClick={() => setPage(item)}
+                        >
+                           {item}
+                        </S.PageBtn>
+                     );
+                  })}
+               </S.PaginationDivNum>
+               <button className={lastPage()} disabled={disableBtn(maxPage)} onClick={() => increasePage()}>
+                  <img src={nextPgBtn} alt='Botão de ir pra próxima página' />
+               </button>
+            </S.PaginationDiv>
          </S.AllProducts>
       </Section>
    );

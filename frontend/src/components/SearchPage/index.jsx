@@ -9,6 +9,7 @@ import * as S from './styles';
 function SearchPage() {
    const [searchParams, setSearchParams] = useSearchParams();
    const [url, setUrl] = useState(`?query=${searchParams.get('query') || ''}`);
+   const [query, setQuery] = useState(`?query=${searchParams.get('query') || ''}`);
    const [modal, setModal] = useState(false);
 
    function closeModal() {
@@ -24,7 +25,7 @@ function SearchPage() {
          <S.Title>Resultados de "{searchParams.get('query')}"</S.Title>
          <Modal visible={modal} url={url} closeModal={closeModal} />
          <S.Products>
-            <ProductList urlFetch={url} setUrl={setUrl} openModal={openModal} />
+            <ProductList urlFetch={query} setUrl={setUrl} openModal={openModal} />
          </S.Products>
       </Section>
    );

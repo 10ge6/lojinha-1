@@ -98,3 +98,45 @@ export const ProductSize = styled.p`
 export const Error = styled.div`
    width: 100%;
 `;
+
+export const PaginationDiv = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   justify-content: center;
+   align-items: center;
+   align-self: center;
+
+   .actual-page {
+      color: #53b38d;
+      cursor: default;
+   }
+
+   .button {
+      cursor: pointer;
+   }
+
+   .first-page {
+      filter: brightness(60%);
+   }
+   .last-page {
+      filter: brightness(60%);
+   }
+`;
+
+export const PaginationDivNum = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 20px;
+`;
+
+export const PageBtn = styled.button`
+   padding: 5px;
+   font-size: 16px;
+   cursor: pointer;
+`;
+
+export const TripleDot = styled.p`
+   font-size: 16px;
+`;

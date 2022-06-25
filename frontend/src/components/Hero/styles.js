@@ -10,136 +10,121 @@ export const Hero = styled.div `
   align-items: center;
   box-sizing: border-box;
   padding: 50px 0;
-  height: 10%;
-  font-family: "Poppins", sans-serif;
+  gap: 50px;
 
-  img {
-    width: 50%;
-  }
-
-  @media (max-width: 960px) {
-    padding: 50px 0;
-
-    img {
-      width: 50%;
-    }
-  }
   @media (max-width: 730px) {
     flex-direction: column-reverse;
-    padding: 50px 0;
 
-    img {
-      width: 100%;
-    }
+    gap: 20px;
+  }
+
+  @media (max-width: 540px) {
+    gap: 0px;
   }
 `;
 
 export const Text = styled.div `
   display: flex;
   flex-direction: column;
-  width: 40%;
-  gap: 24px;
+  width: 50%;
+  gap: 20px;
 
   h1 {
     color: #252822;
     font-weight: 700;
-    font-size: 3.9rem;
+    font-size: 4.5rem;
   }
 
   p {
-    text-align: justify;
     color: #252822;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
-  @media (max-width: 1347px) {
-    h1 {
-      font-size: 3rem;
-    }
-
-    p {
-      font-size: 1rem;
-    }
+  @media (max-width: 1215px){
+    h1{font-size: 4rem;}
+    p{font-size: 1.3rem}
+  }
+  
+  @media (max-width: 1114px){
+    h1{font-size: 3.2rem;}
+    p{font-size: 1.3rem}
   }
 
-  @media (max-width: 1093px) {
-    width: 48%;
-  }
   @media (max-width: 960px) {
-    width: 50%;
+    h1{font-size: 3rem;}
+    p{font-size:1.25rem;}
   }
 
-  @media (max-width: 923px) {
-    width: 60%;
-
-    h1 {
-      font-size: 2.5rem;
-    }
-    p {
-      font-size: 0.8rem;
-    }
+  @media (max-width: 870px) {
+    h1{font-size: 2.6rem;}
+    p{font-size:1.25rem;}
   }
 
-  @media (max-width: 730px) {
+  @media (max-width:730px) {
     width: 100%;
     text-align: center;
+  }
 
-    p {
-      text-align: center;
-    }
+  @media (max-width: 540px) {
+    h1{font-size: 2.5rem;}
+  }
+  
+`;
+
+export const Image = styled.div `
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: 650px;
+
+  img {
+    width: 100%;
+  }
+
+  @media (max-width: 1270px) {
+    flex-basis: 550px;
+  }
+
+  @media (max-width:940px) {
+    flex-basis: 450px;
+  }
+
+  @media (max-width:800px) {
+    flex-basis: 390px;
+  }
+
+  @media (max-width:480px) {
+    flex-basis: 330px;
+    
   }
 `;
 
 export const Discount = styled.div `
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+export const Button = styled.div `
+  display: flex;
   background-color: #275845;
   border-radius: 5px;
-  padding: 10px 50px;
-  width: 55%;
+  padding: 10px 40px;
+  gap: 5px;
 
-  p {
-    font-weight: 400;
-    font-size: 1.1rem;
-    color: #fafafa;
-  }
   button {
-    background: transparent;
     cursor: pointer;
   }
 
-  button img {
+  p {
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: #fafafa;
+  }
+
+  @media (max-width:730px) {
     width: 100%;
+    justify-content: center;
   }
 
-  @media (max-width: 1347px) {
-    p {
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 1167px) {
-    p {
-      font-size: 0.9rem;
-    }
-  }
-
-  @media (max-width: 923px) {
-    width: 50%;
-
-    p {
-      font-size: 0.85rem;
-    }
-
-    button img {
-      width: 80%;
-    }
-  }
-
-  @media (max-width: 730px) {
-    width: 100%;
-  }
 `;
