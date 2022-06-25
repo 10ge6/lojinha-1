@@ -11,7 +11,7 @@ import Checkbox from '../Checkbox';
 
 function FormAnnounce({ id, text, method }) {
    const [checkboxOn, setCheckboxOn] = useState(false);
-   const subcategories = ['Camisa', 'Tênis', 'Bolsas'];
+   const subcategories = ['Camisa', 'Tênis', 'Bolsa'];
    const categories = ['Feminimo', 'Infantil', 'Masculino', 'Unissex'];
    const navigate = useNavigate();
 

@@ -63,7 +63,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
                         currentTarget.src =
                            'https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png';
                      }}
-                     alt='Imagem do produto'
+                     alt={`${user.product_subcategory} ${user.product_category} de cor ${user.product_color} da marca ${user.product_brand}`}
                   />
                   <S.ProductSizeDiv>
                      {getSize(user.product_size).map((size, index) => {

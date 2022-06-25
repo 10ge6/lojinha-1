@@ -38,6 +38,7 @@ function ShoppingCart() {
                   <S.Line></S.Line>
                   {datasCart.map((dataCart) => (
                      <ProductShopping
+                        key={dataCart.product_id}
                         product_id={dataCart.product_id}
                         product_size={dataCart.product_size}
                         product_qty={dataCart.product_qty}
