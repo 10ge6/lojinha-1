@@ -2,4 +2,4 @@
 
 react + express + mysql
 
-!(screenshot da lojinha)[lojinha.png]
+![screenshot da lojinha](lojinha.png)
