@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 app.use('/', express.static('../frontend/dist'));
-app.use('/404', express.static('../frontend/dist'));
 app.use('/announce', express.static('../frontend/dist'));
 app.use('/products', express.static('../frontend/dist'));
 app.use('/search', express.static('../frontend/dist'));
