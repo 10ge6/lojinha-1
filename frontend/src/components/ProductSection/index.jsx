@@ -42,7 +42,7 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
       getUsers().then((users) => {
          setUsers(users);
       });
-   }, []);
+   }, [urlFetch]);
 
    if (users != undefined) {
       return (
@@ -88,6 +88,23 @@ export function ProductList({ urlFetch, setUrl, openModal }) {
 function ProductSection() {
    const [url, setUrl] = useState('');
    const [modalVisible, setModalVisible] = useState(false);
+   const [page, setPage] = useState(3);
+
+   function decreasePage() {
+      if (page > 1) {
+         setPage((page) => page - 1);
+      }
+   }
+
+   async function getNumAllProducts() {
+      const response = await fetch('http://localhost:8000/storefront?count');
+      const data = await response.json();
+      return data.response[0][0];
+   }
+
+   getNumAllProducts().then((data) => console.log(data));
+
+   function increasePage() {}
 
    const openModal = () => {
       setModalVisible(true);
@@ -101,7 +118,9 @@ function ProductSection() {
          <S.AllProducts>
             <S.Products>Produtos</S.Products>
             <Modal visible={modalVisible} url={url} closeModal={closeModal} />
-            <ProductList urlFetch={''} setUrl={setUrl} openModal={openModal} />
+            <ProductList urlFetch={`/?page=${page}`} setUrl={setUrl} openModal={openModal} />
+            <button onClick={() => decreasePage()}>Diminuir</button>
+            <button onClick={() => {}}>Aumentar</button>
          </S.AllProducts>
       </Section>
    );
