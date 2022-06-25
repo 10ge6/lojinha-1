@@ -107,6 +107,18 @@ export const PaginationDiv = styled.div`
 
    .actual-page {
       color: #53b38d;
+      cursor: default;
+   }
+
+   .button {
+      cursor: pointer;
+   }
+
+   .first-page {
+      filter: brightness(60%);
+   }
+   .last-page {
+      filter: brightness(60%);
    }
 `;
 
@@ -118,6 +130,7 @@ export const PaginationDivNum = styled.div`
 export const PageBtn = styled.button`
    padding: 5px;
    font-size: 16px;
+   cursor: pointer;
 `;
 
 export const TripleDot = styled.p`

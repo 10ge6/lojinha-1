@@ -134,6 +134,30 @@ function ProductSection() {
       }
    }
 
+   function firstPage() {
+      if (page == 1) {
+         return 'first-page';
+      } else {
+         return 'button';
+      }
+   }
+
+   function lastPage() {
+      if (page == maxPage) {
+         return 'last-page';
+      } else {
+         return 'button';
+      }
+   }
+
+   function disableBtn(num) {
+      if (page == num) {
+         return true;
+      } else {
+         return false;
+      }
+   }
+
    const openModal = () => {
       setModalVisible(true);
    };
@@ -148,7 +172,7 @@ function ProductSection() {
             <Modal visible={modalVisible} url={url} closeModal={closeModal} />
             <ProductList urlFetch={`?page=${page}`} setUrl={setUrl} openModal={openModal} />
             <S.PaginationDiv>
-               <button onClick={() => decreasePage()}>
+               <button className={firstPage()} disabled={disableBtn(1)} onClick={() => decreasePage()}>
                   <img src={previousPgBtn} alt='Botão de ir pra página anterior' />
                </button>
                <S.PaginationDivNum>
@@ -157,13 +181,17 @@ function ProductSection() {
                         return <S.TripleDot>{item}</S.TripleDot>;
                      }
                      return (
-                        <S.PageBtn className={actualPage(item)} onClick={() => setPage(item)}>
+                        <S.PageBtn
+                           className={actualPage(item)}
+                           disabled={disableBtn(item)}
+                           onClick={() => setPage(item)}
+                        >
                            {item}
                         </S.PageBtn>
                      );
                   })}
                </S.PaginationDivNum>
-               <button onClick={() => increasePage()}>
+               <button className={lastPage()} disabled={disableBtn(maxPage)} onClick={() => increasePage()}>
                   <img src={nextPgBtn} alt='Botão de ir pra próxima página' />
                </button>
             </S.PaginationDiv>
