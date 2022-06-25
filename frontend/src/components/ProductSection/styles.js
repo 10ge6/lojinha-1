@@ -104,10 +104,22 @@ export const PaginationDiv = styled.div`
    gap: 20px;
    align-items: center;
    align-self: center;
+
+   .actual-page {
+      color: #53b38d;
+   }
 `;
 
 export const PaginationDivNum = styled.div`
    display: flex;
-   align-items: flex-end;
    gap: 20px;
+`;
+
+export const PageBtn = styled.button`
+   padding: 5px;
+   font-size: 16px;
+`;
+
+export const TripleDot = styled.p`
+   font-size: 16px;
 `;

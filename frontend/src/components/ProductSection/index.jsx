@@ -92,6 +92,7 @@ function ProductSection() {
    const [modalVisible, setModalVisible] = useState(false);
    const [page, setPage] = useState(1);
    const [maxPage, setMaxPage] = useState(0);
+   const [greenTxt, setGreenTxt] = useState('');
 
    function decreasePage() {
       if (page > 1) {
@@ -108,7 +109,7 @@ function ProductSection() {
    function getPageBtns(actualPage, max) {
       let arr = [];
       for (let i = 1; i <= max; i++) {
-         if (arr.length > actualPage + 1) {
+         if (arr.length > actualPage && arr.length < max - 1) {
             arr.push('...');
             arr.push(max);
             break;
@@ -120,11 +121,17 @@ function ProductSection() {
 
    getNumAllProducts().then((items) => setMaxPage(Math.ceil(items / 10)));
 
-   console.log(getPageBtns(5, 15));
-
    function increasePage() {
       if (page < maxPage) {
          setPage((page) => page + 1);
+      }
+   }
+
+   function actualPage(num) {
+      if (page == num) {
+         return 'actual-page';
+      } else {
+         return '';
       }
    }
 
@@ -148,9 +155,13 @@ function ProductSection() {
                <S.PaginationDivNum>
                   {getPageBtns(page, maxPage).map((item) => {
                      if (item == '...') {
-                        return <p>{item}</p>;
+                        return <S.TripleDot>{item}</S.TripleDot>;
                      }
-                     return <button onClick={() => setPage(item)}>{item}</button>;
+                     return (
+                        <S.PageBtn className={actualPage(item)} onClick={() => setPage(item)}>
+                           {item}
+                        </S.PageBtn>
+                     );
                   })}
                </S.PaginationDivNum>
                <button onClick={() => increasePage()}>
