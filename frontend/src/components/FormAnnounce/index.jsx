@@ -134,7 +134,7 @@ function FormAnnounce({ id, text, method }) {
       })
          .then((resp) => resp.json())
          .then((data) => {
-            // navigate('/');
+            navigate('/');
          })
          .catch((err) => {
             console.log(err);
